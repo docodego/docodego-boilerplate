@@ -55,75 +55,81 @@ Narrative user-journey flows for the DoCodeGo boilerplate. Each file covers one 
 | 21 | [User Accepts an Invitation](user-accepts-an-invitation.md) | Accept/reject/cancel/expire |
 | 22 | [Org Admin Changes Member Role](org-admin-changes-member-role.md) | `member.role` update within org |
 | 23 | [Org Admin Removes a Member](org-admin-removes-a-member.md) | Remove from org |
+| 24 | [Org Admin Configures SSO Provider](org-admin-configures-sso-provider.md) | OIDC/SAML setup + domain verification |
 
 ## 6. Team Management (Org Admin)
 
 | # | Flow | Description |
 |---|------|-------------|
-| 24 | [User Creates a Team](user-creates-a-team.md) | Create team, 25 max per org |
-| 25 | [User Renames a Team](user-renames-a-team.md) | Rename dialog |
-| 26 | [Org Admin Manages Team Members](org-admin-manages-team-members.md) | Add/remove members from team |
-| 27 | [User Deletes a Team](user-deletes-a-team.md) | Delete with last-team guard |
+| 25 | [User Creates a Team](user-creates-a-team.md) | Create team, 25 max per org |
+| 26 | [User Renames a Team](user-renames-a-team.md) | Rename dialog |
+| 27 | [Org Admin Manages Team Members](org-admin-manages-team-members.md) | Add/remove members from team |
+| 28 | [User Switches Active Team](user-switches-active-team.md) | Change active team context within org |
+| 29 | [User Deletes a Team](user-deletes-a-team.md) | Delete with last-team guard |
 
 ## 7. User Settings
 
 | # | Flow | Description |
 |---|------|-------------|
-| 28 | [User Updates Profile](user-updates-profile.md) | Edit display name |
-| 29 | [User Changes Theme](user-changes-theme.md) | Light/dark/system toggle |
-| 30 | [User Changes Language](user-changes-language.md) | Language + RTL switching |
-| 31 | [User Registers a Passkey](user-registers-a-passkey.md) | WebAuthn registration + management |
-| 32 | [User Removes a Passkey](user-removes-a-passkey.md) | Delete a registered passkey |
-| 33 | [User Manages Sessions](user-manages-sessions.md) | View/revoke active sessions |
-| 34 | [User Deletes Their Account](user-deletes-their-account.md) | Permanent self-service account deletion |
+| 30 | [User Updates Profile](user-updates-profile.md) | Edit display name |
+| 31 | [User Changes Theme](user-changes-theme.md) | Light/dark/system toggle |
+| 32 | [User Changes Language](user-changes-language.md) | Language + RTL switching |
+| 33 | [User Registers a Passkey](user-registers-a-passkey.md) | WebAuthn registration + management |
+| 34 | [User Renames a Passkey](user-renames-a-passkey.md) | Update passkey friendly name |
+| 35 | [User Removes a Passkey](user-removes-a-passkey.md) | Delete a registered passkey |
+| 36 | [User Manages Sessions](user-manages-sessions.md) | View/revoke active sessions |
+| 37 | [User Deletes Their Account](user-deletes-their-account.md) | Permanent self-service account deletion |
 
 ## 8. App Admin Operations
 
 | # | Flow | Description |
 |---|------|-------------|
-| 35 | [App Admin Lists and Searches Users](app-admin-lists-and-searches-users.md) | User management dashboard |
-| 36 | [App Admin Bans a User](app-admin-bans-a-user.md) | Ban with reason/expiry, session invalidation |
-| 37 | [App Admin Unbans a User](app-admin-unbans-a-user.md) | Clear ban fields |
-| 38 | [App Admin Impersonates a User](app-admin-impersonates-a-user.md) | See app as target user |
-| 39 | [App Admin Creates a User](app-admin-creates-a-user.md) | Provision account |
-| 40 | [App Admin Changes User Role](app-admin-changes-user-role.md) | Set `user.role` (app-level) |
+| 38 | [App Admin Lists and Searches Users](app-admin-lists-and-searches-users.md) | User management dashboard |
+| 39 | [App Admin Bans a User](app-admin-bans-a-user.md) | Ban with reason/expiry, session invalidation |
+| 40 | [App Admin Unbans a User](app-admin-unbans-a-user.md) | Clear ban fields |
+| 41 | [App Admin Impersonates a User](app-admin-impersonates-a-user.md) | See app as target user |
+| 42 | [App Admin Creates a User](app-admin-creates-a-user.md) | Provision account |
+| 43 | [App Admin Changes User Role](app-admin-changes-user-role.md) | Set `user.role` (app-level) |
+| 44 | [App Admin Removes a User](app-admin-removes-a-user.md) | Permanent account deletion by admin |
+| 45 | [App Admin Revokes User Sessions](app-admin-revokes-user-sessions.md) | Force-terminate user sessions |
 
 ## 9. Desktop App
 
 | # | Flow | Description |
 |---|------|-------------|
-| 41 | [User Launches Desktop App](user-launches-desktop-app.md) | Tauri window, state restore |
-| 42 | [User Uses System Tray](user-uses-system-tray.md) | Tray toggle, context menu |
-| 43 | [User Opens a Deep Link](user-opens-a-deep-link.md) | `docodego://` routing |
-| 44 | [Desktop Auto-Updates](desktop-auto-updates.md) | Updater plugin |
-| 45 | [Desktop Sends a Notification](desktop-sends-a-notification.md) | OS-native notifications via Tauri plugin |
+| 46 | [User Launches Desktop App](user-launches-desktop-app.md) | Tauri window, state restore |
+| 47 | [User Uses System Tray](user-uses-system-tray.md) | Tray toggle, context menu |
+| 48 | [User Opens a Deep Link](user-opens-a-deep-link.md) | `docodego://` routing |
+| 49 | [Desktop Auto-Updates](desktop-auto-updates.md) | Updater plugin |
+| 50 | [Desktop Sends a Notification](desktop-sends-a-notification.md) | OS-native notifications via Tauri plugin |
 
 ## 10. Mobile App
 
 | # | Flow | Description |
 |---|------|-------------|
-| 46 | [User Launches Mobile App](user-launches-mobile-app.md) | Splash, fonts, locale, auth check |
-| 47 | [User Signs In on Mobile](user-signs-in-on-mobile.md) | OTP + SSO (no passkey) |
-| 48 | [User Navigates Mobile App](user-navigates-mobile-app.md) | Expo Router, gestures, deep links |
-| 49 | [Mobile Handles Deep Link](mobile-handles-deep-link.md) | Auth guard on `docodego://` links |
+| 51 | [User Launches Mobile App](user-launches-mobile-app.md) | Splash, fonts, locale, auth check |
+| 52 | [User Signs In on Mobile](user-signs-in-on-mobile.md) | OTP + SSO (no passkey) |
+| 53 | [User Navigates Mobile App](user-navigates-mobile-app.md) | Expo Router, gestures, deep links |
+| 54 | [Mobile Handles Deep Link](mobile-handles-deep-link.md) | Auth guard on `docodego://` links |
 
 ## 11. Browser Extension
 
 | # | Flow | Description |
 |---|------|-------------|
-| 50 | [User Installs Browser Extension](user-installs-browser-extension.md) | Install, permissions, first run |
-| 51 | [Extension Authenticates via Token Relay](extension-authenticates-via-token-relay.md) | Token relay auth pattern |
-| 52 | [User Interacts with Extension Popup](user-interacts-with-extension-popup.md) | Popup UI, API calls |
-| 53 | [Extension Receives an Update](extension-receives-an-update.md) | Auto-update, token migration, what's new |
+| 55 | [User Installs Browser Extension](user-installs-browser-extension.md) | Install, permissions, first run |
+| 56 | [Extension Authenticates via Token Relay](extension-authenticates-via-token-relay.md) | Token relay auth pattern |
+| 57 | [User Interacts with Extension Popup](user-interacts-with-extension-popup.md) | Popup UI, API calls |
+| 58 | [Extension Receives an Update](extension-receives-an-update.md) | Auto-update, token migration, what's new |
 
 ## 12. System & Cross-Cutting
 
 | # | Flow | Description |
 |---|------|-------------|
-| 54 | [System Sends OTP Email](system-sends-otp-email.md) | OTP email template + delivery |
-| 55 | [System Sends Invitation Email](system-sends-invitation-email.md) | Invitation email + link |
-| 56 | [System Detects Locale](system-detects-locale.md) | API/web/mobile locale detection |
-| 57 | [App Renders RTL Layout](app-renders-rtl-layout.md) | RTL with logical CSS properties |
-| 58 | [User Uploads a File](user-uploads-a-file.md) | R2 object storage |
-| 59 | [System Handles Errors](system-handles-errors.md) | Global error handler, toasts |
-| 60 | [User Subscribes to a Plan](user-subscribes-to-a-plan.md) | DodoPayments *(planned)* |
+| 59 | [System Sends OTP Email](system-sends-otp-email.md) | OTP email template + delivery |
+| 60 | [System Sends Invitation Email](system-sends-invitation-email.md) | Invitation email + link |
+| 61 | [System Detects Locale](system-detects-locale.md) | API/web/mobile locale detection |
+| 62 | [App Renders RTL Layout](app-renders-rtl-layout.md) | RTL with logical CSS properties |
+| 63 | [User Uploads a File](user-uploads-a-file.md) | R2 object storage |
+| 64 | [System Handles Errors](system-handles-errors.md) | Global error handler, toasts |
+| 65 | [User Subscribes to a Plan](user-subscribes-to-a-plan.md) | DodoPayments *(planned)* |
+| 66 | [User Manages Billing Portal](user-manages-billing-portal.md) | Self-service billing *(planned)* |
