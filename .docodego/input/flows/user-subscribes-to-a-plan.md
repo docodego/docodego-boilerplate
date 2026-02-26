@@ -1,3 +1,5 @@
+[← Back to Index](README.md)
+
 # User Subscribes to a Plan
 
 > **Status: Planned** — The DodoPayments Better Auth plugin (`@dodopayments/better-auth`) is included in the codebase but commented out, awaiting payment credentials. The flow described below represents the intended design that will activate once credentials are configured.

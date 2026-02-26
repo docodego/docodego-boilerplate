@@ -1,3 +1,5 @@
+[← Back to Index](README.md)
+
 # Desktop Auto-Updates
 
 ## The app checks for updates

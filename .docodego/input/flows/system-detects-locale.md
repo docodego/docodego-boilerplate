@@ -1,3 +1,5 @@
+[← Back to Index](README.md)
+
 # System Detects Locale
 
 ## API Side

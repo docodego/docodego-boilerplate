@@ -1,8 +1,10 @@
+[← Back to Index](README.md)
+
 # App Renders RTL Layout
 
 ## Trigger
 
-When the resolved locale is a right-to-left language — Arabic, Hebrew, Farsi, or Urdu — the application switches its entire layout direction. This happens automatically based on the locale detection described in the locale detection flow, with no separate user toggle for direction.
+When the resolved locale is a right-to-left language — Arabic, Hebrew, Farsi, or Urdu — the application switches its entire layout direction. This happens automatically based on the locale detection described in [System Detects Locale](system-detects-locale.md), with no separate user toggle for direction.
 
 ## Web Implementation
 

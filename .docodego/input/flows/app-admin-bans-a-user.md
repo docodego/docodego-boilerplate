@@ -1,3 +1,5 @@
+[← Back to Index](README.md)
+
 # App Admin Bans a User
 
 ## The app admin locates the user to ban
@@ -14,7 +16,7 @@ When the app admin confirms, the client calls `authClient.admin.banUser({ userId
 
 ## The banned user experiences the ban
 
-Because all sessions are invalidated, the banned user's current browsing session fails on their very next API request. The client receives an authentication error, and the user is effectively signed out. If the banned user tries to sign in again, the sign-in flow checks the `user.banned` field and rejects the attempt, displaying a ban error message that includes the ban reason if one was provided. The user cannot access any authenticated part of the application until the ban is lifted, either by expiration or by an app admin manually unbanning them.
+Because all sessions are invalidated, the banned user's current browsing session fails on their very next API request. The client receives an authentication error, and the user is effectively signed out. If the banned user tries to sign in again, the sign-in flow checks the `user.banned` field and rejects the attempt, displaying a ban error message that includes the ban reason if one was provided. The user cannot access any authenticated part of the application until the ban is lifted, either by expiration or by an app admin manually [unbanning them](app-admin-unbans-a-user.md).
 
 ## The action is audit logged
 

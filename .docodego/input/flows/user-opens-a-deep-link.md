@@ -1,3 +1,5 @@
+[← Back to Index](README.md)
+
 # User Opens a Deep Link
 
 ## The user clicks a deep link
@@ -10,7 +12,7 @@ Tauri receives the URL and extracts the path portion, in this example `/app/doco
 
 ## Deep links handle OAuth callbacks
 
-Deep links also serve a critical role in the OAuth sign-in flow. When the user signs in via SSO, the browser opens to complete the authentication with the external provider. Once the provider confirms the user's identity, the browser redirects to `docodego://auth/callback?...` with the necessary tokens and parameters. The OS routes this back to the Tauri app, which hands it to the auth handler. The auth handler processes the callback, establishes the session, and the user is signed in without needing to manually copy tokens or switch between windows.
+Deep links also serve a critical role in the OAuth sign-in flow. When the user [signs in via SSO](user-signs-in-with-sso.md), the browser opens to complete the authentication with the external provider. Once the provider confirms the user's identity, the browser redirects to `docodego://auth/callback?...` with the necessary tokens and parameters. The OS routes this back to the Tauri app, which hands it to the auth handler. The auth handler processes the callback, establishes the session, and the user is signed in without needing to manually copy tokens or switch between windows.
 
 ## Desktop-only detection
 

@@ -1,3 +1,5 @@
+[← Back to Index](README.md)
+
 # User Manages Sessions
 
 ## Viewing Active Sessions

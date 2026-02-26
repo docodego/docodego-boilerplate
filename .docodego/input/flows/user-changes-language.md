@@ -1,3 +1,5 @@
+[← Back to Index](README.md)
+
 # User Changes Language
 
 ## The Language Selector
@@ -12,7 +14,7 @@ Every piece of text rendered through i18next's translation functions updates in 
 
 ## RTL Layout for Arabic
 
-When the user switches to Arabic, the app sets `dir="rtl"` on the `<html>` element. Tailwind CSS uses logical properties throughout the UI — `ms-` and `me-` instead of `ml-` and `mr-`, `ps-` and `pe-` instead of `pl-` and `pr-`, `start` and `end` instead of `left` and `right`. This means the entire layout mirrors automatically: the sidebar moves to the right side, text aligns to the right, and spacing flips to match the right-to-left reading direction.
+When the user switches to Arabic, the app [renders an RTL layout](app-renders-rtl-layout.md) by setting `dir="rtl"` on the `<html>` element. Tailwind CSS uses logical properties throughout the UI — `ms-` and `me-` instead of `ml-` and `mr-`, `ps-` and `pe-` instead of `pl-` and `pr-`, `start` and `end` instead of `left` and `right`. This means the entire layout mirrors automatically: the sidebar moves to the right side, text aligns to the right, and spacing flips to match the right-to-left reading direction.
 
 When the user switches back to English, `dir="ltr"` is set on `<html>`, and the layout restores to the standard left-to-right orientation. All logical properties resolve back to their LTR equivalents.
 

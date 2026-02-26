@@ -1,3 +1,5 @@
+[← Back to Index](README.md)
+
 # User Signs In as Guest
 
 ## Starting a Guest Session
@@ -10,4 +12,4 @@ The server creates a new user record with `isAnonymous` set to `true`. An auto-g
 
 ## The Guest Experience
 
-The client redirects the guest to `/app`. The guest can browse and interact with the application as a logged-in user. A persistent banner is displayed encouraging the guest to create a full account by linking a real email address. This banner remains visible throughout the guest's session to remind them that their activity can be preserved by upgrading. Until they upgrade, the guest account functions like any other account but is flagged as anonymous in the system.
+The client redirects the guest to `/app`. The guest can browse and interact with the application as a logged-in user. A persistent banner is displayed encouraging the guest to [create a full account](guest-upgrades-to-full-account.md) by linking a real email address. This banner remains visible throughout the guest's session to remind them that their activity can be preserved by upgrading. Until they upgrade, the guest account functions like any other account but is flagged as anonymous in the system.

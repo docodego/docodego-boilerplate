@@ -1,3 +1,5 @@
+[← Back to Index](README.md)
+
 # User Changes Theme
 
 ## The Appearance Settings Page

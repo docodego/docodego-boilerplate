@@ -1,3 +1,5 @@
+[← Back to Index](README.md)
+
 # User Signs In with Email OTP
 
 ## Arriving at Sign-In
@@ -6,7 +8,7 @@ The user navigates to `/signin` and sees the authentication page. Among the avai
 
 ## Server Generates the OTP
 
-The server generates a 6-digit numeric OTP and stores it in the `verification` table with a 5-minute expiry timestamp. It then dispatches the code via email — in development, the code is logged to the console instead. The server responds with a generic success message regardless of whether the email is associated with an existing account. This enumeration protection ensures that an attacker cannot probe the system to discover which emails are registered.
+The server generates a 6-digit numeric OTP and stores it in the `verification` table with a 5-minute expiry timestamp. It then [dispatches the code via email](system-sends-otp-email.md) — in development, the code is logged to the console instead. The server responds with a generic success message regardless of whether the email is associated with an existing account. This enumeration protection ensures that an attacker cannot probe the system to discover which emails are registered.
 
 ## Entering the Code
 

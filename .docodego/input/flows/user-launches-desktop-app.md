@@ -1,3 +1,5 @@
+[← Back to Index](README.md)
+
 # User Launches Desktop App
 
 ## The user opens the application

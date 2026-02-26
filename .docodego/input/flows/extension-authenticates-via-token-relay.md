@@ -1,8 +1,10 @@
+[← Back to Index](README.md)
+
 # Extension Authenticates via Token Relay
 
 ## Why Token Relay
 
-Browser extensions run on a different origin than the web app, which means they cannot access the API's session cookies. The extension uses a token relay pattern instead: the user authenticates through the normal web sign-in flow, and the resulting session token is passed to the extension via browser messaging.
+Browser extensions run on a different origin than the web app, which means they cannot access the API's session cookies. The extension uses a token relay pattern instead: the user authenticates through the normal web sign-in flow (see [User Signs In with Email OTP](user-signs-in-with-email-otp.md), [User Signs In with Passkey](user-signs-in-with-passkey.md), or [User Signs In with SSO](user-signs-in-with-sso.md)), and the resulting session token is passed to the extension via browser messaging.
 
 ## Sign-In Handoff
 

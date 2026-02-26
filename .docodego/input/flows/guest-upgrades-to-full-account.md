@@ -1,8 +1,10 @@
+[← Back to Index](README.md)
+
 # Guest Upgrades to Full Account
 
 ## Deciding to Upgrade
 
-An anonymous user who has been browsing the application as a guest decides to link a real email address. They click the persistent upgrade banner or navigate to their account settings, where they find an option to convert their guest account into a full account. The user enters their real email address and the system initiates the standard OTP verification flow — a 6-digit code is generated, stored in the `verification` table with a 5-minute expiry, and sent to the provided email (logged to console in development).
+An anonymous user who has been browsing the application as a [guest](user-signs-in-as-guest.md) decides to link a real email address. They click the persistent upgrade banner or navigate to their account settings, where they find an option to convert their guest account into a full account. The user enters their real email address and the system initiates the standard OTP verification flow — a 6-digit code is generated, stored in the `verification` table with a 5-minute expiry, and sent to the provided email (logged to console in development).
 
 ## Verifying and Linking
 

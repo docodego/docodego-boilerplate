@@ -1,3 +1,5 @@
+[← Back to Index](README.md)
+
 # App Admin Unbans a User
 
 ## The app admin locates the banned user

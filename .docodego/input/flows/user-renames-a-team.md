@@ -1,3 +1,5 @@
+[← Back to Index](README.md)
+
 # User Renames a Team
 
 ## Initiating the Rename

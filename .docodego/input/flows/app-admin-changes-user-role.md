@@ -1,3 +1,5 @@
+[← Back to Index](README.md)
+
 # App Admin Changes a User's Role
 
 ## The app admin selects the user and changes their role

@@ -1,3 +1,5 @@
+[← Back to Index](README.md)
+
 # Org Admin Removes a Member
 
 ## Initiating Removal

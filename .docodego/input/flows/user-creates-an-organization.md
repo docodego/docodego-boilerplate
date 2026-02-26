@@ -1,3 +1,5 @@
+[← Back to Index](README.md)
+
 # User Creates an Organization
 
 ## Starting from the Org Switcher

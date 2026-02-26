@@ -1,3 +1,5 @@
+[← Back to Index](README.md)
+
 # User Deletes a Team
 
 ## Initiating Deletion

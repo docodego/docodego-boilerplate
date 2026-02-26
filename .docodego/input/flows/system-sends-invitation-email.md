@@ -1,3 +1,5 @@
+[← Back to Index](README.md)
+
 # System Sends Invitation Email
 
 ## Trigger

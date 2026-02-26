@@ -1,3 +1,5 @@
+[← Back to Index](README.md)
+
 # Session Lifecycle
 
 ## Session Creation
@@ -14,8 +16,8 @@ The session tracks the user's current organizational context through two mutable
 
 ## Admin Impersonation
 
-The `impersonatedBy` field on the session is set when an admin user impersonates another user. This field records the admin's user ID, creating an audit trail and allowing the system to display an impersonation indicator in the UI. The impersonation mechanism and its controls are covered in detail in the admin flows.
+The `impersonatedBy` field on the session is set when an admin user impersonates another user. This field records the admin's user ID, creating an audit trail and allowing the system to display an impersonation indicator in the UI. The impersonation mechanism and its controls are covered in detail in [App Admin Impersonates a User](app-admin-impersonates-a-user.md).
 
 ## Session Revocation
 
-Users can revoke sessions from their security settings. Individual sessions can be terminated — for example, revoking a session from an unrecognized device. Bulk revocation allows a user to sign out of all other sessions at once, keeping only the current session active. When a session is revoked, the corresponding record is removed from the `session` table and any subsequent request using that token is rejected, forcing the user on that device to re-authenticate.
+Users can revoke sessions from their security settings (see [User Manages Sessions](user-manages-sessions.md)). Individual sessions can be terminated — for example, revoking a session from an unrecognized device. Bulk revocation allows a user to sign out of all other sessions at once, keeping only the current session active. When a session is revoked, the corresponding record is removed from the `session` table and any subsequent request using that token is rejected, forcing the user on that device to re-authenticate.

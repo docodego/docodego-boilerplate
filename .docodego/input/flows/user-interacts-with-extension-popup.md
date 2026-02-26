@@ -1,3 +1,5 @@
+[← Back to Index](README.md)
+
 # User Interacts with Extension Popup
 
 ## Opening the Popup

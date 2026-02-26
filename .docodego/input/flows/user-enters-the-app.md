@@ -1,3 +1,5 @@
+[← Back to Index](README.md)
+
 # User Enters the App
 
 ## Astro Serves the SPA Shell
@@ -16,6 +18,6 @@ With a valid session confirmed, the hook fetches the user's organization list vi
 
 If the user belongs to at least one organization, the hook redirects to `/app/{activeOrgSlug}/`, where `activeOrgSlug` is the slug of the user's currently active organization from their session. The user lands directly on their org dashboard.
 
-If the user has no organizations — a new user who just signed up, for example — the hook redirects to `/app/onboarding`, where they will create their first organization.
+If the user has no organizations — a new user who just signed up, for example — the hook redirects to `/app/onboarding`, where they will [create their first organization](user-creates-first-organization.md).
 
 This resolution happens every time someone navigates to the bare `/app` URL. Returning users with organizations skip onboarding entirely and go straight to their active org's dashboard. Users who accepted an invitation and already belong to an org through that path also skip onboarding.

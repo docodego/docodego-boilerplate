@@ -1,3 +1,5 @@
+[← Back to Index](README.md)
+
 # User Signs In with SSO
 
 ## Initiating SSO

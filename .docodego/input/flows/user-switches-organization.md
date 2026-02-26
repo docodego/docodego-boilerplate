@@ -1,3 +1,5 @@
+[← Back to Index](README.md)
+
 # User Switches Organization
 
 ## Opening the Org Switcher

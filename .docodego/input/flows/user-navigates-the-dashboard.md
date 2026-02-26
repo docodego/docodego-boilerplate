@@ -1,3 +1,5 @@
+[← Back to Index](README.md)
+
 # User Navigates the Dashboard
 
 ## Dashboard Shell Layout

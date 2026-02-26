@@ -1,3 +1,5 @@
+[← Back to Index](README.md)
+
 # App Admin Impersonates a User
 
 ## The app admin initiates impersonation

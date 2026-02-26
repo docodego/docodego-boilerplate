@@ -1,3 +1,5 @@
+[← Back to Index](README.md)
+
 # User Accepts an Invitation
 
 ## Receiving the Invitation
@@ -10,7 +12,7 @@ If the invitee is already signed in or has an existing account, clicking the lin
 
 ## Accepting without an Account
 
-If the invitee does not have an account, clicking the invitation link directs them through the sign-up flow first. Once the account is created and the user is signed in, the invitation acceptance completes automatically. The user arrives at the organization dashboard as a new member with the assigned role.
+If the invitee does not have an account, clicking the invitation link directs them through the [sign-in flow](user-signs-in-with-email-otp.md) first. Once the account is created and the user is signed in, the invitation acceptance completes automatically. The user arrives at the organization dashboard as a new member with the assigned role.
 
 ## Rejecting an Invitation
 

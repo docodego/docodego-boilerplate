@@ -1,3 +1,5 @@
+[← Back to Index](README.md)
+
 # User Navigates Mobile App
 
 ## Routing and Screen Structure
@@ -14,4 +16,4 @@ Deep links using the `docodego://` scheme open directly to the corresponding scr
 
 ## Shared Packages and Data Patterns
 
-The mobile app consumes the same shared packages as the web. `@repo/contracts` provides typed oRPC contracts for API calls, ensuring the mobile client and API stay in sync at compile time. `@repo/i18n` delivers translations in all supported locales — Arabic RTL works through React Native's built-in RTL layout support, which `expo-localization` activates based on the detected device locale. `@repo/library` supplies validators, constants, and formatters shared across platforms. Lists use infinite scroll for paginated data and pull-to-refresh for manual reloading, following standard mobile interaction patterns.
+The mobile app consumes the same shared packages as the web. `@repo/contracts` provides typed oRPC contracts for API calls, ensuring the mobile client and API stay in sync at compile time. `@repo/i18n` delivers translations in all supported locales — Arabic [RTL layout](app-renders-rtl-layout.md) works through React Native's built-in RTL support, which `expo-localization` activates based on the [detected device locale](system-detects-locale.md). `@repo/library` supplies validators, constants, and formatters shared across platforms. Lists use infinite scroll for paginated data and pull-to-refresh for manual reloading, following standard mobile interaction patterns.

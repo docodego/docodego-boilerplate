@@ -1,3 +1,5 @@
+[← Back to Index](README.md)
+
 # User Signs In on Mobile
 
 ## Sign-In Screen
@@ -14,4 +16,4 @@ If the user taps the SSO option, the app opens the system browser to the web sig
 
 ## Token Storage and Navigation
 
-On successful authentication through any method, the session token is persisted via `expo-secure-store`, which stores it in the device's encrypted keychain. This token survives app restarts without requiring the user to sign in again. The app then navigates the user forward — if the user belongs to at least one organization, they land on their active organization's dashboard. If they have no organizations, they are directed to the onboarding flow to create their first one. An anonymous guest session follows the same navigation logic, with the option to upgrade to a full account later.
+On successful authentication through any method, the session token is persisted via `expo-secure-store`, which stores it in the device's encrypted keychain. This token survives app restarts without requiring the user to sign in again. The app then navigates the user forward — if the user belongs to at least one organization, they land on their active organization's dashboard. If they have no organizations, they are directed to the [onboarding flow](user-creates-first-organization.md) to create their first one. An anonymous guest session follows the same navigation logic, with the option to upgrade to a full account later.

@@ -1,3 +1,5 @@
+[← Back to Index](README.md)
+
 # User Signs Out
 
 ## Initiating Sign-Out
