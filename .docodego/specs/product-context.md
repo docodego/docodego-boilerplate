@@ -1,3 +1,5 @@
+[← Back to Roadmap](ROADMAP.md)
+
 # Product Context
 
 Shared reference document for the DoCodeGo boilerplate. All scored specs reference this file for constraints, roles, glossary, and platform context. This document is NOT scored by ICS — it serves as the single source of truth that individual specs build upon.
