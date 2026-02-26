@@ -6,6 +6,43 @@
 
 This spec defines the Hono web framework configuration, middleware stack, error handling, oRPC router integration, and API documentation setup for the DoCodeGo boilerplate API running on Cloudflare Workers. The API serves as the single backend for all 5 platform targets (web, mobile, desktop, browser extension, and developer API consumers). The Hono app is configured with a specific middleware execution order, a structured error handler, CORS policy, locale detection, and an oRPC router that exposes type-safe RPC endpoints. Scalar provides auto-generated interactive API documentation from the OpenAPI spec produced by oRPC. This spec ensures that every incoming request passes through the correct middleware chain and that all API responses follow a consistent format.
 
+## Integration Map
+
+| System | Interaction Type | When Called | What Happens If Unavailable |
+|--------|-----------------|-------------|------------------------------|
+| D1 (Cloudflare SQL) | read/write | Every database query via Drizzle ORM | Route handlers return 500 and the global error handler falls back to a generic JSON error message for the client |
+| R2 (Cloudflare Storage) | read/write | File upload/download operations | Affected file routes return 500 and the error handler degrades gracefully while non-storage routes remain fully operational |
+| `@repo/contracts` | read | App startup (schema registration) | Build fails at compile time because the oRPC router cannot resolve contract types and CI alerts to block deployment |
+| `@repo/i18n` | read | Each request (locale middleware) | Translation function falls back to the default English locale strings so responses remain readable but untranslated for non-English users |
+| Better Auth | read/write | Requests to `/api/auth/**` | Auth endpoints return 500 and the error handler degrades to a generic authentication error while non-auth routes remain unaffected |
+
+## Behavioral Flow
+
+1. **[Client]** → sends HTTP request to Cloudflare Worker
+2. **[CORS middleware]** → validates origin against allowed web app URL → rejects with 403 if origin is not permitted
+3. **[Logger middleware]** → logs request method, path, and timing
+4. **[Locale middleware]** → parses `Accept-Language` header → resolves to `"en"` or `"ar"` → attaches `t()` function to Hono context → sets `Content-Language` response header
+5. **[Hono router]** → matches request path:
+   - `/api/auth/**` → **[Better Auth handler]** → processes auth request → returns response
+   - `/api/reference` → **[Scalar middleware]** → returns HTML documentation page
+   - All other API routes → **[oRPC router]** → validates input against Zod schemas → executes handler → returns JSON response
+6. **[Error handler]** → catches any unhandled error from steps 2–5 → returns JSON `{ code, message }` with the mapped HTTP status code (400, 401, 403, 404, or 500) → redacts stack trace in production
+
+## State Machine
+
+No stateful entities. The API framework is a stateless request-response pipeline — no entities have a lifecycle within this spec's scope.
+
+## Business Rules
+
+No conditional business rules. Middleware executes unconditionally on every request in fixed order.
+
+## Permission Model
+
+| Role | Actions Permitted | Actions Denied | Visibility Constraints |
+|------|------------------|----------------|----------------------|
+| Unauthenticated | Access `/api/reference`, send requests to `/api/auth/**` | Access any oRPC route requiring a session | Cannot see protected resource data |
+| Authenticated | Access all oRPC routes, access `/api/reference` | N/A (route-level auth covered by route-specific specs) | Per-route visibility defined in route-specific specs |
+
 ## Acceptance Criteria
 
 - [ ] A Hono app instance is present at `apps/api/src/index.ts` and is exported as the default Cloudflare Worker handler
@@ -34,17 +71,62 @@ This spec defines the Hono web framework configuration, middleware stack, error 
 - The API does not serve static files — static assets are served by Cloudflare Pages (web) or bundled into platform-specific apps. The count of static file serving middleware in the Hono app equals 0.
 - TanStack Query on the client is configured with `retry` set to 1 — a failed request retries exactly 1 time before being treated as a failure. This value is present in the query client configuration.
 
+## Edge Cases
+
+| Scenario | Expected Behavior | Test Signal |
+|----------|------------------|-------------|
+| The client sends a request without an `Accept-Language` header present in the request | Locale middleware falls back to the default locale `"en"` and attaches the English translation `t()` function to the Hono context | Response includes `Content-Language: en` header and the body contains English-language strings |
+| The `Accept-Language` header contains an unsupported locale such as `fr` that is not in the supported set | Locale middleware falls back to `"en"` because the requested locale is not in the supported locale list of `en` and `ar` | Response includes `Content-Language: en` header regardless of the unsupported locale value sent |
+| The `Accept-Language` header is malformed with invalid syntax such as `;;;` that cannot be parsed | Locale middleware degrades gracefully and falls back to `"en"` without throwing an unhandled exception or crashing the worker | Response includes `Content-Language: en` and the HTTP status code is not 500 |
+| The client sends a request body that contains invalid JSON syntax that cannot be parsed by the runtime | The oRPC router rejects the request with HTTP 400 before the request reaches the route handler logic | Response body contains a `code` field indicating a JSON parse error and the HTTP status is 400 |
+| The client sends a request to a URL path that does not match any registered route in the Hono router | Hono returns HTTP 404 with the standard error JSON structure `{ code, message }` and does not fall through silently | Response status is 404 and the response body is valid JSON containing both `code` and `message` fields |
+| A CORS preflight OPTIONS request arrives from an origin that is not in the allowed origin list | The CORS middleware rejects the preflight request and does not forward it to any downstream route handler | Response omits the `Access-Control-Allow-Origin` header, signaling the browser to block the cross-origin request |
+
 ## Failure Modes
 
-- **Middleware ordering error**: The locale detection middleware is placed after the oRPC router, causing route handlers to access an undefined `t()` function and returning error 500 on every localized response. The integration test for locale detection verifies that a request with `Accept-Language: ar` returns a response with `Content-Language: ar` and a localized error message, and returns error if the header is absent or the translation function is not attached to the context.
-- **CORS rejection on cross-origin requests**: The CORS `origin` value does not match the web app's deployment URL, causing the browser to block all API requests from the frontend with a CORS preflight failure. The integration test sends a preflight OPTIONS request with the web app origin and verifies the response includes `Access-Control-Allow-Origin` matching that origin and `Access-Control-Allow-Credentials` set to true, and returns error if either header is absent or incorrect.
-- **OpenAPI spec desync**: A developer modifies a Zod schema in `@repo/contracts` but the oRPC router does not regenerate the OpenAPI spec, causing the Scalar documentation to display stale endpoint definitions. Since oRPC generates the spec at runtime from the Zod schemas, this desync cannot occur — the spec is always derived from the current contract definitions. If a developer bypasses contracts and defines inline schemas, the CI typecheck returns error because the route handler types do not match the contract types.
-- **Error handler leaking stack traces in production**: The global error handler fails to check the environment and includes full stack traces in 500 responses served to end users, exposing internal file paths and dependency versions. The integration test for error handling sends a request that triggers a 500 error in production mode and verifies that the response body contains 0 stack trace lines and the `message` field equals the generic error string, returning error if any internal detail is present.
+- **Middleware ordering error**
+    - **What happens:** Locale detection middleware is placed after the oRPC router, causing route handlers to access an undefined `t()` function.
+    - **Source:** Incorrect middleware registration order during development.
+    - **Consequence:** Every localized response returns 500 and users see generic error messages instead of translated content.
+    - **Recovery:** The error handler falls back to a generic English message for the 500 response, and the integration test verifies that a request with `Accept-Language: ar` returns `Content-Language: ar` with a localized message — CI alerts and blocks deployment if the test fails.
+- **CORS rejection on cross-origin requests**
+    - **What happens:** The CORS `origin` value does not match the web app's deployment URL, causing browsers to block all API requests from the frontend with a CORS preflight failure.
+    - **Source:** Misconfigured environment variable or hardcoded origin value after a domain change.
+    - **Consequence:** The frontend cannot communicate with the API and all cross-origin calls fail silently in the browser.
+    - **Recovery:** The system degrades to blocking all cross-origin requests until the origin is corrected, and the integration test sends a preflight OPTIONS request verifying `Access-Control-Allow-Origin` and `Access-Control-Allow-Credentials` headers — CI alerts and blocks deployment if either header is missing.
+- **OpenAPI spec desync**
+    - **What happens:** A developer modifies a Zod schema in `@repo/contracts` but the API documentation shows stale endpoint definitions.
+    - **Source:** Attempted bypass of the contracts package by defining inline schemas in route handlers.
+    - **Consequence:** API consumers rely on incorrect documentation, leading to integration failures.
+    - **Recovery:** oRPC generates the OpenAPI spec at runtime from Zod schemas, so desync cannot occur for contract-based routes — CI typecheck alerts on inline schema definitions because route handler types will not match contract types, and deployment is blocked.
+- **Error handler leaking stack traces in production**
+    - **What happens:** The global error handler fails to check the environment flag and includes full stack traces in 500 responses served to end users.
+    - **Source:** Missing or incorrect environment check in error handler logic.
+    - **Consequence:** End users see internal file paths, dependency versions, and code structure, aiding potential attackers.
+    - **Recovery:** The error handler falls back to a generic message string for all 500 responses in production mode, never exposing internals — the integration test triggers a 500 error in production mode and verifies the response body contains zero stack trace lines, and CI alerts and blocks deployment if any internal detail is present.
+- **D1 database connection failure**
+    - **What happens:** The D1 binding is unavailable or returns connection errors during a request that requires database access via Drizzle ORM.
+    - **Source:** Cloudflare D1 service degradation, misconfigured binding name in `wrangler.toml`, or exceeded D1 rate limits.
+    - **Consequence:** All routes that query the database return 500 errors and auth flows that check session state also fail, effectively locking users out.
+    - **Recovery:** The global error handler falls back to a generic JSON error response with a 500 status code and a user-safe message, and the system degrades gracefully because non-database routes such as `/api/reference` and the OpenAPI spec endpoint continue serving normally.
+- **Malicious or oversized request payload**
+    - **What happens:** An attacker sends an extremely large JSON body or deeply nested payload to an oRPC endpoint, attempting to exhaust worker memory or CPU time.
+    - **Source:** Adversarial input from an unauthenticated or authenticated client sending a crafted request body.
+    - **Consequence:** The Cloudflare Worker exceeds its CPU time limit or memory allocation and the request is terminated by the runtime, returning a platform-level error.
+    - **Recovery:** Cloudflare Workers enforce a 128 MB memory limit and a CPU time ceiling per request, so the platform degrades the individual request without affecting other concurrent requests — Zod schema validation in the oRPC router rejects non-conforming payloads before handler logic executes, providing an early exit for malformed input.
 
 ## Declared Omissions
 
-- Better Auth plugin configuration and session strategy (covered by `auth-server-config.md`)
-- Database schema and migration strategy (covered by `database-schema.md`)
-- oRPC contract definitions and Zod schemas (covered by `shared-contracts.md`)
-- Frontend TanStack Query configuration and error display (covered by behavioral specs)
-- CI/CD deployment workflow for Cloudflare Workers (covered by `ci-cd-pipelines.md`)
+- Better Auth plugin configuration, session strategy, and OAuth provider setup are not covered here and are defined in `auth-server-config.md`
+- Database schema definitions, migration strategy, and Drizzle ORM table configuration are not covered here and are defined in `database-schema.md`
+- oRPC contract definitions, shared Zod schemas, and API type exports are not covered here and are defined in `shared-contracts.md`
+- Frontend TanStack Query configuration, error display components, and client-side retry logic are not covered here and are defined in behavioral specs
+- CI/CD deployment workflow for Cloudflare Workers, GitHub Actions pipelines, and preview environments are not covered here and are defined in `ci-cd-pipelines.md`
+
+## Related Specifications
+
+- [auth-server-config](auth-server-config.md) — Better Auth plugin configuration, session strategy, and OAuth provider setup for the authentication system
+- [database-schema](database-schema.md) — Database schema definitions, migration strategy, and Drizzle ORM table configuration for Cloudflare D1
+- [shared-contracts](shared-contracts.md) — oRPC contract definitions and Zod schemas consumed by the router for type-safe API endpoints
+- [shared-i18n](shared-i18n.md) — Internationalization infrastructure providing the `t()` translation function used by the locale middleware
+- [ci-cd-pipelines](ci-cd-pipelines.md) — CI/CD deployment workflow, GitHub Actions pipelines, and preview environment configuration for Cloudflare Workers
