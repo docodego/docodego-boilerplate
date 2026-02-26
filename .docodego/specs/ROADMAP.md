@@ -68,27 +68,31 @@ Each scored spec needs 25/25 on four dimensions:
 
 ### Phase 4: Behavioral Specs — Org & Members
 
-#### Commit 4a — Org lifecycle (6 specs)
+#### Commit 4a — Org creation & switching (4 specs)
 - [ ] [user-creates-first-organization.md](behavioral/user-creates-first-organization.md) ← flow #13
 - [ ] [user-creates-an-organization.md](behavioral/user-creates-an-organization.md) ← flow #14
 - [ ] [user-switches-organization.md](behavioral/user-switches-organization.md) ← flow #15
 - [ ] [user-updates-organization-settings.md](behavioral/user-updates-organization-settings.md) ← flow #16
+
+#### Commit 4b — Org settings & departure (4 specs)
 - [ ] [user-uploads-organization-logo.md](behavioral/user-uploads-organization-logo.md) ← flow #17
 - [ ] [user-transfers-organization-ownership.md](behavioral/user-transfers-organization-ownership.md) ← flow #18
-
-#### Commit 4b — Org departure + members (6 specs)
 - [ ] [user-leaves-an-organization.md](behavioral/user-leaves-an-organization.md) ← flow #19
 - [ ] [user-deletes-an-organization.md](behavioral/user-deletes-an-organization.md) ← flow #20
+
+#### Commit 4c — Invitations (4 specs)
 - [ ] [org-admin-invites-a-member.md](behavioral/org-admin-invites-a-member.md) ← flow #22
 - [ ] [user-accepts-an-invitation.md](behavioral/user-accepts-an-invitation.md) ← flow #23
 - [ ] [user-declines-an-invitation.md](behavioral/user-declines-an-invitation.md) ← flow #24
 - [ ] [org-admin-cancels-an-invitation.md](behavioral/org-admin-cancels-an-invitation.md) ← flow #25
 
-#### Commit 4c — Member ops + teams (8 specs)
+#### Commit 4d — Member & SSO management (4 specs)
 - [ ] [org-admin-changes-member-role.md](behavioral/org-admin-changes-member-role.md) ← flow #26
 - [ ] [org-admin-removes-a-member.md](behavioral/org-admin-removes-a-member.md) ← flow #27
 - [ ] [org-admin-configures-sso-provider.md](behavioral/org-admin-configures-sso-provider.md) ← flow #28
 - [ ] [org-admin-manages-custom-roles.md](behavioral/org-admin-manages-custom-roles.md) ← flow #29
+
+#### Commit 4e — Teams (4 specs)
 - [ ] [user-creates-a-team.md](behavioral/user-creates-a-team.md) ← flow #30
 - [ ] [user-renames-a-team.md](behavioral/user-renames-a-team.md) ← flow #31
 - [ ] [org-admin-manages-team-members.md](behavioral/org-admin-manages-team-members.md) ← flow #32
@@ -96,73 +100,85 @@ Each scored spec needs 25/25 on four dimensions:
 
 ### Phase 5: Behavioral Specs — Dashboard, Settings, Admin
 
-#### Commit 5a — Dashboard + user settings (7 specs)
-- [ ] [user-deletes-a-team.md](behavioral/user-deletes-a-team.md) ← flow #34
+#### Commit 5a — Dashboard & profile (4 specs)
 - [ ] [user-navigates-the-dashboard.md](behavioral/user-navigates-the-dashboard.md) ← flow #21
+- [ ] [user-deletes-a-team.md](behavioral/user-deletes-a-team.md) ← flow #34
 - [ ] [user-updates-profile.md](behavioral/user-updates-profile.md) ← flow #35
 - [ ] [user-uploads-profile-avatar.md](behavioral/user-uploads-profile-avatar.md) ← flow #36
+
+#### Commit 5b — Theme, language & locale (3 specs)
 - [ ] [user-changes-theme.md](behavioral/user-changes-theme.md) ← flow #37
 - [ ] [user-changes-language.md](behavioral/user-changes-language.md) ← flow #38
 - [ ] [user-syncs-locale-preference.md](behavioral/user-syncs-locale-preference.md) ← flow #39
 
-#### Commit 5b — Security settings (5 specs)
+#### Commit 5c — Passkeys & sessions (4 specs)
 - [ ] [user-registers-a-passkey.md](behavioral/user-registers-a-passkey.md) ← flow #40
 - [ ] [user-renames-a-passkey.md](behavioral/user-renames-a-passkey.md) ← flow #41
 - [ ] [user-removes-a-passkey.md](behavioral/user-removes-a-passkey.md) ← flow #42
 - [ ] [user-manages-sessions.md](behavioral/user-manages-sessions.md) ← flow #43
-- [ ] [user-deletes-their-account.md](behavioral/user-deletes-their-account.md) ← flow #44
 
-#### Commit 5c — App admin (10 specs)
+#### Commit 5d — Account & admin basics (4 specs)
+- [ ] [user-deletes-their-account.md](behavioral/user-deletes-their-account.md) ← flow #44
 - [ ] [app-admin-lists-and-searches-users.md](behavioral/app-admin-lists-and-searches-users.md) ← flow #45
 - [ ] [app-admin-views-user-details.md](behavioral/app-admin-views-user-details.md) ← flow #46
 - [ ] [app-admin-updates-user-details.md](behavioral/app-admin-updates-user-details.md) ← flow #47
+
+#### Commit 5e — Admin moderation (4 specs)
 - [ ] [app-admin-bans-a-user.md](behavioral/app-admin-bans-a-user.md) ← flow #48
 - [ ] [app-admin-unbans-a-user.md](behavioral/app-admin-unbans-a-user.md) ← flow #49
 - [ ] [app-admin-impersonates-a-user.md](behavioral/app-admin-impersonates-a-user.md) ← flow #50
 - [ ] [app-admin-creates-a-user.md](behavioral/app-admin-creates-a-user.md) ← flow #51
+
+#### Commit 5f — Admin role & session ops (3 specs)
 - [ ] [app-admin-changes-user-role.md](behavioral/app-admin-changes-user-role.md) ← flow #52
 - [ ] [app-admin-removes-a-user.md](behavioral/app-admin-removes-a-user.md) ← flow #53
 - [ ] [app-admin-revokes-user-sessions.md](behavioral/app-admin-revokes-user-sessions.md) ← flow #54
 
 ### Phase 6: Behavioral Specs — Platforms
 
-#### Commit 6a — Desktop (7 specs)
+#### Commit 6a — Desktop core (4 specs)
 - [ ] [user-launches-desktop-app.md](behavioral/user-launches-desktop-app.md) ← flow #55
 - [ ] [user-uses-system-tray.md](behavioral/user-uses-system-tray.md) ← flow #56
 - [ ] [user-opens-a-deep-link.md](behavioral/user-opens-a-deep-link.md) ← flow #57
 - [ ] [desktop-opens-external-link.md](behavioral/desktop-opens-external-link.md) ← flow #58
+
+#### Commit 6b — Desktop system (3 specs)
 - [ ] [desktop-auto-updates.md](behavioral/desktop-auto-updates.md) ← flow #59
 - [ ] [desktop-sends-a-notification.md](behavioral/desktop-sends-a-notification.md) ← flow #60
 - [ ] [user-views-desktop-app-version.md](behavioral/user-views-desktop-app-version.md) ← flow #61
 
-#### Commit 6b — Mobile (6 specs)
+#### Commit 6c — Mobile core (4 specs)
 - [ ] [user-launches-mobile-app.md](behavioral/user-launches-mobile-app.md) ← flow #62
 - [ ] [user-signs-in-on-mobile.md](behavioral/user-signs-in-on-mobile.md) ← flow #63
 - [ ] [user-navigates-mobile-app.md](behavioral/user-navigates-mobile-app.md) ← flow #64
 - [ ] [mobile-handles-deep-link.md](behavioral/mobile-handles-deep-link.md) ← flow #65
+
+#### Commit 6d — Mobile preferences & extension auth (4 specs)
 - [ ] [user-changes-theme-on-mobile.md](behavioral/user-changes-theme-on-mobile.md) ← flow #66
 - [ ] [user-changes-language-on-mobile.md](behavioral/user-changes-language-on-mobile.md) ← flow #67
-
-#### Commit 6c — Browser extension (5 specs)
 - [ ] [user-installs-browser-extension.md](behavioral/user-installs-browser-extension.md) ← flow #68
 - [ ] [extension-authenticates-via-token-relay.md](behavioral/extension-authenticates-via-token-relay.md) ← flow #69
+
+#### Commit 6e — Extension behavior (3 specs)
 - [ ] [extension-signs-out.md](behavioral/extension-signs-out.md) ← flow #70
 - [ ] [user-interacts-with-extension-popup.md](behavioral/user-interacts-with-extension-popup.md) ← flow #71
 - [ ] [extension-receives-an-update.md](behavioral/extension-receives-an-update.md) ← flow #72
 
 ### Phase 7: Behavioral Specs — System & Cross-Cutting
 
-#### Commit 7a — Landing, i18n, infra (6 specs)
+#### Commit 7a — Landing & email system (4 specs)
 - [ ] [user-visits-landing-page.md](behavioral/user-visits-landing-page.md) ← flow #1
 - [ ] [user-enters-the-app.md](behavioral/user-enters-the-app.md) ← flow #2
 - [ ] [system-sends-otp-email.md](behavioral/system-sends-otp-email.md) ← flow #73
 - [ ] [system-sends-invitation-email.md](behavioral/system-sends-invitation-email.md) ← flow #74
+
+#### Commit 7b — i18n, uploads & error handling (4 specs)
 - [ ] [system-detects-locale.md](behavioral/system-detects-locale.md) ← flow #75
 - [ ] [app-renders-rtl-layout.md](behavioral/app-renders-rtl-layout.md) ← flow #76
-
-#### Commit 7b — Remaining system (5 specs)
 - [ ] [user-uploads-a-file.md](behavioral/user-uploads-a-file.md) ← flow #77
 - [ ] [system-handles-errors.md](behavioral/system-handles-errors.md) ← flow #78
+
+#### Commit 7c — API reference & billing (3 specs)
 - [ ] [developer-views-api-reference.md](behavioral/developer-views-api-reference.md) ← flow #79
 - [ ] [user-subscribes-to-a-plan.md](behavioral/user-subscribes-to-a-plan.md) ← flow #80
 - [ ] [user-manages-billing-portal.md](behavioral/user-manages-billing-portal.md) ← flow #81
@@ -183,16 +199,24 @@ phase-2c: add shared package specs (ICS 100)
 phase-2d: add build & deploy specs (ICS 100)
 phase-3a: add auth sign-in specs (ICS 100)
 phase-3b: add session & guest lifecycle specs (ICS 100)
-phase-4a: add org lifecycle specs (ICS 100)
-phase-4b: add org departure & member specs (ICS 100)
-phase-4c: add member ops & team specs (ICS 100)
-phase-5a: add dashboard & user settings specs (ICS 100)
-phase-5b: add security settings specs (ICS 100)
-phase-5c: add app admin specs (ICS 100)
-phase-6a: add desktop app specs (ICS 100)
-phase-6b: add mobile app specs (ICS 100)
-phase-6c: add browser extension specs (ICS 100)
-phase-7a: add landing & i18n system specs (ICS 100)
-phase-7b: add remaining system specs (ICS 100)
+phase-4a: add org creation & switching specs (ICS 100)
+phase-4b: add org settings & departure specs (ICS 100)
+phase-4c: add invitation specs (ICS 100)
+phase-4d: add member & SSO management specs (ICS 100)
+phase-4e: add team specs (ICS 100)
+phase-5a: add dashboard & profile specs (ICS 100)
+phase-5b: add theme, language & locale specs (ICS 100)
+phase-5c: add passkeys & sessions specs (ICS 100)
+phase-5d: add account & admin basics specs (ICS 100)
+phase-5e: add admin moderation specs (ICS 100)
+phase-5f: add admin role & session ops specs (ICS 100)
+phase-6a: add desktop core specs (ICS 100)
+phase-6b: add desktop system specs (ICS 100)
+phase-6c: add mobile core specs (ICS 100)
+phase-6d: add mobile prefs & extension auth specs (ICS 100)
+phase-6e: add extension behavior specs (ICS 100)
+phase-7a: add landing & email system specs (ICS 100)
+phase-7b: add i18n, uploads & error handling specs (ICS 100)
+phase-7c: add API reference & billing specs (ICS 100)
 phase-8:  review pass — all 93 specs verified ICS 100
 ```
