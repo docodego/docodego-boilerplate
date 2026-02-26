@@ -27,3 +27,7 @@ For plans that include usage-based components, the portal displays current consu
 ## Canceling a Subscription
 
 The user can cancel their subscription from the billing portal. Clicking "Cancel" presents a confirmation step explaining what happens next — typically, the subscription remains active until the end of the current billing period, after which it will not renew. Cancellation is processed through DodoPayments, which sends a webhook to update the subscription status in the database, as described in the [subscription flow](user-subscribes-to-a-plan.md). The user reverts to the free tier once the paid period ends.
+
+## Desktop Behavior
+
+On the desktop app, if the billing portal is configured to open in a new window, `tauri-plugin-opener` launches it in the user's default system browser rather than opening a new browser-style window (which the Tauri webview cannot do). If the portal is configured to open inline (embedded in the page), it renders within the webview identically to the web experience.

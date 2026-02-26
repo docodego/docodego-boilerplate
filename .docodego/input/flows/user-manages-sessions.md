@@ -17,3 +17,7 @@ To terminate a specific session, the user clicks the "Revoke" button on that row
 ## Revoking All Other Sessions
 
 When the user has more than one session active, a "Revoke all other sessions" button appears. Clicking it calls `authClient.revokeOtherSessions()`, which terminates every session except the current one. All other devices and browsers where the user was signed in will be signed out on their next server request. The sessions list refreshes to show only the current session remaining.
+
+## Desktop Behavior
+
+On the desktop app, the session recorded in the `session` table carries the Tauri webview's user agent string rather than a standard browser user agent. Desktop sessions may appear with a less familiar user agent compared to recognizable names like "Chrome" or "Firefox." The sessions list UI should parse the user agent and display a friendly label like "DoCodeGo Desktop" for Tauri sessions rather than the raw user agent string, so the user can easily identify which session belongs to their desktop app.

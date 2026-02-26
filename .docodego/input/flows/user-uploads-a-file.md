@@ -16,4 +16,4 @@ To serve stored files, the API either generates a presigned URL that grants temp
 
 ## Platform-Specific File Selection
 
-On the web, the standard browser file input handles file selection. On desktop (Tauri), the native file picker is available through Tauri's APIs, and uploads follow the same API endpoint as the web since the desktop app is a webview wrapper. On mobile, `expo-image-picker` handles photo/camera selection and `expo-document-picker` handles general file selection — both feed into the same upload API endpoint used by web and desktop.
+On the web, the standard browser file input handles file selection. On desktop (Tauri), the same HTML file input used by the web app works inside the webview and presents the OS native file dialog, identically to a regular browser. Tauri's native file picker API (`tauri-plugin-dialog`) is available as an alternative for advanced use cases like directory selection, but the boilerplate uses the standard web file input for uploads. On mobile, `expo-image-picker` handles photo/camera selection and `expo-document-picker` handles general file selection — both feed into the same upload API endpoint used by web and desktop.

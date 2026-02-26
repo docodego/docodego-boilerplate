@@ -17,3 +17,7 @@ Once the credential is verified, the server creates a session in the `session` t
 ## Cancellation and Errors
 
 If the user dismisses the browser's biometric prompt — clicking "Cancel" or pressing Escape — no request is sent to the server. The user remains on the `/signin` page with no error shown, free to try again or choose a different sign-in method. If the browser sends a credential that the server cannot match to any entry in the `passkey` table, the server returns an error and the UI displays a localized message suggesting the user try another sign-in method such as email OTP.
+
+## Desktop Behavior
+
+On the desktop app, WebAuthn passkey support depends on the underlying OS webview engine. macOS (WKWebView) and Windows (WebView2) support WebAuthn, so the biometric or PIN prompt appears as expected. On Linux (WebKitGTK), WebAuthn support is limited and may not be available. The sign-in page checks for `navigator.credentials` API availability before showing the passkey option — if the API is absent, the "Sign in with passkey" button is hidden and the user must use [Email OTP](user-signs-in-with-email-otp.md) or [SSO](user-signs-in-with-sso.md) instead.

@@ -47,3 +47,7 @@ The footer sits at the bottom of the page and is divided into columns. The first
 ## Authentication-Aware Header
 
 The landing page itself is entirely public — there is no auth gate, no session requirement, and no redirect logic. The only authentication-aware element is the header's sign-in link / avatar toggle, which is mounted as a React island with `client:load`. The rest of the page remains fully static with zero JavaScript.
+
+## Desktop Behavior
+
+On the desktop app, the landing page renders inside the Tauri webview. External links in the footer (GitHub repository, docs, changelog) and any other outbound links [open in the user's default system browser](desktop-opens-external-link.md) via `tauri-plugin-opener` rather than navigating the webview — this prevents the user from getting stranded on an external page with no back button. The copy button for the install command uses the standard `navigator.clipboard` API, which works identically in the webview.

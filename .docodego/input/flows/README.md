@@ -109,40 +109,42 @@ Narrative user-journey flows for the DoCodeGo boilerplate. Each file covers one 
 | 55 | [User Launches Desktop App](user-launches-desktop-app.md) | Tauri window, state restore |
 | 56 | [User Uses System Tray](user-uses-system-tray.md) | Tray toggle, context menu |
 | 57 | [User Opens a Deep Link](user-opens-a-deep-link.md) | `docodego://` routing |
-| 58 | [Desktop Auto-Updates](desktop-auto-updates.md) | Updater plugin |
-| 59 | [Desktop Sends a Notification](desktop-sends-a-notification.md) | OS-native notifications via Tauri plugin |
+| 58 | [Desktop Opens External Link](desktop-opens-external-link.md) | Opens URL in system browser via opener plugin |
+| 59 | [Desktop Auto-Updates](desktop-auto-updates.md) | Updater plugin |
+| 60 | [Desktop Sends a Notification](desktop-sends-a-notification.md) | OS-native notifications via Tauri plugin |
+| 61 | [User Views Desktop App Version](user-views-desktop-app-version.md) | About section, `get_app_version` IPC |
 
 ## 10. Mobile App
 
 | # | Flow | Description |
 |---|------|-------------|
-| 60 | [User Launches Mobile App](user-launches-mobile-app.md) | Splash, fonts, locale, auth check |
-| 61 | [User Signs In on Mobile](user-signs-in-on-mobile.md) | OTP + SSO (no passkey) |
-| 62 | [User Navigates Mobile App](user-navigates-mobile-app.md) | Expo Router, gestures, deep links |
-| 63 | [Mobile Handles Deep Link](mobile-handles-deep-link.md) | Auth guard on `docodego://` links |
-| 64 | [User Changes Theme on Mobile](user-changes-theme-on-mobile.md) | MMKV persistence, native theming |
-| 65 | [User Changes Language on Mobile](user-changes-language-on-mobile.md) | MMKV persistence, I18nManager RTL |
+| 62 | [User Launches Mobile App](user-launches-mobile-app.md) | Splash, fonts, locale, auth check |
+| 63 | [User Signs In on Mobile](user-signs-in-on-mobile.md) | OTP + SSO (no passkey) |
+| 64 | [User Navigates Mobile App](user-navigates-mobile-app.md) | Expo Router, gestures, deep links |
+| 65 | [Mobile Handles Deep Link](mobile-handles-deep-link.md) | Auth guard on `docodego://` links |
+| 66 | [User Changes Theme on Mobile](user-changes-theme-on-mobile.md) | MMKV persistence, native theming |
+| 67 | [User Changes Language on Mobile](user-changes-language-on-mobile.md) | MMKV persistence, I18nManager RTL |
 
 ## 11. Browser Extension
 
 | # | Flow | Description |
 |---|------|-------------|
-| 66 | [User Installs Browser Extension](user-installs-browser-extension.md) | Install, permissions, first run |
-| 67 | [Extension Authenticates via Token Relay](extension-authenticates-via-token-relay.md) | Token relay auth pattern |
-| 68 | [Extension Signs Out](extension-signs-out.md) | Clear token, revert to sign-in prompt |
-| 69 | [User Interacts with Extension Popup](user-interacts-with-extension-popup.md) | Popup UI, API calls |
-| 70 | [Extension Receives an Update](extension-receives-an-update.md) | Auto-update, token migration, what's new |
+| 68 | [User Installs Browser Extension](user-installs-browser-extension.md) | Install, permissions, first run |
+| 69 | [Extension Authenticates via Token Relay](extension-authenticates-via-token-relay.md) | Token relay auth pattern |
+| 70 | [Extension Signs Out](extension-signs-out.md) | Clear token, revert to sign-in prompt |
+| 71 | [User Interacts with Extension Popup](user-interacts-with-extension-popup.md) | Popup UI, API calls |
+| 72 | [Extension Receives an Update](extension-receives-an-update.md) | Auto-update, token migration, what's new |
 
 ## 12. System & Cross-Cutting
 
 | # | Flow | Description |
 |---|------|-------------|
-| 71 | [System Sends OTP Email](system-sends-otp-email.md) | OTP email template + delivery |
-| 72 | [System Sends Invitation Email](system-sends-invitation-email.md) | Invitation email + link |
-| 73 | [System Detects Locale](system-detects-locale.md) | API/web/mobile locale detection |
-| 74 | [App Renders RTL Layout](app-renders-rtl-layout.md) | RTL with logical CSS properties |
-| 75 | [User Uploads a File](user-uploads-a-file.md) | R2 object storage |
-| 76 | [System Handles Errors](system-handles-errors.md) | Global error handler, toasts |
-| 77 | [Developer Views API Reference](developer-views-api-reference.md) | Scalar interactive API docs |
-| 78 | [User Subscribes to a Plan](user-subscribes-to-a-plan.md) | DodoPayments *(planned)* |
-| 79 | [User Manages Billing Portal](user-manages-billing-portal.md) | Self-service billing *(planned)* |
+| 73 | [System Sends OTP Email](system-sends-otp-email.md) | OTP email template + delivery |
+| 74 | [System Sends Invitation Email](system-sends-invitation-email.md) | Invitation email + link |
+| 75 | [System Detects Locale](system-detects-locale.md) | API/web/mobile locale detection |
+| 76 | [App Renders RTL Layout](app-renders-rtl-layout.md) | RTL with logical CSS properties |
+| 77 | [User Uploads a File](user-uploads-a-file.md) | R2 object storage |
+| 78 | [System Handles Errors](system-handles-errors.md) | Global error handler, toasts |
+| 79 | [Developer Views API Reference](developer-views-api-reference.md) | Scalar interactive API docs |
+| 80 | [User Subscribes to a Plan](user-subscribes-to-a-plan.md) | DodoPayments *(planned)* |
+| 81 | [User Manages Billing Portal](user-manages-billing-portal.md) | Self-service billing *(planned)* |

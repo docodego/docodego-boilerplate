@@ -17,3 +17,7 @@ The function sets or removes the `.dark` class on the `<html>` element. Tailwind
 The selected preference — Light, Dark, or System — is persisted to localStorage. When the user returns to the app on a subsequent visit, the theme-store reads the stored preference during initialization and applies the correct theme before the first paint. This prevents any flash of the wrong theme during page load.
 
 When the System option is active, the app also listens for real-time changes to the OS theme preference. If the user switches their operating system from light to dark mode (or vice versa) while the app is open, the UI updates immediately to match without any user interaction in the app.
+
+## Desktop Behavior
+
+On the desktop app, theme switching works identically inside the Tauri webview — the `.dark` class, localStorage persistence, and `prefers-color-scheme` listening all behave the same. However, the native title bar (minimize, maximize, and close buttons) is rendered by the operating system, not by CSS. It always follows the OS theme. When the user selects "Light" or "Dark" explicitly and that choice differs from the OS theme, the title bar and the app content will not match visually. This is expected behavior for native windows with OS-rendered title bars. The "System" option avoids this mismatch since it keeps the app in sync with the OS.

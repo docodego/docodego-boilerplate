@@ -18,6 +18,10 @@ When the user switches to Arabic, the app [renders an RTL layout](app-renders-rt
 
 When the user switches back to English, `dir="ltr"` is set on `<html>`, and the layout restores to the standard left-to-right orientation. All logical properties resolve back to their LTR equivalents.
 
+## Desktop Behavior
+
+On the desktop app, the Tauri build bundles all translation files inline rather than lazy-loading them over the network. Since the app ships as a local binary with no download cost for assets, there is no reason to defer translation loading. Language switching is instant — `i18next.changeLanguage()` resolves synchronously from the bundled resources with zero network requests. Everything else (RTL switching, localStorage persistence, UI re-render) works identically to the web.
+
 ## Persistence
 
 The selected language is persisted to localStorage. On the next visit, the stored locale is loaded during i18next initialization, so the correct language and text direction are applied before the first render. The user always returns to the app in their chosen language without any flash of the default locale.

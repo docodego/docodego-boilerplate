@@ -21,3 +21,7 @@ The passkey list refreshes to show the newly registered passkey with its name (o
 ## Failure Handling
 
 If the WebAuthn ceremony fails or the user cancels the browser prompt, an error toast appears and no passkey is created. The user can try again by clicking the "Register passkey" button once more.
+
+## Desktop Behavior
+
+On the desktop app, WebAuthn registration depends on the underlying OS webview engine. macOS (WKWebView) and Windows (WebView2) support the registration ceremony, so the biometric or PIN prompt appears as expected. On Linux (WebKitGTK), WebAuthn support is limited and may not be available. The security settings page checks for `navigator.credentials` API availability before showing the "Register passkey" button — if the API is absent, the button is hidden and a localized message explains that passkey registration is not supported on this platform.

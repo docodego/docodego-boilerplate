@@ -21,3 +21,7 @@ The invitee can also choose to reject the invitation by triggering `authClient.o
 ## Admin Cancellation and Expiry
 
 From the Pending tab, an admin can cancel any pending invitation before the invitee acts on it. Canceling sets the invitation status to "canceled" and it moves to the History tab with a corresponding status badge. If neither the invitee nor the admin takes action within 7 days, the invitation expires automatically and becomes invalid. Expired invitations can no longer be accepted — the admin must create a fresh invitation if they still want to add that person.
+
+## Desktop Behavior
+
+On the desktop app, invitation acceptance works through two paths. If the invitee clicks the invitation link in their email, it opens in the browser since invitation emails contain standard HTTP URLs — the user completes acceptance through the web app. Separately, the desktop app can detect the invitation event and send an [OS-native notification](desktop-sends-a-notification.md). Clicking that notification brings the desktop app to the foreground and navigates to the invitation acceptance page, allowing the user to accept directly from the desktop app without opening the email.

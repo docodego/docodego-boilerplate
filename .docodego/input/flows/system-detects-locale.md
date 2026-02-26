@@ -10,6 +10,10 @@ On every incoming request, the Hono locale middleware parses the `Accept-Languag
 
 On the web, locale detection follows a priority chain: first localStorage (where a previous user choice is persisted), then `navigator.language` from the browser, and finally `"en"` as the default fallback. The `i18next-resources-to-backend` plugin lazy-loads only the translation files needed for the active locale, keeping the initial bundle small. The static HTML produced by Astro's SSG build is English-only — when React hydrates, it initializes i18next with the detected locale and the UI updates to the user's language. This means the initial page flash is always English, then the correct locale renders once React is active.
 
+## Desktop Side
+
+On the desktop app, translations are bundled inline rather than lazy-loaded over the network (see [User Changes Language](user-changes-language.md)). The locale detection priority chain is the same (localStorage, then `navigator.language`, then English fallback), but because translations are immediately available, the initial flash of English content described above is eliminated — the correct locale renders on first paint.
+
 ## Mobile Side
 
 On mobile, `expo-localization` reads the device's system locale and feeds it into i18next during initialization. The resolved locale is persisted in MMKV storage so subsequent launches use the same preference without re-reading the device setting. If the device locale is not among the supported languages, the app falls back to English.

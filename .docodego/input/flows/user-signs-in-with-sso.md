@@ -21,3 +21,7 @@ The server finds an existing user by the email from the IdP response, or creates
 ## Provider Configuration
 
 SSO provider configuration is managed by organization administrators through the organization settings interface. Admins can add, update, or remove SSO providers for their organization, specifying the IdP's issuer URL and choosing between OIDC and SAML protocols. This configuration determines which providers appear on the sign-in page for users associated with that organization.
+
+## Desktop Behavior
+
+On the desktop app, the SSO flow differs from the browser. Because the Tauri webview has no address bar or navigation controls, the IdP authentication page cannot load inside it safely. Instead, `tauri-plugin-opener` launches the IdP's sign-in page in the user's default system browser. The user authenticates at the IdP in the browser. After successful authentication, the callback redirects to `docodego://auth/callback?...` instead of an HTTP URL. The OS routes this [deep link](user-opens-a-deep-link.md) back to the Tauri app via `tauri-plugin-deep-link`, which hands the tokens to the auth handler inside the webview. The session is established and the user is signed in. This two-app handoff — desktop app to browser and back — is seamless but visually different from the single-window browser experience.

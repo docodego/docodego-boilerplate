@@ -21,3 +21,7 @@ After the user acknowledges the notification, the client redirects them to the s
 ## Unsaved Work
 
 Any unsaved work in progress at the time of the 401 — a half-filled form, a draft in a text field — is lost unless the client has persisted it locally. The session expiration notification should appear before the page is torn down, giving the user a moment to note their context. However, the application does not attempt to queue or retry the failed request after re-authentication. The user starts fresh on the restored page.
+
+## Desktop Behavior
+
+On the desktop app, session expiry detection works the same way — the client intercepts the 401 and shows an in-app toast or modal. Additionally, if the app is not in the foreground when the expiration is detected (for example, a background TanStack Query refetch triggers the 401 while the user is in another application), the desktop app sends an [OS-native notification](desktop-sends-a-notification.md) informing the user that their session has expired. Clicking the notification brings the app to the foreground and navigates to the sign-in page. When the app is already focused, the native notification is suppressed and only the in-app toast appears.
