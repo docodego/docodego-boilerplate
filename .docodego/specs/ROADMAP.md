@@ -41,9 +41,9 @@ Each scored spec needs 25/25 on four dimensions:
 - [x] [api-framework.md](foundation/api-framework.md) — Hono middleware stack, CORS, error handler, oRPC router, Scalar
 
 #### Commit 2c — Shared Packages
-- [ ] [shared-contracts.md](foundation/shared-contracts.md) — `@repo/contracts` oRPC definitions, Zod schemas
-- [ ] [shared-ui.md](foundation/shared-ui.md) — `@repo/ui` Shadcn components, cn(), DirectionProvider
-- [ ] [shared-i18n.md](foundation/shared-i18n.md) — `@repo/i18n` namespaces, subpaths, formatters, lazy-loading
+- [x] [shared-contracts.md](foundation/shared-contracts.md) — `@repo/contracts` oRPC definitions, Zod schemas
+- [x] [shared-ui.md](foundation/shared-ui.md) — `@repo/ui` Shadcn components, cn(), DirectionProvider
+- [x] [shared-i18n.md](foundation/shared-i18n.md) — `@repo/i18n` namespaces, subpaths, formatters, lazy-loading
 
 #### Commit 2d — Build & Deploy
 - [ ] [ci-cd-pipelines.md](foundation/ci-cd-pipelines.md) — GitHub Actions workflows, deployment strategy per platform
