@@ -53,11 +53,11 @@ Each scored spec needs 25/25 on four dimensions:
 ### Phase 3: Behavioral Specs — Auth & Session
 
 #### Commit 3a — Sign-in methods (5 specs)
-- [ ] [user-signs-in-with-email-otp.md](behavioral/user-signs-in-with-email-otp.md) ← flow #3
-- [ ] [user-signs-in-with-passkey.md](behavioral/user-signs-in-with-passkey.md) ← flow #4
-- [ ] [user-signs-in-as-guest.md](behavioral/user-signs-in-as-guest.md) ← flow #5
-- [ ] [user-signs-in-with-sso.md](behavioral/user-signs-in-with-sso.md) ← flow #8
-- [ ] [user-signs-out.md](behavioral/user-signs-out.md) ← flow #9
+- [x] [user-signs-in-with-email-otp.md](behavioral/user-signs-in-with-email-otp.md) ← flow #3
+- [x] [user-signs-in-with-passkey.md](behavioral/user-signs-in-with-passkey.md) ← flow #4
+- [x] [user-signs-in-as-guest.md](behavioral/user-signs-in-as-guest.md) ← flow #5
+- [x] [user-signs-in-with-sso.md](behavioral/user-signs-in-with-sso.md) ← flow #8
+- [x] [user-signs-out.md](behavioral/user-signs-out.md) ← flow #9
 
 #### Commit 3b — Session & guest lifecycle (5 specs)
 - [ ] [guest-upgrades-to-full-account.md](behavioral/guest-upgrades-to-full-account.md) ← flow #6
