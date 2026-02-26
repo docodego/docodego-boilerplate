@@ -36,9 +36,9 @@ Each scored spec needs 25/25 on four dimensions:
 - [x] [code-quality.md](foundation/code-quality.md) — Biome, Knip, Commitlint rules, Lefthook hooks
 
 #### Commit 2b — Backend Foundation
-- [ ] [database-schema.md](foundation/database-schema.md) — Drizzle tables, D1 bindings, migrations, seed script
-- [ ] [auth-server-config.md](foundation/auth-server-config.md) — Better Auth plugin wiring, cookie config, session strategy
-- [ ] [api-framework.md](foundation/api-framework.md) — Hono middleware stack, CORS, error handler, oRPC router, Scalar
+- [x] [database-schema.md](foundation/database-schema.md) — Drizzle tables, D1 bindings, migrations, seed script
+- [x] [auth-server-config.md](foundation/auth-server-config.md) — Better Auth plugin wiring, cookie config, session strategy
+- [x] [api-framework.md](foundation/api-framework.md) — Hono middleware stack, CORS, error handler, oRPC router, Scalar
 
 #### Commit 2c — Shared Packages
 - [ ] [shared-contracts.md](foundation/shared-contracts.md) — `@repo/contracts` oRPC definitions, Zod schemas
