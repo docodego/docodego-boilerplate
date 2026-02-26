@@ -31,9 +31,9 @@ Each scored spec needs 25/25 on four dimensions:
 ### Phase 2: Foundation Specs
 
 #### Commit 2a — Project Infrastructure
-- [ ] [monorepo-structure.md](foundation/monorepo-structure.md) — workspace layout, pnpm catalog, Turborepo pipeline
-- [ ] [typescript-config.md](foundation/typescript-config.md) — tsconfig hierarchy, strict mode, path aliases, ES2024 target
-- [ ] [code-quality.md](foundation/code-quality.md) — Biome, Knip, Commitlint rules, Lefthook hooks
+- [x] [monorepo-structure.md](foundation/monorepo-structure.md) — workspace layout, pnpm catalog, Turborepo pipeline
+- [x] [typescript-config.md](foundation/typescript-config.md) — tsconfig hierarchy, strict mode, path aliases, ES2024 target
+- [x] [code-quality.md](foundation/code-quality.md) — Biome, Knip, Commitlint rules, Lefthook hooks
 
 #### Commit 2b — Backend Foundation
 - [ ] [database-schema.md](foundation/database-schema.md) — Drizzle tables, D1 bindings, migrations, seed script
