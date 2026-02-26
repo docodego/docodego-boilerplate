@@ -255,3 +255,4 @@ Core tables from Better Auth and its plugins:
 | Framework | `.docodego/input/framework.md` |
 | Better Auth research | `.docodego/input/research/better-auth-plugins-research.md` |
 | Spec roadmap | `.docodego/specs/ROADMAP.md` |
+| Spec example template | `.docodego/example/SPEC-example.md` |
