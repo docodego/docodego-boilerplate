@@ -46,9 +46,9 @@ Each scored spec needs 25/25 on four dimensions:
 - [x] [shared-i18n.md](foundation/shared-i18n.md) — `@repo/i18n` namespaces, subpaths, formatters, lazy-loading
 
 #### Commit 2d — Build & Deploy
-- [ ] [ci-cd-pipelines.md](foundation/ci-cd-pipelines.md) — GitHub Actions workflows, deployment strategy per platform
-- [ ] [tauri-build.md](foundation/tauri-build.md) — Rust config, IPC commands, plugins, build targets per OS
-- [ ] [expo-build.md](foundation/expo-build.md) — EAS profiles, Metro config, native modules
+- [x] [ci-cd-pipelines.md](foundation/ci-cd-pipelines.md) — GitHub Actions workflows, deployment strategy per platform
+- [x] [tauri-build.md](foundation/tauri-build.md) — Rust config, IPC commands, plugins, build targets per OS
+- [x] [expo-build.md](foundation/expo-build.md) — EAS profiles, Metro config, native modules
 
 ### Phase 3: Behavioral Specs — Auth & Session
 
