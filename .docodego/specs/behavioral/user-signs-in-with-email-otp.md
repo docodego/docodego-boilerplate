@@ -1,3 +1,12 @@
+---
+id: SPEC-2026-014
+version: 1.0.0
+created: 2026-02-26
+owner: Mayank
+role: Intent Architect
+status: draft
+---
+
 [← Back to Roadmap](../ROADMAP.md)
 
 # User Signs In with Email OTP
