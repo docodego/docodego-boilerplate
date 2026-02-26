@@ -4,7 +4,7 @@
 
 ## Initiating SSO
 
-An enterprise user navigates to `/signin` and sees an SSO option alongside the standard sign-in methods. They either enter their work email address or select their identity provider (IdP) from a list of configured providers. The client calls `authClient.signIn.sso()` with the provider information. The server looks up the matching provider in the `ssoProvider` table, which stores the `issuer`, `organizationId`, and either an `oidcConfig` or `samlConfig` depending on the protocol the provider uses.
+An enterprise user navigates to `/signin` and sees a localized SSO option alongside the standard sign-in methods. They either enter their work email address or select their identity provider (IdP) from a list of configured providers. The client calls `authClient.signIn.sso()` with the provider information. The server looks up the matching provider in the `ssoProvider` table, which stores the `issuer`, `organizationId`, and either an `oidcConfig` or `samlConfig` depending on the protocol the provider uses.
 
 ## Redirecting to the Identity Provider
 

@@ -8,7 +8,7 @@ The user navigates to the security settings page at `/app/settings/security`. Th
 
 ## Initiating Removal
 
-The user locates the passkey they want to remove and clicks the "Delete" button next to it. A confirmation dialog appears asking the user to confirm that they want to permanently remove this passkey from their account. The dialog identifies the passkey by name so the user can verify they are deleting the correct one.
+The user locates the passkey they want to remove and clicks the "Delete" button next to it. A confirmation dialog with localized text appears asking the user to confirm that they want to permanently remove this passkey from their account. The dialog identifies the passkey by name so the user can verify they are deleting the correct one.
 
 ## Last Passkey Warning
 

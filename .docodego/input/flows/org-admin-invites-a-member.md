@@ -8,7 +8,7 @@ The org admin or owner is on the organization members page at `/app/$orgSlug/mem
 
 ## Sending the Invitation
 
-The org admin clicks "Invite member" and a dialog opens. The dialog contains two fields: an email input for the invitee's address and a role dropdown with two options — Member and Admin. The org admin fills in the email, selects the appropriate role, and clicks the submit button.
+The org admin clicks "Invite member" and a dialog opens. The dialog contains localized labels and two fields: an email input for the invitee's address and a role dropdown with two options — Member and Admin. The org admin fills in the email, selects the appropriate role, and clicks the submit button.
 
 On submit, the client calls `authClient.organization.inviteMember({ email, inviteRole, organizationId })`. The server creates an invitation record tied to the organization with a 7-day expiry window. An [invitation email](system-sends-invitation-email.md) is sent to the invitee containing an invitation link. In development mode, this email is logged to the console rather than sent through a real mail provider; in production, the email is delivered through the configured email service.
 

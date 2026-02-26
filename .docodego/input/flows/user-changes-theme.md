@@ -4,7 +4,7 @@
 
 ## The Appearance Settings Page
 
-The user navigates to `/app/settings/appearance`. The page presents a theme selector with three options: Light, Dark, and System. The selector is rendered as a segmented control or radio group, with the currently active option visually highlighted.
+The user navigates to `/app/settings/appearance`. The page presents a theme selector with three localized options: Light, Dark, and System. The selector is rendered as a segmented control or radio group, with the currently active option visually highlighted.
 
 ## Selecting a Theme
 

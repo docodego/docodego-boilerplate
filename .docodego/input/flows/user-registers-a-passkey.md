@@ -4,7 +4,7 @@
 
 ## Starting Point
 
-The user navigates to the security settings page at `/app/settings/security`. The passkeys section displays a list of registered passkeys. If the user has not registered any passkeys yet, the section shows a message: "No passkeys registered yet."
+The user navigates to the security settings page at `/app/settings/security`. The passkeys section displays a list of registered passkeys. If the user has not registered any passkeys yet, the section shows a localized message: "No passkeys registered yet."
 
 ## Registration Ceremony
 

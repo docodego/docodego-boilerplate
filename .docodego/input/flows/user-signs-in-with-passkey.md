@@ -4,7 +4,7 @@
 
 ## Initiating Passkey Authentication
 
-The user arrives at `/signin` and sees a "Sign in with passkey" button alongside other authentication options. They click it, and the client calls `authClient.signIn.passkey()`, which initiates the WebAuthn authentication ceremony. The browser immediately presents its native biometric or PIN prompt — Touch ID on macOS, Windows Hello on Windows, or the platform-specific equivalent on other systems. The user authenticates using their biometric (fingerprint, face) or device PIN.
+The user arrives at `/signin` and sees a translated "Sign in with passkey" button alongside other authentication options. They click it, and the client calls `authClient.signIn.passkey()`, which initiates the WebAuthn authentication ceremony. The browser immediately presents its native biometric or PIN prompt — Touch ID on macOS, Windows Hello on Windows, or the platform-specific equivalent on other systems. The user authenticates using their biometric (fingerprint, face) or device PIN.
 
 ## Server Verification
 
@@ -16,4 +16,4 @@ Once the credential is verified, the server creates a session in the `session` t
 
 ## Cancellation and Errors
 
-If the user dismisses the browser's biometric prompt — clicking "Cancel" or pressing Escape — no request is sent to the server. The user remains on the `/signin` page with no error shown, free to try again or choose a different sign-in method. If the browser sends a credential that the server cannot match to any entry in the `passkey` table, the server returns an error and the UI displays a message suggesting the user try another sign-in method such as email OTP.
+If the user dismisses the browser's biometric prompt — clicking "Cancel" or pressing Escape — no request is sent to the server. The user remains on the `/signin` page with no error shown, free to try again or choose a different sign-in method. If the browser sends a credential that the server cannot match to any entry in the `passkey` table, the server returns an error and the UI displays a localized message suggesting the user try another sign-in method such as email OTP.

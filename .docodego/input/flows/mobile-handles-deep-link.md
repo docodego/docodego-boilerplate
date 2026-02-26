@@ -16,7 +16,7 @@ If the user is already authenticated — meaning a valid session token exists in
 
 ## Unauthenticated User — Sign-In Detour
 
-If the user is not authenticated, or if their stored session token has expired, the app cannot load the target screen. Instead, the app redirects to the sign-in screen. Before redirecting, it preserves the deep link target path in memory so it is not lost during the authentication flow. The user signs in through any of the available mobile methods — [email OTP or SSO](user-signs-in-on-mobile.md). After successful authentication and session establishment, the app retrieves the preserved deep link target and navigates there automatically. The user arrives at the screen they originally intended to reach, without needing to tap the link again.
+If the user is not authenticated, or if their stored session token has expired, the app cannot load the target screen. Instead, the app redirects to the localized sign-in screen. Before redirecting, it preserves the deep link target path in memory so it is not lost during the authentication flow. The user signs in through any of the available mobile methods — [email OTP or SSO](user-signs-in-on-mobile.md). After successful authentication and session establishment, the app retrieves the preserved deep link target and navigates there automatically. The user arrives at the screen they originally intended to reach, without needing to tap the link again.
 
 ## Cold Start vs. Warm Start
 

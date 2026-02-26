@@ -12,7 +12,7 @@ After the user's credentials are verified as correct, the server checks the `use
 
 ## The UI Displays the Ban Message
 
-The client receives the ban rejection and displays a dedicated ban message screen instead of the usual error toast. This screen clearly communicates that the account has been banned and that access is denied. If a ban reason was provided, it is displayed so the user understands why the action was taken — for example, "Your account has been banned for violating community guidelines." If the ban has an expiration date, the screen shows when the ban will be lifted — for example, "This ban expires on March 15, 2026." If the ban is permanent, the screen states that the ban is indefinite and does not display an expiration date.
+The client receives the ban rejection and displays a dedicated localized ban message screen instead of the usual error toast. This screen clearly communicates that the account has been banned and that access is denied. If a ban reason was provided, it is displayed so the user understands why the action was taken — for example, "Your account has been banned for violating community guidelines." If the ban has an expiration date, the screen shows when the ban will be lifted — for example, "This ban expires on March 15, 2026." If the ban is permanent, the screen states that the ban is indefinite and does not display an expiration date.
 
 ## No Bypass Is Possible
 

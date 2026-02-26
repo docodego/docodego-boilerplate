@@ -4,7 +4,7 @@
 
 ## Opening the Org Switcher
 
-The OrgSwitcher component sits in the dashboard header and displays the name of the user's current organization. When the user clicks it, a dropdown opens listing all organizations the user belongs to. The current organization is visually marked — highlighted or checked — so the user can immediately see which org they are working in.
+The OrgSwitcher component sits in the dashboard header and displays the localized name of the user's current organization. When the user clicks it, a dropdown opens listing all organizations the user belongs to. The current organization is visually marked — highlighted or checked — so the user can immediately see which org they are working in.
 
 ## Selecting a Different Organization
 

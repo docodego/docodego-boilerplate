@@ -4,7 +4,7 @@
 
 ## Starting a Guest Session
 
-The user arrives at `/signin` and sees a "Continue as guest" option alongside the standard email and passkey sign-in methods. They click it, and the client calls `authClient.signIn.anonymous()` with no additional input required. The flow is instant — no email, no credentials, no verification step.
+The user arrives at `/signin` and sees a localized "Continue as guest" option alongside the standard email and passkey sign-in methods. They click it, and the client calls `authClient.signIn.anonymous()` with no additional input required. The flow is instant — no email, no credentials, no verification step.
 
 ## Server Creates an Anonymous User
 
@@ -12,4 +12,4 @@ The server creates a new user record with `isAnonymous` set to `true`. An auto-g
 
 ## The Guest Experience
 
-The client redirects the guest to `/app`. The guest can browse and interact with the application as a logged-in user. A persistent banner is displayed encouraging the guest to [create a full account](guest-upgrades-to-full-account.md) by linking a real email address. This banner remains visible throughout the guest's session to remind them that their activity can be preserved by upgrading. Until they upgrade, the guest account functions like any other account but is flagged as anonymous in the system.
+The client redirects the guest to `/app`. The guest can browse and interact with the application as a logged-in user. A persistent localized banner is displayed encouraging the guest to [create a full account](guest-upgrades-to-full-account.md) by linking a real email address. This banner remains visible throughout the guest's session to remind them that their activity can be preserved by upgrading. Until they upgrade, the guest account functions like any other account but is flagged as anonymous in the system.

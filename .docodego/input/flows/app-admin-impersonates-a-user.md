@@ -12,7 +12,7 @@ The server verifies the caller has the app admin role (`user.role = "admin"`) an
 
 ## The app admin sees the app as the target user
 
-Once the impersonation session is active, the app admin's browser now operates under the target user's identity. The app admin sees the target user's dashboard, their organizations, their data, and their permissions. Everything the application renders is exactly what the target user would see. However, the UI displays a clear impersonation indicator: a persistent banner or floating badge that reads "Impersonating [user's name]" along with a stop button. This indicator is always visible so the app admin never loses awareness that they are operating under another user's identity.
+Once the impersonation session is active, the app admin's browser now operates under the target user's identity. The app admin sees the target user's dashboard, their organizations, their data, and their permissions. Everything the application renders is exactly what the target user would see. However, the UI displays a clear impersonation indicator: a persistent banner or floating badge with localized text that reads "Impersonating [user's name]" along with a stop button. This indicator is always visible so the app admin never loses awareness that they are operating under another user's identity.
 
 ## The app admin stops impersonation
 

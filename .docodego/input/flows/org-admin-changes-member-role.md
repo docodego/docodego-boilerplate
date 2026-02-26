@@ -8,7 +8,7 @@ From the Members tab on the `/app/$orgSlug/members` page, each member row displa
 
 ## Changing the Role
 
-The org admin selects a new role from the available options for a given member. The available roles are Member and Admin (org-level roles, distinct from the app-level `user.role`), which are configurable through the organization's role settings. After selecting the new role, the client calls `authClient.organization.updateRole()` with the member's ID and the new role value.
+The org admin selects a new role from the available options for a given member. The available roles are Member and Admin (org-level roles, distinct from the app-level `user.role`), displayed with localized labels and configurable through the organization's role settings. After selecting the new role, the client calls `authClient.organization.updateRole()` with the member's ID and the new role value.
 
 ## Immediate Effect
 

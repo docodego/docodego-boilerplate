@@ -4,7 +4,7 @@
 
 ## The app admin opens the user creation form
 
-The app admin navigates to the user management section of the app admin dashboard and clicks the "Create user" button. This opens a form with fields for the new user's details: name, email address, password, and role. This flow exists for situations where the normal self-service signup process is not appropriate, such as provisioning accounts for team members, creating test accounts, or onboarding users who need to be set up by an app admin.
+The app admin navigates to the user management section of the app admin dashboard and clicks the "Create user" button. This opens a form with localized fields for the new user's details: name, email address, password, and role. This flow exists for situations where the normal self-service signup process is not appropriate, such as provisioning accounts for team members, creating test accounts, or onboarding users who need to be set up by an app admin.
 
 ## The app admin fills in user details and submits
 

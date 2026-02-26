@@ -8,7 +8,7 @@ The user navigates to the security settings page at `/app/settings/security`. Th
 
 ## Initiating the Rename
 
-The user locates the passkey they want to rename and clicks the edit icon or "Rename" option next to it. An inline input field or a small dialog appears, pre-filled with the passkey's current name. The user can clear the field and type a new friendly name for the passkey.
+The user locates the passkey they want to rename and clicks the edit icon or "Rename" option next to it. An inline input field or a small dialog with localized labels appears, pre-filled with the passkey's current name. The user can clear the field and type a new friendly name for the passkey.
 
 ## Submitting the New Name
 

@@ -4,7 +4,7 @@
 
 ## Opening the Team Members Dialog
 
-On the teams page at `/app/$orgSlug/teams`, each team row has a users icon. Clicking it opens the TeamMembersDialog, which displays all current members of that specific team.
+On the teams page at `/app/$orgSlug/teams`, each team row has a users icon. Clicking it opens the TeamMembersDialog, which displays localized labels and all current members of that specific team.
 
 ## Adding Members to the Team
 

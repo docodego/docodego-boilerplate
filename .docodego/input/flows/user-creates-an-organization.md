@@ -8,7 +8,7 @@ A user who already belongs to at least one organization can create additional or
 
 ## The Creation Form
 
-The form mirrors the onboarding experience: an organization name input and a URL slug input. As the user types the name, the slug auto-generates via the `toSlug()` function — lowercase, hyphens for spaces, special characters stripped. The slug field is editable, and manually changing it disables further auto-generation from the name. A slug preview shows the resulting URL: `docodego.com/app/{slug}/`.
+The form mirrors the onboarding experience with localized labels: an organization name input and a URL slug input. As the user types the name, the slug auto-generates via the `toSlug()` function — lowercase, hyphens for spaces, special characters stripped. The slug field is editable, and manually changing it disables further auto-generation from the name. A slug preview shows the resulting URL: `docodego.com/app/{slug}/`.
 
 Slug validation follows the same rules as onboarding: minimum 3 characters, lowercase letters, numbers, and hyphens only, no leading or trailing hyphens. A debounced availability check calls `authClient.organization.checkSlug({ slug })` to confirm the slug is not already taken.
 

@@ -8,7 +8,7 @@ The user navigates to `/app/settings/profile` via the Settings link in the sideb
 
 ## The Profile Form
 
-The profile page displays a form with the user's current information. The display name field is editable. The email field is shown but disabled or read-only, since email changes are not handled through this form. An avatar section is present as a placeholder for future avatar upload functionality.
+The profile page displays a form with localized labels and the user's current information. The display name field is editable. The email field is shown but disabled or read-only, since email changes are not handled through this form. An avatar section is present as a placeholder for future avatar upload functionality.
 
 ## Saving Changes
 

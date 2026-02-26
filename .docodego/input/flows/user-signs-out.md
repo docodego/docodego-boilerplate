@@ -4,7 +4,7 @@
 
 ## Initiating Sign-Out
 
-The user clicks on their avatar in the application header, which opens a dropdown menu. At the bottom of the dropdown, they click "Sign out." The client calls `authClient.signOut()` to begin the sign-out process.
+The user clicks on their avatar in the application header, which opens a dropdown menu. At the bottom of the dropdown, they click the translated "Sign out" button. The client calls `authClient.signOut()` to begin the sign-out process.
 
 ## Server-Side Cleanup
 

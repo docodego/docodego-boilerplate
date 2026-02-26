@@ -4,7 +4,7 @@
 
 ## Sign-In Screen
 
-The sign-in screen presents an email input field with a "Send code" button and an SSO option below it. There is no passkey option — WebAuthn is not reliably supported on React Native, so the mobile app omits it entirely. The available sign-in methods are email OTP, SSO, and anonymous guest access. The `react-native-keyboard-controller` manages keyboard appearance so that the input fields shift smoothly upward when the keyboard opens, preventing content from being obscured.
+The sign-in screen presents localized form labels, an email input field with a "Send code" button, and an SSO option below it. There is no passkey option — WebAuthn is not reliably supported on React Native, so the mobile app omits it entirely. The available sign-in methods are email OTP, SSO, and anonymous guest access. The `react-native-keyboard-controller` manages keyboard appearance so that the input fields shift smoothly upward when the keyboard opens, preventing content from being obscured.
 
 ## Email OTP Flow
 

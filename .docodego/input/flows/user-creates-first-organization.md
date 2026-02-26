@@ -8,7 +8,7 @@ A new user who has just signed up and has no organizations is redirected from `/
 
 ## The Onboarding Form
 
-The onboarding page presents a clean form with two fields: an organization name input and a URL slug input. As the user types in the name field, the slug field auto-generates a value via a `toSlug()` function that converts the name to lowercase, replaces spaces with hyphens, and strips special characters. A slug preview below the field shows the final URL the org will live at: `docodego.com/app/{slug}/`.
+The onboarding page presents a clean form with localized labels and two fields: an organization name input and a URL slug input. As the user types in the name field, the slug field auto-generates a value via a `toSlug()` function that converts the name to lowercase, replaces spaces with hyphens, and strips special characters. A slug preview below the field shows the final URL the org will live at: `docodego.com/app/{slug}/`.
 
 The slug field is editable. If the user manually changes the slug, the auto-generation stops — further edits to the name no longer overwrite the slug. This lets users customize their URL while still getting a reasonable default.
 

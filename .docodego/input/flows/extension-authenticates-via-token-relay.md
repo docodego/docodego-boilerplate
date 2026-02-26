@@ -8,7 +8,7 @@ Browser extensions run on a different origin than the web app, which means they 
 
 ## Sign-In Handoff
 
-When the user clicks "Sign in" in the extension popup, the popup opens a new browser tab pointing to the DoCodeGo web app's sign-in page. The user completes authentication through any of the standard web methods — email OTP, passkey, or SSO. The web app handles the entire sign-in flow using its own UI and auth logic. From the user's perspective, they are signing in to the web app as usual.
+When the user clicks the localized "Sign in" button in the extension popup, the popup opens a new browser tab pointing to the DoCodeGo web app's sign-in page. The user completes authentication through any of the standard web methods — email OTP, passkey, or SSO. The web app handles the entire sign-in flow using its own UI and auth logic. From the user's perspective, they are signing in to the web app as usual.
 
 ## Token Transfer
 

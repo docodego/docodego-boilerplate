@@ -8,7 +8,7 @@ The first time the Tauri desktop application needs to send an OS-native notifica
 
 ## When Notifications Are Sent
 
-The desktop application sends notifications in response to specific events that the user should know about even when the app is not in the foreground. These events include: an [invitation](user-accepts-an-invitation.md) has been received for the user to join an organization, the user's current session is about to expire and they should re-authenticate soon, and a new [application update](desktop-auto-updates.md) is available for download. Each notification includes a title and a brief body message describing the event.
+The desktop application sends notifications in response to specific events that the user should know about even when the app is not in the foreground. These events include: an [invitation](user-accepts-an-invitation.md) has been received for the user to join an organization, the user's current session is about to expire and they should re-authenticate soon, and a new [application update](desktop-auto-updates.md) is available for download. Each notification includes a localized title and a brief body message describing the event.
 
 ## Notification Appearance
 

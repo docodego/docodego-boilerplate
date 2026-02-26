@@ -4,7 +4,7 @@
 
 ## Navigating to Settings
 
-The user navigates to `/app/$orgSlug/settings` via the sidebar's Org Settings link. The settings page loads with a form pre-filled with the current organization's details: the organization name and the organization slug.
+The user navigates to `/app/$orgSlug/settings` via the sidebar's Org Settings link. The settings page loads with a form displaying localized labels, pre-filled with the current organization's details: the organization name and the organization slug.
 
 ## Editing and Saving
 

@@ -14,7 +14,7 @@ Errors map to standard HTTP status codes based on their type. Authentication fai
 
 On the frontend, TanStack Query is configured with `retry: 1` — a failed request is retried once automatically before being treated as a real failure. This handles transient network issues without burdening the user. When a query definitively fails, the component renders an error state that communicates the problem and offers a way to retry.
 
-For mutations (saving a profile, sending an invitation, deleting a resource), failures trigger a toast notification through Sonner. The toast displays a user-readable error message — for example, "Failed to save changes" or "Invitation could not be sent." This ensures the user is always informed when an action they initiated did not succeed, even if they have navigated away from the form that triggered it.
+For mutations (saving a profile, sending an invitation, deleting a resource), failures trigger a toast notification through Sonner. The toast displays a localized, user-readable error message — for example, "Failed to save changes" or "Invitation could not be sent." This ensures the user is always informed when an action they initiated did not succeed, even if they have navigated away from the form that triggered it.
 
 ## Preventing Double Submission
 

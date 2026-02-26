@@ -12,7 +12,7 @@ Before the deletion can proceed, the system checks whether the user is the owner
 
 ## Confirmation
 
-Once the ownership check passes, the user clicks the delete account button. A confirmation dialog appears with a strong, permanent warning: deleting the account cannot be undone. All personal data, profile information, and organization memberships will be permanently removed. The dialog requires the user to type a confirmation phrase — such as the word "delete" or their email address — to prevent accidental deletion. Only after typing the correct phrase can the user click the final confirmation button.
+Once the ownership check passes, the user clicks the delete account button. A confirmation dialog appears with a strong, localized permanent warning: deleting the account cannot be undone. All personal data, profile information, and organization memberships will be permanently removed. The dialog requires the user to type a confirmation phrase — such as the word "delete" or their email address — to prevent accidental deletion. Only after typing the correct phrase can the user click the final confirmation button.
 
 ## Processing the Deletion
 

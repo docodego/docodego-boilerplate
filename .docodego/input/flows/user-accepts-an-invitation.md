@@ -8,7 +8,7 @@ The invitee receives an email containing a link to join the organization. The li
 
 ## Accepting with an Existing Account
 
-If the invitee is already signed in or has an existing account, clicking the link resolves the invitation and presents an acceptance screen. The user confirms by triggering `authClient.organization.acceptInvitation()`, which validates the token, checks that the invitation has not expired (invitations are valid for 7 days), and adds the user to the organization with the role specified by the admin. The user is then navigated to the organization dashboard where they can immediately begin working within the org.
+If the invitee is already signed in or has an existing account, clicking the link resolves the invitation and presents a localized acceptance screen. The user confirms by triggering `authClient.organization.acceptInvitation()`, which validates the token, checks that the invitation has not expired (invitations are valid for 7 days), and adds the user to the organization with the role specified by the admin. The user is then navigated to the organization dashboard where they can immediately begin working within the org.
 
 ## Accepting without an Account
 

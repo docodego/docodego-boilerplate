@@ -8,7 +8,7 @@ On the organization settings page at `/app/$orgSlug/settings`, a danger zone sec
 
 ## Initiating Deletion
 
-The owner clicks the delete button in the danger zone. A confirmation dialog appears with a clear, permanent warning explaining that deleting the organization cannot be undone. All organization data, member associations, and team structures will be permanently removed. The dialog requires an explicit confirmation action to proceed — there is no way to accidentally trigger deletion with a single click.
+The owner clicks the delete button in the danger zone. A confirmation dialog appears with a clear, localized warning explaining that deleting the organization cannot be undone. All organization data, member associations, and team structures will be permanently removed. The dialog requires an explicit confirmation action to proceed — there is no way to accidentally trigger deletion with a single click.
 
 ## After Deletion
 

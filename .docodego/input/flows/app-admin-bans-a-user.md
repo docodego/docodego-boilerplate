@@ -8,7 +8,7 @@ The app admin navigates to the user management section of the app admin dashboar
 
 ## The app admin configures the ban
 
-The ban form presents two optional fields: a free-text reason field where the app admin can describe why the user is being banned, and an expiration date picker. If the app admin sets an expiration date, the ban is temporary and will automatically lift when that date arrives. If the app admin leaves the expiration date empty, the ban is permanent and will remain in effect until manually removed by an app admin. The app admin fills in the details and confirms the action.
+The ban form presents two optional fields with localized labels: a free-text reason field where the app admin can describe why the user is being banned, and an expiration date picker. If the app admin sets an expiration date, the ban is temporary and will automatically lift when that date arrives. If the app admin leaves the expiration date empty, the ban is permanent and will remain in effect until manually removed by an app admin. The app admin fills in the details and confirms the action.
 
 ## The system processes the ban
 

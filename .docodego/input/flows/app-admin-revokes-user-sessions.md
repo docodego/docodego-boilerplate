@@ -8,7 +8,7 @@ The app admin navigates to the user management section of the app admin dashboar
 
 ## The app admin reviews the user's active sessions
 
-The sessions section loads by calling `authClient.admin.listUserSessions({ userId })`. The result is displayed as a table where each row represents one active session. Each row shows the session's IP address, user agent (browser and operating system), and the date and time the session was last active. This gives the app admin visibility into where and how the user is currently signed in — useful for identifying suspicious activity such as sessions from unexpected locations or unfamiliar devices.
+The sessions section loads by calling `authClient.admin.listUserSessions({ userId })`. The result is displayed as a table with localized column headers where each row represents one active session. Each row shows the session's IP address, user agent (browser and operating system), and the date and time the session was last active. This gives the app admin visibility into where and how the user is currently signed in — useful for identifying suspicious activity such as sessions from unexpected locations or unfamiliar devices.
 
 ## The app admin revokes an individual session
 

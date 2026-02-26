@@ -12,7 +12,7 @@ When the user returns and performs any action that triggers an API call — navi
 
 ## The Client Detects the Expiration
 
-The client's API layer intercepts the 401 response. Rather than displaying a generic error or silently failing, it recognizes this as a session expiration event. The client shows a toast notification or modal dialog informing the user that their session has expired and they need to sign in again. The message is clear and non-technical — something like "Your session has expired. Please sign in to continue."
+The client's API layer intercepts the 401 response. Rather than displaying a generic error or silently failing, it recognizes this as a session expiration event. The client shows a localized toast notification or modal dialog informing the user that their session has expired and they need to sign in again. The message is clear and non-technical — something like "Your session has expired. Please sign in to continue."
 
 ## Redirect to Sign-In
 

@@ -8,7 +8,7 @@ The app admin navigates to the user management section of the app admin dashboar
 
 ## The app admin unbans the user
 
-From the banned user's profile, the app admin clicks the "Unban" action button. A confirmation prompt appears to prevent accidental unbans. The app admin confirms the action, and the client calls `authClient.admin.unbanUser({ userId })`. The server receives this request, verifies the caller has the app admin role (`user.role = "admin"`), and then clears the ban-related fields on the user's record: `user.banned` is set to `false`, and both `user.banReason` and `user.banExpires` are cleared.
+From the banned user's profile, the app admin clicks the "Unban" action button. A localized confirmation prompt appears to prevent accidental unbans. The app admin confirms the action, and the client calls `authClient.admin.unbanUser({ userId })`. The server receives this request, verifies the caller has the app admin role (`user.role = "admin"`), and then clears the ban-related fields on the user's record: `user.banned` is set to `false`, and both `user.banReason` and `user.banExpires` are cleared.
 
 ## The user can sign in again
 

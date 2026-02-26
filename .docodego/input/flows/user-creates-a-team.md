@@ -8,7 +8,7 @@ The user navigates to the teams page at `/app/$orgSlug/teams`, which lists all e
 
 ## Creating the Team
 
-The user clicks "Create team" and a dialog appears with a single input field for the team name. The user enters the desired name and submits the form. The client calls `authClient.organization.createTeam({ name, organizationId })` to create the team on the server.
+The user clicks "Create team" and a dialog appears with localized labels and a single input field for the team name. The user enters the desired name and submits the form. The client calls `authClient.organization.createTeam({ name, organizationId })` to create the team on the server.
 
 ## Limits and Completion
 

@@ -4,7 +4,7 @@
 
 ## Viewing Active Sessions
 
-The user navigates to the security settings page at `/app/settings/security`. The active sessions section loads the user's sessions by calling `authClient.listSessions()`. The result is displayed as a table where each row shows the session's user agent (browser and operating system), the date the session was created, and an actions column.
+The user navigates to the security settings page at `/app/settings/security`. The active sessions section loads the user's sessions by calling `authClient.listSessions()`. The result is displayed as a table with localized column headers where each row shows the session's user agent (browser and operating system), the date the session was created, and an actions column.
 
 ## Identifying the Current Session
 

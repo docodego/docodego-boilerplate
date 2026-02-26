@@ -4,7 +4,7 @@
 
 ## Initiating the Rename
 
-On the teams page at `/app/$orgSlug/teams`, each team row has a pencil icon that opens a rename dialog. The dialog appears with the team's current name pre-filled in the input field, so the user can see exactly what they are changing from.
+On the teams page at `/app/$orgSlug/teams`, each team row has a pencil icon that opens a rename dialog. The dialog appears with translated labels and the team's current name pre-filled in the input field, so the user can see exactly what they are changing from.
 
 ## Saving the New Name
 

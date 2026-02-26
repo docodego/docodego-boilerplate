@@ -20,4 +20,4 @@ In rare cases, a new extension version may introduce a change to the token stora
 
 ## What's New Badge
 
-After an update, the extension can optionally display a small badge indicator on the popup icon to signal that something has changed. When the user opens the popup, a brief "What's new" section or link appears at the top, summarizing the changes in the latest version. Once the user has seen the notice, the badge is dismissed and the popup returns to its normal layout. This is entirely optional and only shown when the release includes user-facing changes worth highlighting.
+After an update, the extension can optionally display a small badge indicator on the popup icon to signal that something has changed. When the user opens the popup, a brief localized "What's new" section or link appears at the top, summarizing the changes in the latest version. Once the user has seen the notice, the badge is dismissed and the popup returns to its normal layout. This is entirely optional and only shown when the release includes user-facing changes worth highlighting.

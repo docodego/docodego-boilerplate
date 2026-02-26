@@ -8,7 +8,7 @@ From the Members tab on the `/app/$orgSlug/members` page, each member row has a 
 
 ## Confirmation and Execution
 
-When the org admin clicks the delete button, a confirmation step appears to prevent accidental removals. After the org admin confirms, the client calls `authClient.organization.removeMember({ memberIdOrEmail, organizationId })`. The server removes the member's association with the organization, revoking all their access immediately.
+When the org admin clicks the delete button, a localized confirmation step appears to prevent accidental removals. After the org admin confirms, the client calls `authClient.organization.removeMember({ memberIdOrEmail, organizationId })`. The server removes the member's association with the organization, revoking all their access immediately.
 
 ## After Removal
 

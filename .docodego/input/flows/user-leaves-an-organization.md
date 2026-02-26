@@ -8,7 +8,7 @@ From the organization settings page at `/app/$orgSlug/settings`, or from the mem
 
 ## Confirmation
 
-When the user clicks "Leave organization," a confirmation dialog appears warning that they will lose access to all resources within the organization. The dialog makes clear that this action is voluntary and that the user will need a new [invitation](user-accepts-an-invitation.md) to rejoin. The user must explicitly confirm to proceed.
+When the user clicks "Leave organization," a confirmation dialog appears with translated text warning that they will lose access to all resources within the organization. The dialog makes clear that this action is voluntary and that the user will need a new [invitation](user-accepts-an-invitation.md) to rejoin. The user must explicitly confirm to proceed.
 
 ## Processing the Departure
 

@@ -8,7 +8,7 @@ When the user navigates to `/app` or any URL under `/app/*`, Astro's `_redirects
 
 ## Authentication Check
 
-The root route's `beforeLoad` hook in `index.tsx` fires before any child route renders. It checks for a valid session. If no session exists, the user is redirected to `/signin`. The intended destination URL is preserved so that after successful sign-in, the user returns to where they originally wanted to go.
+The root route's `beforeLoad` hook in `index.tsx` fires before any child route renders. It checks for a valid session. If no session exists, the user is redirected to `/signin` which displays localized sign-in UI. The intended destination URL is preserved so that after successful sign-in, the user returns to where they originally wanted to go.
 
 If a valid session exists, the hook proceeds to determine where the user should land.
 

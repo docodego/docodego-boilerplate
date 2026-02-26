@@ -4,7 +4,7 @@
 
 ## The app admin selects the user and changes their role
 
-The app admin navigates to the user management section of the app admin dashboard and selects the user whose role needs to change. On the user's profile detail view, the app admin locates the role dropdown, which displays the user's current role. The app admin clicks the dropdown and selects the new role, such as changing from "user" to "admin" or from "admin" to "user".
+The app admin navigates to the user management section of the app admin dashboard and selects the user whose role needs to change. On the user's profile detail view, the app admin locates the role dropdown with localized role labels, which displays the user's current role. The app admin clicks the dropdown and selects the new role, such as changing from "user" to "admin" or from "admin" to "user".
 
 ## The system updates the role
 

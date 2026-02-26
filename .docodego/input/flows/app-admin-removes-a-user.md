@@ -8,7 +8,7 @@ The app admin navigates to the user management section of the app admin dashboar
 
 ## The app admin confirms the permanent removal
 
-Because removing a user is irreversible and fundamentally different from [banning a user](app-admin-bans-a-user.md) (which can be undone), the confirmation dialog makes the consequences explicit. The dialog states that this action will permanently delete the user's account, revoke all active sessions, remove the user from every organization they belong to, and erase their account record entirely. The app admin must type the user's email address into a confirmation field to proceed, preventing accidental deletions. Only after the confirmation input matches does the "Remove permanently" button become active.
+Because removing a user is irreversible and fundamentally different from [banning a user](app-admin-bans-a-user.md) (which can be undone), the localized confirmation dialog makes the consequences explicit. The dialog states that this action will permanently delete the user's account, revoke all active sessions, remove the user from every organization they belong to, and erase their account record entirely. The app admin must type the user's email address into a confirmation field to proceed, preventing accidental deletions. Only after the confirmation input matches does the "Remove permanently" button become active.
 
 ## The system processes the removal
 

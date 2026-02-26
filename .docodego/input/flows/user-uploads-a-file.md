@@ -8,7 +8,7 @@ Cloudflare R2 object storage is configured as the `STORAGE` binding in `wrangler
 
 ## Upload Flow
 
-The boilerplate provides the R2 binding and infrastructure — the developer implements the specific upload endpoint in `apps/api` to match their application's needs. The general flow works as follows: the user selects a file using the platform's native file picker, the frontend sends the file to the upload endpoint, the API streams the file data to R2, and returns the stored object's URL or key to the client. Size limits and content-type validation are enforced at the API layer before the file reaches R2 — the developer defines these constraints based on the use case (for example, a 2MB limit and image-only types for avatars, or a larger limit for document attachments).
+The boilerplate provides the R2 binding and infrastructure — the developer implements the specific upload endpoint in `apps/api` to match their application's needs. The general flow works as follows: the user selects a file using the platform's native file picker with localized UI text, the frontend sends the file to the upload endpoint, the API streams the file data to R2, and returns the stored object's URL or key to the client. Size limits and content-type validation are enforced at the API layer before the file reaches R2 — the developer defines these constraints based on the use case (for example, a 2MB limit and image-only types for avatars, or a larger limit for document attachments).
 
 ## Download Flow
 

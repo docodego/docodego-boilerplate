@@ -10,7 +10,7 @@ The user navigates to `/` in their browser. Astro serves this as a fully static 
 
 The page opens with a header that includes the product name and a theme toggle. The theme toggle reads the user's preference from localStorage on the server-rendered page and applies the correct theme class before the first paint, preventing any flash of the wrong theme.
 
-Below the header, a hero section displays the product name, a short description of the boilerplate, and a prominent call-to-action button linking to `/signin`. This is the primary conversion path for new visitors.
+Below the header, a hero section displays the product name, a short localized description of the boilerplate, and a prominent call-to-action button linking to `/signin`. This is the primary conversion path for new visitors.
 
 Following the hero, a grid of six feature cards presents the platform's capabilities: Web, API, Mobile, Desktop, Extension, and i18n. Each card gives a brief summary of what the boilerplate provides for that target. The cards are laid out in a responsive grid that adapts from a single column on mobile to two or three columns on wider screens.
 

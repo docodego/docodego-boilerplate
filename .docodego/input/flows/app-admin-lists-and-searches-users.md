@@ -8,7 +8,7 @@ The app admin navigates to the user management section of the app admin dashboar
 
 ## The User Table
 
-Each row in the table displays key information about a user: their name, email address, account status (active or banned), role (user or admin), and the date their account was created. If a user is currently banned, their row is visually distinguished — for example, with a badge or muted styling — so that banned accounts are immediately recognizable at a glance.
+Each row in the table displays key information about a user with localized column headers: their name, email address, account status (active or banned), role (user or admin), and the date their account was created. If a user is currently banned, their row is visually distinguished — for example, with a badge or muted styling — so that banned accounts are immediately recognizable at a glance.
 
 ## Searching and Filtering
 

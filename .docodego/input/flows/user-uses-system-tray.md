@@ -10,7 +10,7 @@ When the desktop application launches, a tray icon appears in the system notific
 
 Left-clicking the tray icon toggles the main window's visibility. If the window is currently visible, a left-click hides it. If the window is hidden, a left-click brings it back and focuses it. This gives the user a quick way to show or dismiss the application window without closing it.
 
-Right-clicking the tray icon opens a context menu with two options: "Show" and "Quit". The "Show" option brings the window to the foreground and focuses it, useful when the user wants to access the app without the toggle behavior. The "Quit" option closes the application entirely, removing the tray icon and terminating the process.
+Right-clicking the tray icon opens a context menu with two localized options: "Show" and "Quit". The "Show" option brings the window to the foreground and focuses it, useful when the user wants to access the app without the toggle behavior. The "Quit" option closes the application entirely, removing the tray icon and terminating the process.
 
 ## Closing the window quits the app
 

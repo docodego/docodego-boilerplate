@@ -12,7 +12,7 @@ The owner clicks the "Transfer ownership" button. A dialog opens displaying a li
 
 ## Confirmation Step
 
-After selecting the new owner, a confirmation dialog appears with a clear warning explaining what the transfer means. The current owner will lose owner-level privileges and be downgraded to an admin member. The selected admin will gain full ownership, including the ability to delete the organization, manage billing, and perform future ownership transfers. The dialog requires the owner to explicitly confirm the action — there is no way to trigger the transfer accidentally.
+After selecting the new owner, a confirmation dialog appears with a clear, localized warning explaining what the transfer means. The current owner will lose owner-level privileges and be downgraded to an admin member. The selected admin will gain full ownership, including the ability to delete the organization, manage billing, and perform future ownership transfers. The dialog requires the owner to explicitly confirm the action — there is no way to trigger the transfer accidentally.
 
 ## After the Transfer
 

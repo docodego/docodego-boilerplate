@@ -4,7 +4,7 @@
 
 ## Opening the Team Switcher
 
-Within an organization, the user may belong to multiple teams. The dashboard sidebar or a dedicated team switcher component displays the name of the user's currently active team. When the user clicks it, a dropdown opens listing all teams the user is a member of within the current organization. The active team is visually marked — highlighted or checked — so the user can see which team context they are working in at a glance.
+Within an organization, the user may belong to multiple teams. The dashboard sidebar or a dedicated team switcher component displays the localized name of the user's currently active team. When the user clicks it, a dropdown opens listing all teams the user is a member of within the current organization. The active team is visually marked — highlighted or checked — so the user can see which team context they are working in at a glance.
 
 ## Selecting a Different Team
 

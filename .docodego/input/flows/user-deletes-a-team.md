@@ -4,7 +4,7 @@
 
 ## Initiating Deletion
 
-On the teams page at `/app/$orgSlug/teams`, each team row has a trash icon for deletion. Clicking it opens a confirmation dialog that asks: "Are you sure you want to delete '{name}'?" This confirmation step prevents accidental team deletions.
+On the teams page at `/app/$orgSlug/teams`, each team row has a trash icon for deletion. Clicking it opens a confirmation dialog with translated text that asks: "Are you sure you want to delete '{name}'?" This confirmation step prevents accidental team deletions.
 
 ## Safety Guard
 

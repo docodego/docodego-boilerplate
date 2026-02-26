@@ -8,7 +8,7 @@ The org admin opens the organization settings page and selects the "Single Sign-
 
 ## The org admin chooses a protocol
 
-The configuration form first asks the org admin to select a protocol: OIDC (OpenID Connect) or SAML. This choice determines which fields appear next. OIDC is the more modern and commonly used protocol, suitable for most identity providers like Okta, Azure AD, or Google Workspace. SAML is offered for organizations whose identity providers only support SAML 2.0. The org admin selects the protocol that matches their identity provider's capabilities and proceeds.
+The configuration form, with localized labels, first asks the org admin to select a protocol: OIDC (OpenID Connect) or SAML. This choice determines which fields appear next. OIDC is the more modern and commonly used protocol, suitable for most identity providers like Okta, Azure AD, or Google Workspace. SAML is offered for organizations whose identity providers only support SAML 2.0. The org admin selects the protocol that matches their identity provider's capabilities and proceeds.
 
 ## The org admin enters OIDC configuration
 

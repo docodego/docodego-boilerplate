@@ -8,7 +8,7 @@ The Tauri Updater plugin is configured with a release server URL specified in th
 
 ## A new version is available
 
-If the server reports a newer version, the user is presented with an update prompt. This can take the form of a system dialog or an in-app notification, depending on how the developer has configured the update flow. The prompt informs the user that a new version is available and asks whether they want to update now.
+If the server reports a newer version, the user is presented with an update prompt. This can take the form of a system dialog or an in-app notification, depending on how the developer has configured the update flow. The localized prompt informs the user that a new version is available and asks whether they want to update now.
 
 ## The user accepts or dismisses the update
 

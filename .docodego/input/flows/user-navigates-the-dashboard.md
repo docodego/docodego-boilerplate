@@ -8,7 +8,7 @@ Once the user lands on `/app/{orgSlug}/`, the dashboard shell renders with three
 
 ## Sidebar Navigation
 
-The sidebar is divided into two groups. The first group contains organization-level pages: Overview, Members, Teams, and Org Settings. The second group is a user-level section containing a link to personal Settings. Clicking any nav item in the sidebar loads the corresponding child route into the content area. The sidebar itself does not re-render or reset.
+The sidebar is divided into two groups. The first group contains organization-level pages with localized labels: Overview, Members, Teams, and Org Settings. The second group is a user-level section containing a link to personal Settings. Clicking any nav item in the sidebar loads the corresponding child route into the content area. The sidebar itself does not re-render or reset.
 
 On desktop, the sidebar is persistent and visible by default. A collapse toggle in the header shrinks it to a narrow icon rail, showing only icons without labels. The expanded or collapsed state is managed by a Zustand sidebar-store and persisted to localStorage, so the sidebar remembers its position across page reloads and sessions.
 
