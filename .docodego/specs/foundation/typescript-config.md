@@ -8,19 +8,19 @@ This spec defines the TypeScript compiler configuration hierarchy for the DoCode
 
 ## Acceptance Criteria
 
-- A root `tsconfig.base.json` is present and sets `strict` to true, `target` to `"ES2024"`, `module` to `"ESNext"`, `moduleResolution` to `"bundler"`, and `verbatimModuleSyntax` to true
-- The root `tsconfig.base.json` sets `skipLibCheck` to true to avoid type-checking third-party declaration files
-- At least 8 workspace `tsconfig.json` files are present, and each one contains an `"extends"` field that references the root base via a relative path (not a package reference)
-- The `apps/web` workspace `tsconfig.json` sets `"jsx"` to `"react-jsx"` and defines a `@/*` path alias that is present and maps to `"./src/*"`
-- The `apps/api` workspace `tsconfig.json` includes `"@cloudflare/workers-types"` in its `types` array — this value is present in the config
-- The `apps/mobile` workspace `tsconfig.json` extends `expo/tsconfig.base` — this value is present in the `extends` field
-- The `apps/desktop` workspace contains 0 TypeScript source files — only Rust code and configuration files are present
-- Running `pnpm typecheck` exits with code = 0 and produces 0 errors and 0 warnings on a clean checkout
-- All imports between workspace packages use extensionless paths — 0 imports contain `.js`, `.ts`, or `.mjs` file extensions
-- The `verbatimModuleSyntax` value equals true in the base config, and at least 90% of type-only imports across the codebase use the `import type` syntax
-- Each shared package workspace (`packages/*`) sets `"declaration"` to true and `"declarationMap"` to true in its tsconfig
-- The `packages/contracts` workspace tsconfig sets `"noUncheckedIndexedAccess"` to true
-- Running `pnpm typecheck` completes in under 120 seconds on CI with warm Turborepo cache
+- [ ] A root `tsconfig.base.json` is present and sets `strict` to true, `target` to `"ES2024"`, `module` to `"ESNext"`, `moduleResolution` to `"bundler"`, and `verbatimModuleSyntax` to true
+- [ ] The root `tsconfig.base.json` sets `skipLibCheck` to true to avoid type-checking third-party declaration files
+- [ ] At least 8 workspace `tsconfig.json` files are present, and each one contains an `"extends"` field that references the root base via a relative path (not a package reference)
+- [ ] The `apps/web` workspace `tsconfig.json` sets `"jsx"` to `"react-jsx"` and defines a `@/*` path alias that is present and maps to `"./src/*"`
+- [ ] The `apps/api` workspace `tsconfig.json` includes `"@cloudflare/workers-types"` in its `types` array — this value is present in the config
+- [ ] The `apps/mobile` workspace `tsconfig.json` extends `expo/tsconfig.base` — this value is present in the `extends` field
+- [ ] The `apps/desktop` workspace contains 0 TypeScript source files — only Rust code and configuration files are present
+- [ ] Running `pnpm typecheck` exits with code = 0 and produces 0 errors and 0 warnings on a clean checkout
+- [ ] All imports between workspace packages use extensionless paths — 0 imports contain `.js`, `.ts`, or `.mjs` file extensions
+- [ ] The `verbatimModuleSyntax` value equals true in the base config, and at least 90% of type-only imports across the codebase use the `import type` syntax
+- [ ] Each shared package workspace (`packages/*`) sets `"declaration"` to true and `"declarationMap"` to true in its tsconfig
+- [ ] The `packages/contracts` workspace tsconfig sets `"noUncheckedIndexedAccess"` to true
+- [ ] Running `pnpm typecheck` completes in under 120 seconds on CI with warm Turborepo cache
 
 ## Constraints
 

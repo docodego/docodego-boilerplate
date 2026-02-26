@@ -8,22 +8,22 @@ This spec defines the workspace layout, package management, and build orchestrat
 
 ## Acceptance Criteria
 
-- The root `pnpm-workspace.yaml` declares exactly 3 workspace globs (`apps/*`, `packages/*`, `e2e`), and each glob is present in the file
-- The root `package.json` sets `"type": "module"` — the value equals `"module"` and is not absent
-- The monorepo contains at least 5 application workspaces: `apps/web`, `apps/api`, `apps/mobile`, `apps/desktop`, and `apps/browser-extension` are all present on disk
-- The monorepo contains at least 4 shared package workspaces: `packages/library`, `packages/contracts`, `packages/ui`, and `packages/i18n` are all present on disk
-- The monorepo contains at least 1 test workspace: the `e2e` directory is present on disk
-- All shared packages use the `@repo/<name>` scope — `@repo/library`, `@repo/contracts`, `@repo/ui`, and `@repo/i18n` are present in their respective `package.json` name fields
-- Every workspace `package.json` references shared dependencies via `"catalog:"` — at least 90% of shared dependencies use the catalog reference instead of hardcoded version ranges
-- The `pnpm-workspace.yaml` catalog section lists at least 25 shared dependencies with pinned version ranges
-- The root `turbo.json` defines at least 6 pipeline tasks: `build`, `dev`, `typecheck`, `test`, `typegen`, and `storybook` are all present
-- The `build` task in `turbo.json` sets `dependsOn` to include `"^build"` — this value is present and enabled
-- The `dev` task in `turbo.json` sets `persistent` to true and `cache` to false
-- The `typecheck` task in `turbo.json` sets `dependsOn` to include `"^build"` — this value is present and enabled
-- Running `pnpm install` at the root with warm cache completes in under 60 seconds and exits with code = 0
-- Running `pnpm build` produces outputs for all workspaces and exits with code = 0 with 0 errors
-- Every workspace `package.json` contains a `"typecheck"` script that is present and non-empty, and a `"test"` script that is present and non-empty
-- The `turbo.json` sets `"ui"` to `"tui"` — this value equals `"tui"` and is not absent
+- [ ] The root `pnpm-workspace.yaml` declares exactly 3 workspace globs (`apps/*`, `packages/*`, `e2e`), and each glob is present in the file
+- [ ] The root `package.json` sets `"type": "module"` — the value equals `"module"` and is not absent
+- [ ] The monorepo contains at least 5 application workspaces: `apps/web`, `apps/api`, `apps/mobile`, `apps/desktop`, and `apps/browser-extension` are all present on disk
+- [ ] The monorepo contains at least 4 shared package workspaces: `packages/library`, `packages/contracts`, `packages/ui`, and `packages/i18n` are all present on disk
+- [ ] The monorepo contains at least 1 test workspace: the `e2e` directory is present on disk
+- [ ] All shared packages use the `@repo/<name>` scope — `@repo/library`, `@repo/contracts`, `@repo/ui`, and `@repo/i18n` are present in their respective `package.json` name fields
+- [ ] Every workspace `package.json` references shared dependencies via `"catalog:"` — at least 90% of shared dependencies use the catalog reference instead of hardcoded version ranges
+- [ ] The `pnpm-workspace.yaml` catalog section lists at least 25 shared dependencies with pinned version ranges
+- [ ] The root `turbo.json` defines at least 6 pipeline tasks: `build`, `dev`, `typecheck`, `test`, `typegen`, and `storybook` are all present
+- [ ] The `build` task in `turbo.json` sets `dependsOn` to include `"^build"` — this value is present and enabled
+- [ ] The `dev` task in `turbo.json` sets `persistent` to true and `cache` to false
+- [ ] The `typecheck` task in `turbo.json` sets `dependsOn` to include `"^build"` — this value is present and enabled
+- [ ] Running `pnpm install` at the root with warm cache completes in under 60 seconds and exits with code = 0
+- [ ] Running `pnpm build` produces outputs for all workspaces and exits with code = 0 with 0 errors
+- [ ] Every workspace `package.json` contains a `"typecheck"` script that is present and non-empty, and a `"test"` script that is present and non-empty
+- [ ] The `turbo.json` sets `"ui"` to `"tui"` — this value equals `"tui"` and is not absent
 
 ## Constraints
 

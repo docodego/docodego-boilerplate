@@ -8,25 +8,25 @@ This spec defines the code quality tooling stack for the DoCodeGo boilerplate mo
 
 ## Acceptance Criteria
 
-- Running `pnpm lint` exits with code = 0 on a clean checkout, producing 0 lint errors and 0 format violations
-- Running `pnpm lint:fix` exits with code = 0 and auto-fixes all formatting violations in-place
-- The Biome config sets indent width to 4, line width to 90, quote style to `"double"` — each value is present and enabled in the configuration file
-- Biome trailing commas are enabled (set to `"all"`) and semicolons are enabled (set to `"always"`) — both values are present in the config
-- Biome import sorting is enabled — the `organizeImports` setting is present and set to true in the config
-- The root `package.json` contains a `"lint"` script and a `"lint:fix"` script — both are present and non-empty, and neither invokes Turborepo
-- Running `pnpm knip` exits with code = 0 on a clean checkout, detecting 0 unused exports, 0 unused files, and 0 unused dependencies
-- The `knip.json` configuration is present at the root and declares at least 10 workspace entries matching the workspaces in `pnpm-workspace.yaml`
-- Knip runs with the `--cache` flag — the `"knip"` script in `package.json` contains the `--cache` argument
-- Running `pnpm lint:commit` exits with code = 0 for a commit message matching the format `type(scope): message`
-- Running `pnpm lint:commit` exits with code = 1 for a commit message that does not match the conventional commit format
-- Commitlint accepts at least 11 commit types (feat, fix, docs, refactor, test, chore, ci, dx, perf, build, revert) — each type is present in the config
-- Commitlint accepts at least 11 commit scopes (web, api, mobile, desktop, extension, contracts, ui, library, i18n, deps, repo) — each scope is present in the config
-- A `lefthook.yml` file is present at the root and defines at least 3 git hooks
-- The `commit-msg` hook entry is present in `lefthook.yml` and runs Commitlint
-- The `pre-push` hook entry is present in `lefthook.yml` and runs the full quality gate (`pnpm quality`)
-- The `post-merge` hook entry is present in `lefthook.yml` and runs `pnpm install`
-- Running `pnpm quality` executes 4 steps (lint, typecheck, test, knip) in sequence and exits with code = 0 on a clean checkout
-- The count of `biome-ignore` comments across the entire codebase equals 1 — only the `label` component in `packages/ui` has this suppression
+- [ ] Running `pnpm lint` exits with code = 0 on a clean checkout, producing 0 lint errors and 0 format violations
+- [ ] Running `pnpm lint:fix` exits with code = 0 and auto-fixes all formatting violations in-place
+- [ ] The Biome config sets indent width to 4, line width to 90, quote style to `"double"` — each value is present and enabled in the configuration file
+- [ ] Biome trailing commas are enabled (set to `"all"`) and semicolons are enabled (set to `"always"`) — both values are present in the config
+- [ ] Biome import sorting is enabled — the `organizeImports` setting is present and set to true in the config
+- [ ] The root `package.json` contains a `"lint"` script and a `"lint:fix"` script — both are present and non-empty, and neither invokes Turborepo
+- [ ] Running `pnpm knip` exits with code = 0 on a clean checkout, detecting 0 unused exports, 0 unused files, and 0 unused dependencies
+- [ ] The `knip.json` configuration is present at the root and declares at least 10 workspace entries matching the workspaces in `pnpm-workspace.yaml`
+- [ ] Knip runs with the `--cache` flag — the `"knip"` script in `package.json` contains the `--cache` argument
+- [ ] Running `pnpm lint:commit` exits with code = 0 for a commit message matching the format `type(scope): message`
+- [ ] Running `pnpm lint:commit` exits with code = 1 for a commit message that does not match the conventional commit format
+- [ ] Commitlint accepts at least 11 commit types (feat, fix, docs, refactor, test, chore, ci, dx, perf, build, revert) — each type is present in the config
+- [ ] Commitlint accepts at least 11 commit scopes (web, api, mobile, desktop, extension, contracts, ui, library, i18n, deps, repo) — each scope is present in the config
+- [ ] A `lefthook.yml` file is present at the root and defines at least 3 git hooks
+- [ ] The `commit-msg` hook entry is present in `lefthook.yml` and runs Commitlint
+- [ ] The `pre-push` hook entry is present in `lefthook.yml` and runs the full quality gate (`pnpm quality`)
+- [ ] The `post-merge` hook entry is present in `lefthook.yml` and runs `pnpm install`
+- [ ] Running `pnpm quality` executes 4 steps (lint, typecheck, test, knip) in sequence and exits with code = 0 on a clean checkout
+- [ ] The count of `biome-ignore` comments across the entire codebase equals 1 — only the `label` component in `packages/ui` has this suppression
 
 ## Constraints
 
