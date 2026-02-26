@@ -60,11 +60,11 @@ Each scored spec needs 25/25 on four dimensions:
 - [x] [user-signs-out.md](behavioral/user-signs-out.md) ← flow #9
 
 #### Commit 3b — Session & guest lifecycle (5 specs)
-- [ ] [guest-upgrades-to-full-account.md](behavioral/guest-upgrades-to-full-account.md) ← flow #6
-- [ ] [guest-deletes-anonymous-account.md](behavioral/guest-deletes-anonymous-account.md) ← flow #7
-- [ ] [session-lifecycle.md](behavioral/session-lifecycle.md) ← flow #10
-- [ ] [session-expires-mid-use.md](behavioral/session-expires-mid-use.md) ← flow #11
-- [ ] [banned-user-attempts-sign-in.md](behavioral/banned-user-attempts-sign-in.md) ← flow #12
+- [x] [guest-upgrades-to-full-account.md](behavioral/guest-upgrades-to-full-account.md) ← flow #6
+- [x] [guest-deletes-anonymous-account.md](behavioral/guest-deletes-anonymous-account.md) ← flow #7
+- [x] [session-lifecycle.md](behavioral/session-lifecycle.md) ← flow #10
+- [x] [session-expires-mid-use.md](behavioral/session-expires-mid-use.md) ← flow #11
+- [x] [banned-user-attempts-sign-in.md](behavioral/banned-user-attempts-sign-in.md) ← flow #12
 
 ### Phase 4: Behavioral Specs — Org & Members
 
