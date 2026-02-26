@@ -52,18 +52,20 @@ Each scored spec needs 25/25 on four dimensions:
 
 ### Phase 3: Behavioral Specs — Auth & Session
 
-#### Commit 3a — Sign-in methods (5 specs)
+#### Commit 3a — Sign-in methods (4 specs)
 - [x] [user-signs-in-with-email-otp.md](behavioral/user-signs-in-with-email-otp.md) ← flow #3
 - [x] [user-signs-in-with-passkey.md](behavioral/user-signs-in-with-passkey.md) ← flow #4
 - [x] [user-signs-in-as-guest.md](behavioral/user-signs-in-as-guest.md) ← flow #5
 - [x] [user-signs-in-with-sso.md](behavioral/user-signs-in-with-sso.md) ← flow #8
-- [x] [user-signs-out.md](behavioral/user-signs-out.md) ← flow #9
 
-#### Commit 3b — Session & guest lifecycle (5 specs)
-- [x] [guest-upgrades-to-full-account.md](behavioral/guest-upgrades-to-full-account.md) ← flow #6
-- [x] [guest-deletes-anonymous-account.md](behavioral/guest-deletes-anonymous-account.md) ← flow #7
+#### Commit 3b — Sign-out & session lifecycle (3 specs)
+- [x] [user-signs-out.md](behavioral/user-signs-out.md) ← flow #9
 - [x] [session-lifecycle.md](behavioral/session-lifecycle.md) ← flow #10
 - [x] [session-expires-mid-use.md](behavioral/session-expires-mid-use.md) ← flow #11
+
+#### Commit 3c — Guest lifecycle & access control (3 specs)
+- [x] [guest-upgrades-to-full-account.md](behavioral/guest-upgrades-to-full-account.md) ← flow #6
+- [x] [guest-deletes-anonymous-account.md](behavioral/guest-deletes-anonymous-account.md) ← flow #7
 - [x] [banned-user-attempts-sign-in.md](behavioral/banned-user-attempts-sign-in.md) ← flow #12
 
 ### Phase 4: Behavioral Specs — Org & Members
@@ -197,8 +199,9 @@ phase-2a: add project infrastructure specs (ICS 100)
 phase-2b: add backend foundation specs (ICS 100)
 phase-2c: add shared package specs (ICS 100)
 phase-2d: add build & deploy specs (ICS 100)
-phase-3a: add auth sign-in specs (ICS 100)
-phase-3b: add session & guest lifecycle specs (ICS 100)
+phase-3a: add sign-in method specs (ICS 100)
+phase-3b: add sign-out & session lifecycle specs (ICS 100)
+phase-3c: add guest lifecycle & access control specs (ICS 100)
 phase-4a: add org creation & switching specs (ICS 100)
 phase-4b: add org settings & departure specs (ICS 100)
 phase-4c: add invitation specs (ICS 100)
