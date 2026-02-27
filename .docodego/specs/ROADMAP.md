@@ -147,9 +147,9 @@ Each scored spec needs 25/25 on four dimensions:
 - [x] [desktop-opens-external-link.md](behavioral/desktop-opens-external-link.md) ← flow #58
 
 #### Commit 6b — Desktop system (3 specs)
-- [ ] [desktop-auto-updates.md](behavioral/desktop-auto-updates.md) ← flow #59
-- [ ] [desktop-sends-a-notification.md](behavioral/desktop-sends-a-notification.md) ← flow #60
-- [ ] [user-views-desktop-app-version.md](behavioral/user-views-desktop-app-version.md) ← flow #61
+- [x] [desktop-auto-updates.md](behavioral/desktop-auto-updates.md) ← flow #59
+- [x] [desktop-sends-a-notification.md](behavioral/desktop-sends-a-notification.md) ← flow #60
+- [x] [user-views-desktop-app-version.md](behavioral/user-views-desktop-app-version.md) ← flow #61
 
 #### Commit 6c — Mobile core (4 specs)
 - [ ] [user-launches-mobile-app.md](behavioral/user-launches-mobile-app.md) ← flow #62
