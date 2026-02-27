@@ -210,9 +210,9 @@ Each scored spec needs 25/25 on four dimensions:
 - [x] [data-access-conventions.md](conventions/data-access-conventions.md)
 
 #### Commit conv-1d — Quality & Delivery
-- [ ] [testing-conventions.md](conventions/testing-conventions.md)
-- [ ] [ui-styling-conventions.md](conventions/ui-styling-conventions.md)
-- [ ] [project-hygiene-conventions.md](conventions/project-hygiene-conventions.md)
+- [x] [testing-conventions.md](conventions/testing-conventions.md)
+- [x] [ui-styling-conventions.md](conventions/ui-styling-conventions.md)
+- [x] [project-hygiene-conventions.md](conventions/project-hygiene-conventions.md)
 
 ### Phase 10: Convention Review Pass (CCS)
 
