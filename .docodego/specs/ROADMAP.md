@@ -91,10 +91,10 @@ Each scored spec needs 25/25 on four dimensions:
 - [x] [org-admin-cancels-an-invitation.md](behavioral/org-admin-cancels-an-invitation.md) ← flow #25
 
 #### Commit 4d — Member & SSO management (4 specs)
-- [ ] [org-admin-changes-member-role.md](behavioral/org-admin-changes-member-role.md) ← flow #26
-- [ ] [org-admin-removes-a-member.md](behavioral/org-admin-removes-a-member.md) ← flow #27
-- [ ] [org-admin-configures-sso-provider.md](behavioral/org-admin-configures-sso-provider.md) ← flow #28
-- [ ] [org-admin-manages-custom-roles.md](behavioral/org-admin-manages-custom-roles.md) ← flow #29
+- [x] [org-admin-changes-member-role.md](behavioral/org-admin-changes-member-role.md) ← flow #26
+- [x] [org-admin-removes-a-member.md](behavioral/org-admin-removes-a-member.md) ← flow #27
+- [x] [org-admin-configures-sso-provider.md](behavioral/org-admin-configures-sso-provider.md) ← flow #28
+- [x] [org-admin-manages-custom-roles.md](behavioral/org-admin-manages-custom-roles.md) ← flow #29
 
 #### Commit 4e — Teams (4 specs)
 - [ ] [user-creates-a-team.md](behavioral/user-creates-a-team.md) ← flow #30
