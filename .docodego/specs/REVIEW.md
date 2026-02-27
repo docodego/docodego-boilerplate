@@ -197,10 +197,10 @@ Sign-off codes: `✓` pass · `✗` fail (note the issue) · `—` not applicabl
 
 | Spec | T | L | C | X | O |
 |------|---|---|---|---|---|
-| [user-launches-desktop-app.md](behavioral/user-launches-desktop-app.md) | | | | | |
-| [user-uses-system-tray.md](behavioral/user-uses-system-tray.md) | | | | | |
-| [user-opens-a-deep-link.md](behavioral/user-opens-a-deep-link.md) | | | | | |
-| [desktop-opens-external-link.md](behavioral/desktop-opens-external-link.md) | | | | | |
+| [user-launches-desktop-app.md](behavioral/user-launches-desktop-app.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
+| [user-uses-system-tray.md](behavioral/user-uses-system-tray.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
+| [user-opens-a-deep-link.md](behavioral/user-opens-a-deep-link.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
+| [desktop-opens-external-link.md](behavioral/desktop-opens-external-link.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
 
 #### Review 6b — Desktop system
 
