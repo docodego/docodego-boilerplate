@@ -123,10 +123,10 @@ Sign-off codes: `✓` pass · `✗` fail (note the issue) · `—` not applicabl
 
 | Spec | T | L | C | X | O |
 |------|---|---|---|---|---|
-| [org-admin-changes-member-role.md](behavioral/org-admin-changes-member-role.md) | | | | | |
-| [org-admin-removes-a-member.md](behavioral/org-admin-removes-a-member.md) | | | | | |
-| [org-admin-configures-sso-provider.md](behavioral/org-admin-configures-sso-provider.md) | | | | | |
-| [org-admin-manages-custom-roles.md](behavioral/org-admin-manages-custom-roles.md) | | | | | |
+| [org-admin-changes-member-role.md](behavioral/org-admin-changes-member-role.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
+| [org-admin-removes-a-member.md](behavioral/org-admin-removes-a-member.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
+| [org-admin-configures-sso-provider.md](behavioral/org-admin-configures-sso-provider.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
+| [org-admin-manages-custom-roles.md](behavioral/org-admin-manages-custom-roles.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
 
 #### Review 4e — Teams
 

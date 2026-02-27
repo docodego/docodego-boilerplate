@@ -3,7 +3,7 @@ id: SPEC-2026-036
 version: 1.0.0
 created: 2026-02-27
 owner: Mayank (Intent Architect)
-status: draft
+status: approved
 roles: [Org Admin, Org Owner]
 ---
 
@@ -137,9 +137,10 @@ members list.
     server-side by reading the calling user's role from the `member` table
     — the count of successful role changes initiated by `member`-role users
     equals 0
-- The role-change control offers exactly 2 options (Member and Admin) — the
-    count of role options displayed in the control equals 2 and the count of
-    role updates written with a value other than `member` or `admin` equals 0
+- The role-change control lists all roles returned by `listRoles()` for the
+    organization (Member and Admin plus any custom roles) — the option count
+    equals the organization's active role count and the count of role updates
+    written with an invalid role value equals 0
 - The owner's member row does not render a role-change control — the count
     of role-change control elements on the owner row equals 0 because the
     owner role is immutable through this flow
@@ -158,7 +159,7 @@ members list.
 
 - [ ] Each non-owner member row in the members list displays a role-change control — the role-change control element count per non-owner row equals 1
 - [ ] The owner's member row displays the "Owner" label with no role-change control — the role-change control element count on the owner row equals 0
-- [ ] The role-change control offers exactly 2 options: Member and Admin — the option count in the role-change control equals 2
+- [ ] The role-change control lists all roles from `listRoles()` for the organization — the option count equals the organization's active role count and equals at least 2
 - [ ] Selecting a new role for a member calls `authClient.organization.updateRole()` with the member's ID and new role — the method invocation count equals 1 and the payload member ID is non-empty
 - [ ] A successful role change returns HTTP 200 and the member's role in the `member` table equals the new value — the response status equals 200 and the role field is non-empty
 - [ ] After a successful role change the role-change control displays the updated role value — the displayed role text equals the new role value and the loading indicator is absent
@@ -266,8 +267,8 @@ members list.
     — that behavior is enforced by the global rate limiter defined in `api-framework.md`
     covering all mutation endpoints uniformly across the API layer
 - This specification does not address the creation or configuration of custom
-    organization roles beyond Member and Admin — custom role definitions are outside the
-    current scope and the system supports exactly two assignable org-level roles
+    organization roles — that behavior is defined in `org-admin-manages-custom-roles.md`
+    covering role creation, permission configuration, and deletion flows
 
 ## Related Specifications
 
