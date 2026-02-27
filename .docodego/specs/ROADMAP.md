@@ -71,10 +71,10 @@ Each scored spec needs 25/25 on four dimensions:
 ### Phase 4: Behavioral Specs — Org & Members
 
 #### Commit 4a — Org creation & switching (4 specs)
-- [ ] [user-creates-first-organization.md](behavioral/user-creates-first-organization.md) ← flow #13
-- [ ] [user-creates-an-organization.md](behavioral/user-creates-an-organization.md) ← flow #14
-- [ ] [user-switches-organization.md](behavioral/user-switches-organization.md) ← flow #15
-- [ ] [user-updates-organization-settings.md](behavioral/user-updates-organization-settings.md) ← flow #16
+- [x] [user-creates-first-organization.md](behavioral/user-creates-first-organization.md) ← flow #13
+- [x] [user-creates-an-organization.md](behavioral/user-creates-an-organization.md) ← flow #14
+- [x] [user-switches-organization.md](behavioral/user-switches-organization.md) ← flow #15
+- [x] [user-updates-organization-settings.md](behavioral/user-updates-organization-settings.md) ← flow #16
 
 #### Commit 4b — Org settings & departure (4 specs)
 - [ ] [user-uploads-organization-logo.md](behavioral/user-uploads-organization-logo.md) ← flow #17
