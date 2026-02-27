@@ -3,7 +3,7 @@ id: SPEC-2026-057
 version: 1.0.0
 created: 2026-02-27
 owner: Mayank (Intent Architect)
-status: draft
+status: approved
 roles: [App Admin]
 ---
 
@@ -148,5 +148,9 @@ This spec defines the behavior when an app admin navigates to the user detail pa
 - [app-admin-bans-a-user](app-admin-bans-a-user.md) — Defines the admin workflow for banning a user, which is triggered by the "Ban" action button rendered on the user detail page when the user is not currently banned
 - [app-admin-unbans-a-user](app-admin-unbans-a-user.md) — Defines the admin workflow for unbanning a user, which is triggered by the "Unban" action button rendered on the user detail page when the user is currently banned
 - [app-admin-revokes-user-sessions](app-admin-revokes-user-sessions.md) — Defines the admin workflow for revoking active sessions, which is triggered by the "Revoke Sessions" action button on the user detail page
+- [app-admin-impersonates-a-user](app-admin-impersonates-a-user.md) — Defines the admin workflow for impersonating a user, triggered by the "Impersonate" action button on the user detail page
+- [app-admin-changes-user-role](app-admin-changes-user-role.md) — Defines the admin workflow for changing a user's app-level role, triggered by the "Change Role" action button on the user detail page
+- [app-admin-removes-a-user](app-admin-removes-a-user.md) — Defines the admin workflow for permanently removing a user, triggered by the "Remove" action button on the user detail page
+- [app-admin-updates-user-details](app-admin-updates-user-details.md) — Defines the admin workflow for editing user profile fields, triggered by the "Edit" action button on the user detail page
 - [banned-user-attempts-sign-in](banned-user-attempts-sign-in.md) — Defines the sign-in rejection behavior for banned users, which is related to the ban status information displayed on the user detail page
 - [user-manages-sessions](user-manages-sessions.md) — Defines the user-facing session management behavior, complementing the admin view of active sessions displayed on the user detail page

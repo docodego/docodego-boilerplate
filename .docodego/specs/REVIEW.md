@@ -169,10 +169,10 @@ Sign-off codes: `✓` pass · `✗` fail (note the issue) · `—` not applicabl
 
 | Spec | T | L | C | X | O |
 |------|---|---|---|---|---|
-| [user-deletes-their-account.md](behavioral/user-deletes-their-account.md) | | | | | |
-| [app-admin-lists-and-searches-users.md](behavioral/app-admin-lists-and-searches-users.md) | | | | | |
-| [app-admin-views-user-details.md](behavioral/app-admin-views-user-details.md) | | | | | |
-| [app-admin-updates-user-details.md](behavioral/app-admin-updates-user-details.md) | | | | | |
+| [user-deletes-their-account.md](behavioral/user-deletes-their-account.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
+| [app-admin-lists-and-searches-users.md](behavioral/app-admin-lists-and-searches-users.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
+| [app-admin-views-user-details.md](behavioral/app-admin-views-user-details.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
+| [app-admin-updates-user-details.md](behavioral/app-admin-updates-user-details.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
 
 #### Review 5e — Admin moderation
 
