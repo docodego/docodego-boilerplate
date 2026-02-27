@@ -195,19 +195,19 @@ Each scored spec needs 25/25 on four dimensions:
 ### Phase 9: Convention Specs
 
 #### Commit conv-1a — Code Shape
-- [ ] [code-style.md](conventions/code-style.md)
-- [ ] [typescript-discipline.md](conventions/typescript-discipline.md)
-- [ ] [module-boundaries.md](conventions/module-boundaries.md)
+- [x] [code-style.md](conventions/code-style.md)
+- [x] [typescript-discipline.md](conventions/typescript-discipline.md)
+- [x] [module-boundaries.md](conventions/module-boundaries.md)
 
 #### Commit conv-1b — React Architecture
-- [ ] [component-design.md](conventions/component-design.md)
-- [ ] [hooks-conventions.md](conventions/hooks-conventions.md)
-- [ ] [state-management-conventions.md](conventions/state-management-conventions.md)
+- [x] [component-design.md](conventions/component-design.md)
+- [x] [hooks-conventions.md](conventions/hooks-conventions.md)
+- [x] [state-management-conventions.md](conventions/state-management-conventions.md)
 
 #### Commit conv-1c — API & Data Layer
-- [ ] [api-layer-conventions.md](conventions/api-layer-conventions.md)
-- [ ] [error-handling-conventions.md](conventions/error-handling-conventions.md)
-- [ ] [data-access-conventions.md](conventions/data-access-conventions.md)
+- [x] [api-layer-conventions.md](conventions/api-layer-conventions.md)
+- [x] [error-handling-conventions.md](conventions/error-handling-conventions.md)
+- [x] [data-access-conventions.md](conventions/data-access-conventions.md)
 
 #### Commit conv-1d — Quality & Delivery
 - [ ] [testing-conventions.md](conventions/testing-conventions.md)
