@@ -122,10 +122,10 @@ Each scored spec needs 25/25 on four dimensions:
 - [x] [user-manages-sessions.md](behavioral/user-manages-sessions.md) ← flow #43
 
 #### Commit 5d — Account & admin basics (4 specs)
-- [ ] [user-deletes-their-account.md](behavioral/user-deletes-their-account.md) ← flow #44
-- [ ] [app-admin-lists-and-searches-users.md](behavioral/app-admin-lists-and-searches-users.md) ← flow #45
-- [ ] [app-admin-views-user-details.md](behavioral/app-admin-views-user-details.md) ← flow #46
-- [ ] [app-admin-updates-user-details.md](behavioral/app-admin-updates-user-details.md) ← flow #47
+- [x] [user-deletes-their-account.md](behavioral/user-deletes-their-account.md) ← flow #44
+- [x] [app-admin-lists-and-searches-users.md](behavioral/app-admin-lists-and-searches-users.md) ← flow #45
+- [x] [app-admin-views-user-details.md](behavioral/app-admin-views-user-details.md) ← flow #46
+- [x] [app-admin-updates-user-details.md](behavioral/app-admin-updates-user-details.md) ← flow #47
 
 #### Commit 5e — Admin moderation (4 specs)
 - [ ] [app-admin-bans-a-user.md](behavioral/app-admin-bans-a-user.md) ← flow #48
