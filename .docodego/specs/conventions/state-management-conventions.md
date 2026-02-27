@@ -41,19 +41,19 @@ Standardizes how `apps/web` and `apps/browser-extension` handle server data, sha
 ## Correct vs. Forbidden
 
 ```tsx
-// Correct — apps/web/src/features/org/members-list.tsx
+// Correct — apps/web/src/features/dashboard/widget-list.tsx
 import { useQuery } from "@tanstack/react-query";
-import { orpc } from "@repo/contracts";
+import { orpc } from "@repo/contracts";  // createTanstackQueryUtils(client) result
 
-function MembersList({ orgId }: { orgId: string }) {
-    const { data } = useQuery(orpc.org.members.queryOptions({ input: { orgId } }));
-    return <ul>{data?.map((m) => <li key={m.id}>{m.name}</li>)}</ul>;
+function WidgetList() {
+    const { data } = useQuery(orpc.widget.list.queryOptions({ input: {} }));
+    return <ul>{data?.map((w) => <li key={w.id}>{w.name}</li>)}</ul>;
 }
 
 // Forbidden — manual queryKey/queryFn bypasses oRPC type safety
 const { data } = useQuery({
-    queryKey: ["org", orgId, "members"],
-    queryFn: () => fetch(`/api/org/${orgId}/members`).then(r => r.json()),
+    queryKey: ["widgets"],
+    queryFn: () => fetch("/api/widgets").then(r => r.json()),
 });
 ```
 
