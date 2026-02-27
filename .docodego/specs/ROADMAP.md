@@ -105,10 +105,10 @@ Each scored spec needs 25/25 on four dimensions:
 ### Phase 5: Behavioral Specs — Dashboard, Settings, Admin
 
 #### Commit 5a — Dashboard & profile (4 specs)
-- [ ] [user-navigates-the-dashboard.md](behavioral/user-navigates-the-dashboard.md) ← flow #21
-- [ ] [user-deletes-a-team.md](behavioral/user-deletes-a-team.md) ← flow #34
-- [ ] [user-updates-profile.md](behavioral/user-updates-profile.md) ← flow #35
-- [ ] [user-uploads-profile-avatar.md](behavioral/user-uploads-profile-avatar.md) ← flow #36
+- [x] [user-navigates-the-dashboard.md](behavioral/user-navigates-the-dashboard.md) ← flow #21
+- [x] [user-deletes-a-team.md](behavioral/user-deletes-a-team.md) ← flow #34
+- [x] [user-updates-profile.md](behavioral/user-updates-profile.md) ← flow #35
+- [x] [user-uploads-profile-avatar.md](behavioral/user-uploads-profile-avatar.md) ← flow #36
 
 #### Commit 5b — Theme, language & locale (3 specs)
 - [ ] [user-changes-theme.md](behavioral/user-changes-theme.md) ← flow #37
