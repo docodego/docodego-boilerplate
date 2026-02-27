@@ -152,9 +152,9 @@ Sign-off codes: `✓` pass · `✗` fail (note the issue) · `—` not applicabl
 
 | Spec | T | L | C | X | O |
 |------|---|---|---|---|---|
-| [user-changes-theme.md](behavioral/user-changes-theme.md) | | | | | |
-| [user-changes-language.md](behavioral/user-changes-language.md) | | | | | |
-| [user-syncs-locale-preference.md](behavioral/user-syncs-locale-preference.md) | | | | | |
+| [user-changes-theme.md](behavioral/user-changes-theme.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
+| [user-changes-language.md](behavioral/user-changes-language.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
+| [user-syncs-locale-preference.md](behavioral/user-syncs-locale-preference.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
 
 #### Review 5c — Passkeys & sessions
 
