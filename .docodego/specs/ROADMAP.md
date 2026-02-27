@@ -2,6 +2,8 @@
 
 Phased plan for creating all DoCoDeGo specs with ICS 100 scores, auditable via commit history.
 
+→ [Spec Review Roadmap](REVIEW.md)
+
 ## Structure
 
 | Level | Count | Scored? |
