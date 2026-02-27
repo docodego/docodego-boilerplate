@@ -111,9 +111,9 @@ Each scored spec needs 25/25 on four dimensions:
 - [x] [user-uploads-profile-avatar.md](behavioral/user-uploads-profile-avatar.md) ← flow #36
 
 #### Commit 5b — Theme, language & locale (3 specs)
-- [ ] [user-changes-theme.md](behavioral/user-changes-theme.md) ← flow #37
-- [ ] [user-changes-language.md](behavioral/user-changes-language.md) ← flow #38
-- [ ] [user-syncs-locale-preference.md](behavioral/user-syncs-locale-preference.md) ← flow #39
+- [x] [user-changes-theme.md](behavioral/user-changes-theme.md) ← flow #37
+- [x] [user-changes-language.md](behavioral/user-changes-language.md) ← flow #38
+- [x] [user-syncs-locale-preference.md](behavioral/user-syncs-locale-preference.md) ← flow #39
 
 #### Commit 5c — Passkeys & sessions (4 specs)
 - [ ] [user-registers-a-passkey.md](behavioral/user-registers-a-passkey.md) ← flow #40
@@ -158,8 +158,8 @@ Each scored spec needs 25/25 on four dimensions:
 - [ ] [mobile-handles-deep-link.md](behavioral/mobile-handles-deep-link.md) ← flow #65
 
 #### Commit 6d — Mobile preferences & extension auth (4 specs)
-- [ ] [user-changes-theme-on-mobile.md](behavioral/user-changes-theme-on-mobile.md) ← flow #66
-- [ ] [user-changes-language-on-mobile.md](behavioral/user-changes-language-on-mobile.md) ← flow #67
+- [x] [user-changes-theme-on-mobile.md](behavioral/user-changes-theme-on-mobile.md) ← flow #66
+- [x] [user-changes-language-on-mobile.md](behavioral/user-changes-language-on-mobile.md) ← flow #67
 - [ ] [user-installs-browser-extension.md](behavioral/user-installs-browser-extension.md) ← flow #68
 - [ ] [extension-authenticates-via-token-relay.md](behavioral/extension-authenticates-via-token-relay.md) ← flow #69
 
