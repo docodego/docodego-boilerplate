@@ -206,9 +206,9 @@ Sign-off codes: `✓` pass · `✗` fail (note the issue) · `—` not applicabl
 
 | Spec | T | L | C | X | O |
 |------|---|---|---|---|---|
-| [desktop-auto-updates.md](behavioral/desktop-auto-updates.md) | | | | | |
-| [desktop-sends-a-notification.md](behavioral/desktop-sends-a-notification.md) | | | | | |
-| [user-views-desktop-app-version.md](behavioral/user-views-desktop-app-version.md) | | | | | |
+| [desktop-auto-updates.md](behavioral/desktop-auto-updates.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
+| [desktop-sends-a-notification.md](behavioral/desktop-sends-a-notification.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
+| [user-views-desktop-app-version.md](behavioral/user-views-desktop-app-version.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
 
 #### Review 6c — Mobile core
 
