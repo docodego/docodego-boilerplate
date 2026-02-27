@@ -214,10 +214,10 @@ Sign-off codes: `✓` pass · `✗` fail (note the issue) · `—` not applicabl
 
 | Spec | T | L | C | X | O |
 |------|---|---|---|---|---|
-| [user-launches-mobile-app.md](behavioral/user-launches-mobile-app.md) | | | | | |
-| [user-signs-in-on-mobile.md](behavioral/user-signs-in-on-mobile.md) | | | | | |
-| [user-navigates-mobile-app.md](behavioral/user-navigates-mobile-app.md) | | | | | |
-| [mobile-handles-deep-link.md](behavioral/mobile-handles-deep-link.md) | | | | | |
+| [user-launches-mobile-app.md](behavioral/user-launches-mobile-app.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
+| [user-signs-in-on-mobile.md](behavioral/user-signs-in-on-mobile.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
+| [user-navigates-mobile-app.md](behavioral/user-navigates-mobile-app.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
+| [mobile-handles-deep-link.md](behavioral/mobile-handles-deep-link.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
 
 #### Review 6d — Mobile preferences & extension auth
 
