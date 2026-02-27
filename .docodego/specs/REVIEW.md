@@ -178,10 +178,10 @@ Sign-off codes: `✓` pass · `✗` fail (note the issue) · `—` not applicabl
 
 | Spec | T | L | C | X | O |
 |------|---|---|---|---|---|
-| [app-admin-bans-a-user.md](behavioral/app-admin-bans-a-user.md) | | | | | |
-| [app-admin-unbans-a-user.md](behavioral/app-admin-unbans-a-user.md) | | | | | |
-| [app-admin-impersonates-a-user.md](behavioral/app-admin-impersonates-a-user.md) | | | | | |
-| [app-admin-creates-a-user.md](behavioral/app-admin-creates-a-user.md) | | | | | |
+| [app-admin-bans-a-user.md](behavioral/app-admin-bans-a-user.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
+| [app-admin-unbans-a-user.md](behavioral/app-admin-unbans-a-user.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
+| [app-admin-impersonates-a-user.md](behavioral/app-admin-impersonates-a-user.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
+| [app-admin-creates-a-user.md](behavioral/app-admin-creates-a-user.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
 
 #### Review 5f — Admin role & session ops
 
