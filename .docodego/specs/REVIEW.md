@@ -242,10 +242,10 @@ Sign-off codes: `✓` pass · `✗` fail (note the issue) · `—` not applicabl
 
 | Spec | T | L | C | X | O |
 |------|---|---|---|---|---|
-| [user-visits-landing-page.md](behavioral/user-visits-landing-page.md) | | | | | |
-| [user-enters-the-app.md](behavioral/user-enters-the-app.md) | | | | | |
-| [system-sends-otp-email.md](behavioral/system-sends-otp-email.md) | | | | | |
-| [system-sends-invitation-email.md](behavioral/system-sends-invitation-email.md) | | | | | |
+| [user-visits-landing-page.md](behavioral/user-visits-landing-page.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
+| [user-enters-the-app.md](behavioral/user-enters-the-app.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
+| [system-sends-otp-email.md](behavioral/system-sends-otp-email.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
+| [system-sends-invitation-email.md](behavioral/system-sends-invitation-email.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
 
 #### Review 7b — i18n, uploads & error handling
 
