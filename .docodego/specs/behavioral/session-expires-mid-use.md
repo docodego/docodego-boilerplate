@@ -3,7 +3,7 @@ id: SPEC-2026-020
 version: 1.0.0
 created: 2026-02-26
 owner: Mayank (Intent Architect)
-status: draft
+status: approved
 roles: [Authenticated User]
 ---
 
@@ -124,8 +124,8 @@ Single role; no permission model is needed because all authenticated users exper
 
 ## Related Specifications
 
-- [session-lifecycle](../foundation/session-lifecycle.md) — Defines session creation, automatic refresh mechanics, and the 7-day expiration policy that triggers the mid-use expiry behavior
+- [session-lifecycle](session-lifecycle.md) — Defines session creation, automatic refresh mechanics, and the 7-day expiration policy that triggers the mid-use expiry behavior
 - [user-manages-sessions](user-manages-sessions.md) — Covers the user-facing session management UI for viewing active sessions and manually revoking them
 - [desktop-sends-a-notification](desktop-sends-a-notification.md) — Covers OS-native notification infrastructure, permission handling, channel configuration, and permission prompts for the Tauri desktop app
-- [sign-in-email-otp](sign-in-email-otp.md) — Defines the email OTP sign-in flow that handles the `returnUrl` parameter after session expiry re-authentication
-- [sign-in-passkey](sign-in-passkey.md) — Defines the passkey sign-in flow that handles the `returnUrl` parameter after session expiry re-authentication
+- [user-signs-in-with-email-otp](user-signs-in-with-email-otp.md) — Defines the email OTP sign-in flow that handles the `returnUrl` parameter after session expiry re-authentication
+- [user-signs-in-with-passkey](user-signs-in-with-passkey.md) — Defines the passkey sign-in flow that handles the `returnUrl` parameter after session expiry re-authentication

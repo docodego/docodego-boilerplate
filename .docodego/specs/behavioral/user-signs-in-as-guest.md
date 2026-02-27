@@ -3,8 +3,8 @@ id: SPEC-2026-016
 version: 1.0.0
 created: 2026-02-26
 owner: Mayank (Intent Architect)
-status: draft
-roles: [Visitor, Guest User]
+status: approved
+roles: [Visitor, Guest]
 ---
 
 [← Back to Roadmap](../ROADMAP.md)

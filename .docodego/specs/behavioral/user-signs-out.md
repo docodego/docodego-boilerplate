@@ -3,7 +3,7 @@ id: SPEC-2026-018
 version: 1.0.0
 created: 2026-02-26
 owner: Mayank (Intent Architect)
-status: draft
+status: approved
 roles: [Authenticated User]
 ---
 
@@ -62,7 +62,7 @@ This spec defines the sign-out flow for the DoCodeGo boilerplate across all plat
 - [ ] The application header displays a user avatar that opens a dropdown menu on click — the avatar element and dropdown container are both present in the DOM
 - [ ] The dropdown menu contains a "Sign out" button at the bottom — the button element is present and visible as the last item in the dropdown
 - [ ] Clicking "Sign out" calls `authClient.signOut()` — the client method invocation is present in the click handler
-- [ ] The server invalidates the session by removing or expiring the session record in the `session` table — the session row is either absent or has its `expiresAt` set to a past timestamp after the call
+- [ ] The server invalidates the session by deleting the session record from the `session` table — the session row is absent after the call
 - [ ] The server clears the session cookie from the response — a `Set-Cookie` header is present with `Max-Age` = 0 or an `Expires` value in the past for the session cookie name
 - [ ] The server clears the `docodego_authed` hint cookie — a `Set-Cookie` header is present with `Max-Age` = 0 or an `Expires` value in the past for the `docodego_authed` cookie name
 - [ ] After sign-out, the client redirects to `/signin` — the redirect is present and the window location pathname changes to `/signin` after navigation completes

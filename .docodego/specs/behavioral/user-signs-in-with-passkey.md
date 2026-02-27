@@ -3,7 +3,7 @@ id: SPEC-2026-015
 version: 1.0.0
 created: 2026-02-26
 owner: Mayank (Intent Architect)
-status: draft
+status: approved
 roles: [Visitor, Authenticated User]
 ---
 

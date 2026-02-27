@@ -69,26 +69,26 @@ Sign-off codes: `✓` pass · `✗` fail (note the issue) · `—` not applicabl
 
 | Spec | T | L | C | X | O |
 |------|---|---|---|---|---|
-| [user-signs-in-with-email-otp.md](behavioral/user-signs-in-with-email-otp.md) | | | | | |
-| [user-signs-in-with-passkey.md](behavioral/user-signs-in-with-passkey.md) | | | | | |
-| [user-signs-in-as-guest.md](behavioral/user-signs-in-as-guest.md) | | | | | |
-| [user-signs-in-with-sso.md](behavioral/user-signs-in-with-sso.md) | | | | | |
+| [user-signs-in-with-email-otp.md](behavioral/user-signs-in-with-email-otp.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
+| [user-signs-in-with-passkey.md](behavioral/user-signs-in-with-passkey.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
+| [user-signs-in-as-guest.md](behavioral/user-signs-in-as-guest.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
+| [user-signs-in-with-sso.md](behavioral/user-signs-in-with-sso.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
 
 #### Review 3b — Sign-out & session lifecycle
 
 | Spec | T | L | C | X | O |
 |------|---|---|---|---|---|
-| [user-signs-out.md](behavioral/user-signs-out.md) | | | | | |
-| [session-lifecycle.md](behavioral/session-lifecycle.md) | | | | | |
-| [session-expires-mid-use.md](behavioral/session-expires-mid-use.md) | | | | | |
+| [user-signs-out.md](behavioral/user-signs-out.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
+| [session-lifecycle.md](behavioral/session-lifecycle.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
+| [session-expires-mid-use.md](behavioral/session-expires-mid-use.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
 
 #### Review 3c — Guest lifecycle & access control
 
 | Spec | T | L | C | X | O |
 |------|---|---|---|---|---|
-| [guest-upgrades-to-full-account.md](behavioral/guest-upgrades-to-full-account.md) | | | | | |
-| [guest-deletes-anonymous-account.md](behavioral/guest-deletes-anonymous-account.md) | | | | | |
-| [banned-user-attempts-sign-in.md](behavioral/banned-user-attempts-sign-in.md) | | | | | |
+| [guest-upgrades-to-full-account.md](behavioral/guest-upgrades-to-full-account.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
+| [guest-deletes-anonymous-account.md](behavioral/guest-deletes-anonymous-account.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
+| [banned-user-attempts-sign-in.md](behavioral/banned-user-attempts-sign-in.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
 
 ### Phase 4: Behavioral Specs — Org & Members
 
