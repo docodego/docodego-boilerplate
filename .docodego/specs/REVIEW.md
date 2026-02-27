@@ -187,9 +187,9 @@ Sign-off codes: `✓` pass · `✗` fail (note the issue) · `—` not applicabl
 
 | Spec | T | L | C | X | O |
 |------|---|---|---|---|---|
-| [app-admin-changes-user-role.md](behavioral/app-admin-changes-user-role.md) | | | | | |
-| [app-admin-removes-a-user.md](behavioral/app-admin-removes-a-user.md) | | | | | |
-| [app-admin-revokes-user-sessions.md](behavioral/app-admin-revokes-user-sessions.md) | | | | | |
+| [app-admin-changes-user-role.md](behavioral/app-admin-changes-user-role.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
+| [app-admin-removes-a-user.md](behavioral/app-admin-removes-a-user.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
+| [app-admin-revokes-user-sessions.md](behavioral/app-admin-revokes-user-sessions.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
 
 ### Phase 6: Behavioral Specs — Platforms
 

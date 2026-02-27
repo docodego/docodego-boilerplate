@@ -3,7 +3,7 @@ id: SPEC-2026-064
 version: 1.0.0
 created: 2026-02-27
 owner: Mayank (Intent Architect)
-status: draft
+status: approved
 roles: [App Admin]
 ---
 
@@ -353,12 +353,12 @@ preserving traceability even after the user record is deleted.
 - This specification does not address deleting user-generated content
     within organizations the removed user belonged to — content
     attribution and retention policies for departed or deleted users
-    are covered by the data-governance spec as a separate concern from
-    account removal
+    are a separate concern from account removal and outside the scope
+    of this boilerplate's behavioral specifications
 - This specification does not address notifying organization members
     or admins when a user is removed and disappears from their
-    organization rosters — notification behavior for member departure
-    events is defined in the organization notification spec
+    organization rosters — member departure notification behavior is
+    outside the scope of this boilerplate's behavioral specifications
 - This specification does not address rate limiting on the
     `authClient.admin.removeUser()` endpoint — that behavior is
     enforced by the global rate limiter defined in `api-framework.md`
