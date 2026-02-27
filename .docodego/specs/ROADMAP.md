@@ -216,7 +216,7 @@ Each scored spec needs 25/25 on four dimensions:
 
 ### Phase 10: Convention Review Pass (CCS)
 
-- [ ] Run CCS scorer on all 12 convention specs, fix regressions, verify CCS 100
+- [x] Run CCS scorer on all 12 convention specs, fix regressions, verify CCS 100
 
 ---
 
