@@ -134,9 +134,9 @@ Each scored spec needs 25/25 on four dimensions:
 - [x] [app-admin-creates-a-user.md](behavioral/app-admin-creates-a-user.md) ← flow #51
 
 #### Commit 5f — Admin role & session ops (3 specs)
-- [ ] [app-admin-changes-user-role.md](behavioral/app-admin-changes-user-role.md) ← flow #52
-- [ ] [app-admin-removes-a-user.md](behavioral/app-admin-removes-a-user.md) ← flow #53
-- [ ] [app-admin-revokes-user-sessions.md](behavioral/app-admin-revokes-user-sessions.md) ← flow #54
+- [x] [app-admin-changes-user-role.md](behavioral/app-admin-changes-user-role.md) ← flow #52
+- [x] [app-admin-removes-a-user.md](behavioral/app-admin-removes-a-user.md) ← flow #53
+- [x] [app-admin-revokes-user-sessions.md](behavioral/app-admin-revokes-user-sessions.md) ← flow #54
 
 ### Phase 6: Behavioral Specs — Platforms
 
