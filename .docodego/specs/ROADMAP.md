@@ -128,10 +128,10 @@ Each scored spec needs 25/25 on four dimensions:
 - [x] [app-admin-updates-user-details.md](behavioral/app-admin-updates-user-details.md) ← flow #47
 
 #### Commit 5e — Admin moderation (4 specs)
-- [ ] [app-admin-bans-a-user.md](behavioral/app-admin-bans-a-user.md) ← flow #48
-- [ ] [app-admin-unbans-a-user.md](behavioral/app-admin-unbans-a-user.md) ← flow #49
-- [ ] [app-admin-impersonates-a-user.md](behavioral/app-admin-impersonates-a-user.md) ← flow #50
-- [ ] [app-admin-creates-a-user.md](behavioral/app-admin-creates-a-user.md) ← flow #51
+- [x] [app-admin-bans-a-user.md](behavioral/app-admin-bans-a-user.md) ← flow #48
+- [x] [app-admin-unbans-a-user.md](behavioral/app-admin-unbans-a-user.md) ← flow #49
+- [x] [app-admin-impersonates-a-user.md](behavioral/app-admin-impersonates-a-user.md) ← flow #50
+- [x] [app-admin-creates-a-user.md](behavioral/app-admin-creates-a-user.md) ← flow #51
 
 #### Commit 5f — Admin role & session ops (3 specs)
 - [ ] [app-admin-changes-user-role.md](behavioral/app-admin-changes-user-role.md) ← flow #52
