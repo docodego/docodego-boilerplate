@@ -194,29 +194,25 @@ Each scored spec needs 25/25 on four dimensions:
 
 ### Phase 9: Convention Specs
 
-Scored by the CCS scorer (`PYTHONPATH=.docodego/tools python -m ccs_scorer <file>`).
-Each spec covers one rule area with six sections: Intent, Rules (IF/THEN), Enforcement
-(L1/L2/L3 tiers), Violation Signal, Correct vs Forbidden, Remediation.
+#### Commit conv-1a — Code Shape
+- [ ] [code-style.md](conventions/code-style.md)
+- [ ] [typescript-discipline.md](conventions/typescript-discipline.md)
+- [ ] [module-boundaries.md](conventions/module-boundaries.md)
 
-#### Commit conv-1a — Code Shape (3 specs)
-- [ ] [code-style.md](conventions/code-style.md) — formatting (Biome-enforced), kebab-case file and folder naming, file size limits by type, JS-only exceptions for configs
-- [ ] [typescript-discipline.md](conventions/typescript-discipline.md) — no `any`/`unknown` without explicit assertion, discriminated unions over boolean flags, `import type` for type-only imports, no file extensions in imports, verbatimModuleSyntax
-- [ ] [module-boundaries.md](conventions/module-boundaries.md) — `@repo/<name>` scope for all workspace packages, no direct imports from `apps/api/src/` in non-api workspaces, `@repo/i18n` core never imports React (use `@repo/i18n/react` subpath), all cross-workspace API calls through `@repo/contracts` oRPC
+#### Commit conv-1b — React Architecture
+- [ ] [component-design.md](conventions/component-design.md)
+- [ ] [hooks-conventions.md](conventions/hooks-conventions.md)
+- [ ] [state-management-conventions.md](conventions/state-management-conventions.md)
 
-#### Commit conv-1b — React Architecture (3 specs)
-- [ ] [component-design.md](conventions/component-design.md) — single responsibility per component, `XxxProps` interface naming, no inline object/array literals as props, JSX complexity limit, component and test co-location rules
-- [ ] [hooks-conventions.md](conventions/hooks-conventions.md) — `use` prefix on all custom hooks, hooks must be pure functions, no effect-based state synchronization, explicit dependency arrays, threshold for extracting a custom hook
-- [ ] [state-management-conventions.md](conventions/state-management-conventions.md) — server state via TanStack Query, global client UI state via Zustand, form state via local state; query key naming structure; Zustand store slice rules
+#### Commit conv-1c — API & Data Layer
+- [ ] [api-layer-conventions.md](conventions/api-layer-conventions.md)
+- [ ] [error-handling-conventions.md](conventions/error-handling-conventions.md)
+- [ ] [data-access-conventions.md](conventions/data-access-conventions.md)
 
-#### Commit conv-1c — API & Data Layer (3 specs)
-- [ ] [api-layer-conventions.md](conventions/api-layer-conventions.md) — oRPC procedure naming (verb-noun pattern), Zod schemas required for all inputs and outputs, HTTP 401 vs 403 vs 404 semantics, Hono handler structure, no business logic in middleware
-- [ ] [error-handling-conventions.md](conventions/error-handling-conventions.md) — AppError class hierarchy for typed errors, which layer catches vs rethrows vs surfaces, user-facing messages exclusively from `@repo/i18n` translation keys, no silent `console.error` in production code paths
-- [ ] [data-access-conventions.md](conventions/data-access-conventions.md) — Drizzle ORM exclusively (no raw SQL strings), explicit column selects on all queries, transaction boundaries for multi-table writes, no N+1 query patterns, query functions co-located with schema definitions
-
-#### Commit conv-1d — Quality & Delivery (3 specs)
-- [ ] [testing-conventions.md](conventions/testing-conventions.md) — Vitest for unit and integration tests, Playwright for E2E tests, test files co-located with source, `describe`/`it` naming rules, no `.skip` or `.only` without a TODO comment referencing a ticket
-- [ ] [ui-styling-conventions.md](conventions/ui-styling-conventions.md) — Tailwind canonical classes only (no arbitrary values when utility exists), logical properties exclusively (`ps-`/`pe-`/`ms-`/`me-`/`text-start`/`text-end`/`inset-s-`/`inset-e-`/`rounded-s-`/`rounded-e-`), `translate-x` uses `rtl:` override, `@base-ui/react` not Radix primitives, post-`shadcn add` checklist, `biome-ignore` for a11y only on `label`
-- [ ] [project-hygiene-conventions.md](conventions/project-hygiene-conventions.md) — pnpm exclusively (never npx, bunx, or yarn), `catalog:` for all shared dependency versions in pnpm-workspace.yaml, dependency vetting criteria (≤5 KB OK, >10 KB needs justification; weekly downloads >1 000; last publish <12 months), no date-fns — use native `Intl` APIs, conventional commits `type(scope): message` with allowed types and scopes enforced by Commitlint
+#### Commit conv-1d — Quality & Delivery
+- [ ] [testing-conventions.md](conventions/testing-conventions.md)
+- [ ] [ui-styling-conventions.md](conventions/ui-styling-conventions.md)
+- [ ] [project-hygiene-conventions.md](conventions/project-hygiene-conventions.md)
 
 ### Phase 10: Convention Review Pass (CCS)
 
