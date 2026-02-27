@@ -1,9 +1,10 @@
 [project]
-name = "ics-scorer"
-version = "0.1.0"
-description = "DoCoDeGo ICS Scorer — automated Intent Clarity Score for specification quality"
+name = "docodego-tools"
+version = "0.2.0"
+description = "DoCoDeGo scoring tools — ICS (Intent Clarity Score) and CCS (Convention Clarity Score)"
 requires-python = ">=3.10"
 license = "Apache-2.0"
 
 [project.scripts]
 ics-scorer = "ics_scorer.__main__:main"
+ccs-scorer = "ccs_scorer.__main__:main"
