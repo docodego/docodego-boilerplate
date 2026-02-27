@@ -8,7 +8,7 @@ The user navigates to the settings screen within the Expo mobile app. The screen
 
 ## Selecting a Theme
 
-When the user taps a different theme option, the Zustand theme-store updates immediately. Unlike the web flow, which toggles a `.dark` class on the `<html>` element and relies on Tailwind CSS, the mobile app applies the new color scheme through NativeWind's native theming system. All components styled with NativeWind's `dark:` variants respond to the store change and re-render with the updated color palette. The `expo-status-bar` component adjusts the status bar icon color — light icons on dark backgrounds, dark icons on light backgrounds — so the system chrome stays consistent with the app's appearance.
+When the user taps a different theme option, the Zustand theme-store updates immediately. Unlike the web flow, which toggles a `.dark` class on the `<html>` element and relies on Tailwind CSS, the mobile app applies the new color scheme through UniWind's native theming system. All components styled with UniWind's `dark:` class variants respond to the store change and re-render with the updated color palette. The `expo-status-bar` component adjusts the status bar icon color — light icons on dark backgrounds, dark icons on light backgrounds — so the system chrome stays consistent with the app's appearance.
 
 ## Persistence with MMKV
 
