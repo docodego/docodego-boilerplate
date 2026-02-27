@@ -223,10 +223,10 @@ Sign-off codes: `✓` pass · `✗` fail (note the issue) · `—` not applicabl
 
 | Spec | T | L | C | X | O |
 |------|---|---|---|---|---|
-| [user-changes-theme-on-mobile.md](behavioral/user-changes-theme-on-mobile.md) | | | | | |
-| [user-changes-language-on-mobile.md](behavioral/user-changes-language-on-mobile.md) | | | | | |
-| [user-installs-browser-extension.md](behavioral/user-installs-browser-extension.md) | | | | | |
-| [extension-authenticates-via-token-relay.md](behavioral/extension-authenticates-via-token-relay.md) | | | | | |
+| [user-changes-theme-on-mobile.md](behavioral/user-changes-theme-on-mobile.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
+| [user-changes-language-on-mobile.md](behavioral/user-changes-language-on-mobile.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
+| [user-installs-browser-extension.md](behavioral/user-installs-browser-extension.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
+| [extension-authenticates-via-token-relay.md](behavioral/extension-authenticates-via-token-relay.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
 
 #### Review 6e — Extension behavior
 
