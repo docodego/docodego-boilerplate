@@ -27,7 +27,7 @@ Sign-off codes: `✓` pass · `✗` fail (note the issue) · `—` not applicabl
 
 | Spec | T | L | C | X | O |
 |------|---|---|---|---|---|
-| [product-context.md](product-context.md) | | | | | |
+| [product-context.md](product-context.md) | ✓ | ✓ | ✓ | ✓ | — |
 
 ### Phase 2: Foundation Specs
 
