@@ -141,10 +141,10 @@ Each scored spec needs 25/25 on four dimensions:
 ### Phase 6: Behavioral Specs — Platforms
 
 #### Commit 6a — Desktop core (4 specs)
-- [ ] [user-launches-desktop-app.md](behavioral/user-launches-desktop-app.md) ← flow #55
-- [ ] [user-uses-system-tray.md](behavioral/user-uses-system-tray.md) ← flow #56
-- [ ] [user-opens-a-deep-link.md](behavioral/user-opens-a-deep-link.md) ← flow #57
-- [ ] [desktop-opens-external-link.md](behavioral/desktop-opens-external-link.md) ← flow #58
+- [x] [user-launches-desktop-app.md](behavioral/user-launches-desktop-app.md) ← flow #55
+- [x] [user-uses-system-tray.md](behavioral/user-uses-system-tray.md) ← flow #56
+- [x] [user-opens-a-deep-link.md](behavioral/user-opens-a-deep-link.md) ← flow #57
+- [x] [desktop-opens-external-link.md](behavioral/desktop-opens-external-link.md) ← flow #58
 
 #### Commit 6b — Desktop system (3 specs)
 - [ ] [desktop-auto-updates.md](behavioral/desktop-auto-updates.md) ← flow #59
