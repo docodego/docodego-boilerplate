@@ -152,10 +152,10 @@ Each scored spec needs 25/25 on four dimensions:
 - [x] [user-views-desktop-app-version.md](behavioral/user-views-desktop-app-version.md) ← flow #61
 
 #### Commit 6c — Mobile core (4 specs)
-- [ ] [user-launches-mobile-app.md](behavioral/user-launches-mobile-app.md) ← flow #62
-- [ ] [user-signs-in-on-mobile.md](behavioral/user-signs-in-on-mobile.md) ← flow #63
-- [ ] [user-navigates-mobile-app.md](behavioral/user-navigates-mobile-app.md) ← flow #64
-- [ ] [mobile-handles-deep-link.md](behavioral/mobile-handles-deep-link.md) ← flow #65
+- [x] [user-launches-mobile-app.md](behavioral/user-launches-mobile-app.md) ← flow #62
+- [x] [user-signs-in-on-mobile.md](behavioral/user-signs-in-on-mobile.md) ← flow #63
+- [x] [user-navigates-mobile-app.md](behavioral/user-navigates-mobile-app.md) ← flow #64
+- [x] [mobile-handles-deep-link.md](behavioral/mobile-handles-deep-link.md) ← flow #65
 
 #### Commit 6d — Mobile preferences & extension auth (4 specs)
 - [ ] [user-changes-theme-on-mobile.md](behavioral/user-changes-theme-on-mobile.md) ← flow #66
