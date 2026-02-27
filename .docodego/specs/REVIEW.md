@@ -232,9 +232,9 @@ Sign-off codes: `✓` pass · `✗` fail (note the issue) · `—` not applicabl
 
 | Spec | T | L | C | X | O |
 |------|---|---|---|---|---|
-| [extension-signs-out.md](behavioral/extension-signs-out.md) | | | | | |
-| [user-interacts-with-extension-popup.md](behavioral/user-interacts-with-extension-popup.md) | | | | | |
-| [extension-receives-an-update.md](behavioral/extension-receives-an-update.md) | | | | | |
+| [extension-signs-out.md](behavioral/extension-signs-out.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
+| [user-interacts-with-extension-popup.md](behavioral/user-interacts-with-extension-popup.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
+| [extension-receives-an-update.md](behavioral/extension-receives-an-update.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
 
 ### Phase 7: Behavioral Specs — System & Cross-Cutting
 
