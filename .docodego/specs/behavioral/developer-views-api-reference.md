@@ -3,7 +3,7 @@ id: SPEC-2026-092
 version: 1.0.0
 created: 2026-02-27
 owner: Mayank (Intent Architect)
-status: draft
+status: approved
 roles: [Developer]
 ---
 
@@ -222,7 +222,7 @@ command.
     management API endpoints whose authentication and refresh behaviors
     are documented in the API reference and relevant when testing
     authenticated endpoints through the Scalar client
-- [visitor-signs-up](visitor-signs-up.md) — defines the user
-    registration API endpoints whose request schemas and response
-    formats are documented in the API reference and testable through
-    the built-in Scalar API client
+- [user-enters-the-app](user-enters-the-app.md) — defines the app
+    entry flow and authentication gate whose API endpoints are
+    documented in the API reference and testable through the built-in
+    Scalar API client

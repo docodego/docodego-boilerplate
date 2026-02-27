@@ -260,9 +260,9 @@ Sign-off codes: `✓` pass · `✗` fail (note the issue) · `—` not applicabl
 
 | Spec | T | L | C | X | O |
 |------|---|---|---|---|---|
-| [developer-views-api-reference.md](behavioral/developer-views-api-reference.md) | | | | | |
-| [user-subscribes-to-a-plan.md](behavioral/user-subscribes-to-a-plan.md) | | | | | |
-| [user-manages-billing-portal.md](behavioral/user-manages-billing-portal.md) | | | | | |
+| [developer-views-api-reference.md](behavioral/developer-views-api-reference.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
+| [user-subscribes-to-a-plan.md](behavioral/user-subscribes-to-a-plan.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
+| [user-manages-billing-portal.md](behavioral/user-manages-billing-portal.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
 
 ### Phase 8: Cross-Cutting Checks
 
