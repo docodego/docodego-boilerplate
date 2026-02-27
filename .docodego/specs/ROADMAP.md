@@ -97,10 +97,10 @@ Each scored spec needs 25/25 on four dimensions:
 - [x] [org-admin-manages-custom-roles.md](behavioral/org-admin-manages-custom-roles.md) ← flow #29
 
 #### Commit 4e — Teams (4 specs)
-- [ ] [user-creates-a-team.md](behavioral/user-creates-a-team.md) ← flow #30
-- [ ] [user-renames-a-team.md](behavioral/user-renames-a-team.md) ← flow #31
-- [ ] [org-admin-manages-team-members.md](behavioral/org-admin-manages-team-members.md) ← flow #32
-- [ ] [user-switches-active-team.md](behavioral/user-switches-active-team.md) ← flow #33
+- [x] [user-creates-a-team.md](behavioral/user-creates-a-team.md) ← flow #30
+- [x] [user-renames-a-team.md](behavioral/user-renames-a-team.md) ← flow #31
+- [x] [org-admin-manages-team-members.md](behavioral/org-admin-manages-team-members.md) ← flow #32
+- [x] [user-switches-active-team.md](behavioral/user-switches-active-team.md) ← flow #33
 
 ### Phase 5: Behavioral Specs — Dashboard, Settings, Admin
 
