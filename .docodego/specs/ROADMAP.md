@@ -83,10 +83,10 @@ Each scored spec needs 25/25 on four dimensions:
 - [x] [user-deletes-an-organization.md](behavioral/user-deletes-an-organization.md) ← flow #20
 
 #### Commit 4c — Invitations (4 specs)
-- [ ] [org-admin-invites-a-member.md](behavioral/org-admin-invites-a-member.md) ← flow #22
-- [ ] [user-accepts-an-invitation.md](behavioral/user-accepts-an-invitation.md) ← flow #23
-- [ ] [user-declines-an-invitation.md](behavioral/user-declines-an-invitation.md) ← flow #24
-- [ ] [org-admin-cancels-an-invitation.md](behavioral/org-admin-cancels-an-invitation.md) ← flow #25
+- [x] [org-admin-invites-a-member.md](behavioral/org-admin-invites-a-member.md) ← flow #22
+- [x] [user-accepts-an-invitation.md](behavioral/user-accepts-an-invitation.md) ← flow #23
+- [x] [user-declines-an-invitation.md](behavioral/user-declines-an-invitation.md) ← flow #24
+- [x] [org-admin-cancels-an-invitation.md](behavioral/org-admin-cancels-an-invitation.md) ← flow #25
 
 #### Commit 4d — Member & SSO management (4 specs)
 - [ ] [org-admin-changes-member-role.md](behavioral/org-admin-changes-member-role.md) ← flow #26
