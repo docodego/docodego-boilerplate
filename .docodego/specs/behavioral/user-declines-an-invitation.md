@@ -3,7 +3,7 @@ id: SPEC-2026-034
 version: 1.0.0
 created: 2026-02-27
 owner: Mayank (Intent Architect)
-status: draft
+status: approved
 roles: [Invitee, User]
 ---
 
@@ -22,7 +22,7 @@ invitation token as permanently rejected on the server. The invitee sees a
 localized confirmation message, then navigates to their existing dashboard if
 they belong to other organizations, or to the organization creation flow if
 they have none. The declined invitation moves from the Pending tab to the
-History tab on the admin's members page and displays a "declined" badge with a
+History tab on the admin's members page and displays a "rejected" badge with a
 red accent color. The token is permanently invalidated — the admin must issue a
 fresh invitation to re-invite the same person.
 
@@ -97,7 +97,7 @@ fresh invitation to re-invite the same person.
 
 14. **[Admin view update]** On the organization members page, the invitation
     moves from the Pending tab to the History tab, displaying the invitee's
-    email, the date of rejection, and a "declined" badge rendered in a red
+    email, the date of rejection, and a "rejected" badge rendered in a red
     accent color — the count of pending invitation entries for this token
     equals 0
 
@@ -150,7 +150,7 @@ fresh invitation to re-invite the same person.
 |------|------------------|----------------|----------------------|
 | Invitee (authenticated, matching email) | View the acceptance screen, read the organization name and offered role, click the "Decline" button, trigger `rejectInvitation()`, receive the confirmation message, and be redirected after a successful decline | Accepting the invitation via this flow — this spec covers decline only; acceptance is covered by `user-accepts-an-invitation.md` | Sees the acceptance screen with the organization name, logo, offered role, and both the "Accept" and "Decline" buttons for the duration of the flow |
 | Invitee (unauthenticated) | Click the invitation link and initiate the sign-in flow — the sign-in flow preserves the invitation token and returns the invitee to the acceptance screen upon successful authentication | Viewing the acceptance screen without authenticating first — the route guard redirects to the sign-in flow before rendering the acceptance screen | Does not see the acceptance screen until authentication completes; sees 0 instances of the acceptance screen UI before sign-in |
-| Org Admin | View the History tab on the members page after a successful decline, see the "declined" badge and rejection timestamp, and issue a fresh invitation if needed | Reversing the declined status — a declined invitation cannot be re-activated; the admin must create a new invitation via the invite flow | Sees the declined invitation in the History tab with a red accent "declined" badge and the invitee's email and rejection date |
+| Org Admin | View the History tab on the members page after a successful decline, see the "rejected" badge and rejection timestamp, and issue a fresh invitation if needed | Reversing the declined status — a declined invitation cannot be re-activated; the admin must create a new invitation via the invite flow | Sees the declined invitation in the History tab with a red accent "rejected" badge and the invitee's email and rejection date |
 | Unauthenticated visitor (no invitation link) | None — requests to the invitation acceptance route without a valid token return HTTP 422 | Accessing the acceptance screen without a valid invitation token in the URL | Invitation acceptance screen is not rendered; the server returns HTTP 422 before any UI is visible to the unauthenticated visitor |
 
 ## Constraints
@@ -167,7 +167,7 @@ fresh invitation to re-invite the same person.
     the session email does not match the invitation email equals 0
 - After a successful decline the invitation entry count in the Pending tab for
     that token equals 0 and the entry count in the History tab for that token
-    equals 1, with a "declined" badge rendered in a red accent color
+    equals 1, with a "rejected" badge rendered in a red accent color
 - The redirect destination after decline is determined from the invitee's
     session membership count at the time the HTTP 200 response is received —
     the count of seconds the client spends on a broken or missing route after
@@ -187,7 +187,7 @@ fresh invitation to re-invite the same person.
 - [ ] After decline when the invitee has no organizations, the window location pathname equals `/app/create-organization` — the pathname equals `/app/create-organization` within 1000ms of receiving the HTTP 200 response
 - [ ] An already-rejected token returns HTTP 422 on a second decline attempt — the response status equals 422 and the invitation status in the database remains `rejected` after the second request
 - [ ] The admin's members page History tab shows the declined invitation entry count equals 1 for the token — the history tab entry count for the declined token equals 1 and the pending tab entry count equals 0
-- [ ] The declined invitation entry in the History tab displays a "declined" badge — the badge element is present in the DOM and its count equals 1 per declined invitation row
+- [ ] The declined invitation entry in the History tab displays a "rejected" badge — the badge element is present in the DOM and its count equals 1 per declined invitation row
 - [ ] An unauthenticated invitee clicking the invitation link is redirected to sign-in before the acceptance screen renders — the sign-in page element count in the DOM equals 1 and the acceptance screen element count equals 0 before authentication completes
 - [ ] All acceptance screen text and button labels are rendered via i18n translation keys — the count of hardcoded English string literals in the acceptance screen components equals 0
 

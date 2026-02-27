@@ -3,7 +3,7 @@ id: SPEC-2026-032
 version: 1.0.0
 created: 2026-02-27
 owner: Mayank (Intent Architect)
-status: draft
+status: approved
 roles: [Org Admin, Org Owner]
 ---
 
@@ -277,14 +277,14 @@ use a different address.
     as a separate concern covering invitation token validation, role assignment on accept,
     and the redirect destination after the invitee joins the organization
 - This specification does not address cancelling a pending invitation from the Pending
-    tab — that behavior is defined in `org-admin-manages-pending-invitations.md` as a
+    tab — that behavior is defined in `org-admin-cancels-an-invitation.md` as a
     separate concern covering the cancel action, confirmation dialog, and record deletion
     from the `invitation` table without affecting existing member records
 - This specification does not address removing an existing active member from the
     organization — that behavior is defined in `org-admin-removes-a-member.md` covering
     the admin-initiated removal flow that deletes the `member` row and revokes access
 - This specification does not address promoting or demoting an existing member's role
-    within the organization — that behavior is defined in `org-admin-manages-member-roles.md`
+    within the organization — that behavior is defined in `org-admin-changes-member-role.md`
     covering the role assignment controls on the Active members tab
 - This specification does not address rate limiting on the `inviteMember` mutation
     endpoint — that behavior is enforced by the global rate limiter defined in

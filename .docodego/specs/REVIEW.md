@@ -114,10 +114,10 @@ Sign-off codes: `✓` pass · `✗` fail (note the issue) · `—` not applicabl
 
 | Spec | T | L | C | X | O |
 |------|---|---|---|---|---|
-| [org-admin-invites-a-member.md](behavioral/org-admin-invites-a-member.md) | | | | | |
-| [user-accepts-an-invitation.md](behavioral/user-accepts-an-invitation.md) | | | | | |
-| [user-declines-an-invitation.md](behavioral/user-declines-an-invitation.md) | | | | | |
-| [org-admin-cancels-an-invitation.md](behavioral/org-admin-cancels-an-invitation.md) | | | | | |
+| [org-admin-invites-a-member.md](behavioral/org-admin-invites-a-member.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
+| [user-accepts-an-invitation.md](behavioral/user-accepts-an-invitation.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
+| [user-declines-an-invitation.md](behavioral/user-declines-an-invitation.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
+| [org-admin-cancels-an-invitation.md](behavioral/org-admin-cancels-an-invitation.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
 
 #### Review 4d — Member & SSO management
 
