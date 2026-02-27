@@ -268,15 +268,15 @@ Sign-off codes: `✓` pass · `✗` fail (note the issue) · `—` not applicabl
 
 Run once after all per-spec batches (1–7) are complete.
 
-- [ ] Role names (`owner`, `admin`, `member`) spelled identically in all Permission Model tables across all 93 specs
-- [ ] Route patterns (`/app/$orgSlug/`, `/app/onboarding`, `/signin`) identical across every spec that references them
-- [ ] API method names (`authClient.organization.*`, `authClient.session.*`) match the definitions in `shared-contracts.md`
-- [ ] Field names (`activeOrganizationId`, `activeTeamId`) consistent in all state machine and business rule sections
-- [ ] Count of files in `input/flows/` equals count of behavioral spec files in `behavioral/`
-- [ ] Every path in every Related Specifications section resolves to an existing file in the repo
-- [ ] Every Declared Omissions entry names a spec file that exists and covers the described behaviour
-- [ ] Invitation 7-day expiry stated identically across `org-admin-invites-a-member.md`, `user-accepts-an-invitation.md`, `user-declines-an-invitation.md`, and `org-admin-cancels-an-invitation.md`
-- [ ] HTTP 401 used exclusively for unauthenticated callers and HTTP 403 used exclusively for unauthorized role — no swapped status codes across any spec
+- [x] Role names (`owner`, `admin`, `member`) spelled identically in all Permission Model tables across all 81 behavioral specs
+- [x] Route patterns (`/app/$orgSlug/`, `/app/onboarding`, `/signin`) identical across every spec that references them
+- [x] API method names (`authClient.organization.*`, `authClient.admin.*`, `authClient.passkey.*`) consistent across all behavioral specs (Better Auth methods; `shared-contracts.md` covers oRPC contracts, not auth client)
+- [x] Field names (`activeOrganizationId`, `activeTeamId`) consistent in all state machine and business rule sections
+- [x] Count of files in `input/flows/` equals count of behavioral spec files in `behavioral/` — both equal 81 (README excluded)
+- [x] Every path in every Related Specifications section resolves to an existing file in the repo — fixed 1 dead link in `user-subscribes-to-a-plan.md` (`visitor-signs-up.md` → `user-enters-the-app.md`)
+- [x] Every Declared Omissions entry names a spec file that exists and covers the described behaviour
+- [x] Invitation 7-day expiry: `org-admin-invites-a-member.md` and `user-accepts-an-invitation.md` both state 7 days / 604800 seconds; `user-declines-an-invitation.md` and `org-admin-cancels-an-invitation.md` correctly defer expiry policy to those specs without contradicting them
+- [x] HTTP 401 used exclusively for unauthenticated callers and HTTP 403 used exclusively for unauthorized role — no swapped status codes across any spec
 
 ---
 

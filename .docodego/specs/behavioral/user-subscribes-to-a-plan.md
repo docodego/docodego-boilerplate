@@ -250,7 +250,7 @@ bypassed by a modified client.
     — documents the API endpoints for subscription management
     including the checkout initiation endpoint and webhook receiver
     that are available in the interactive Scalar API reference page
-- [visitor-signs-up](visitor-signs-up.md) — defines the user
-    registration flow that creates the initial free-tier account
-    from which the user can later upgrade to a paid plan through the
-    subscription checkout flow described in this specification
+- [user-enters-the-app](user-enters-the-app.md) — defines the user
+    registration and app entry flow that creates the initial free-tier
+    account from which the user can later upgrade to a paid plan through
+    the subscription checkout flow described in this specification
