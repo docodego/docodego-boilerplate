@@ -59,9 +59,9 @@ Sign-off codes: `✓` pass · `✗` fail (note the issue) · `—` not applicabl
 
 | Spec | T | L | C | X | O |
 |------|---|---|---|---|---|
-| [ci-cd-pipelines.md](foundation/ci-cd-pipelines.md) | | | | | |
-| [tauri-build.md](foundation/tauri-build.md) | | | | | |
-| [expo-build.md](foundation/expo-build.md) | | | | | |
+| [ci-cd-pipelines.md](foundation/ci-cd-pipelines.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
+| [tauri-build.md](foundation/tauri-build.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
+| [expo-build.md](foundation/expo-build.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
 
 ### Phase 3: Behavioral Specs — Auth & Session
 
