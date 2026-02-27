@@ -164,9 +164,9 @@ Each scored spec needs 25/25 on four dimensions:
 - [x] [extension-authenticates-via-token-relay.md](behavioral/extension-authenticates-via-token-relay.md) ← flow #69
 
 #### Commit 6e — Extension behavior (3 specs)
-- [ ] [extension-signs-out.md](behavioral/extension-signs-out.md) ← flow #70
-- [ ] [user-interacts-with-extension-popup.md](behavioral/user-interacts-with-extension-popup.md) ← flow #71
-- [ ] [extension-receives-an-update.md](behavioral/extension-receives-an-update.md) ← flow #72
+- [x] [extension-signs-out.md](behavioral/extension-signs-out.md) ← flow #70
+- [x] [user-interacts-with-extension-popup.md](behavioral/user-interacts-with-extension-popup.md) ← flow #71
+- [x] [extension-receives-an-update.md](behavioral/extension-receives-an-update.md) ← flow #72
 
 ### Phase 7: Behavioral Specs — System & Cross-Cutting
 
