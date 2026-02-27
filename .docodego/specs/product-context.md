@@ -199,7 +199,7 @@ Core tables from Better Auth and its plugins:
 | Table | Source | Purpose |
 |---|---|---|
 | `user` | Core | User accounts, `role`, `banned`, `banReason`, `banExpires`, `preferredLocale` |
-| `session` | Core | Active sessions, `token`, `expiresAt`, `ipAddress`, `userAgent`, `activeOrganizationId` |
+| `session` | Core | Active sessions, `token`, `expiresAt`, `ipAddress`, `userAgent`, `activeOrganizationId`, `activeTeamId` |
 | `account` | Core | Auth provider links (email, passkey, SSO) |
 | `verification` | Core | OTP codes and verification tokens |
 | `organization` | Org plugin | Orgs with `name`, `slug`, `logo`, `metadata` |

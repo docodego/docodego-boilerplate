@@ -132,10 +132,10 @@ Sign-off codes: `✓` pass · `✗` fail (note the issue) · `—` not applicabl
 
 | Spec | T | L | C | X | O |
 |------|---|---|---|---|---|
-| [user-creates-a-team.md](behavioral/user-creates-a-team.md) | | | | | |
-| [user-renames-a-team.md](behavioral/user-renames-a-team.md) | | | | | |
-| [org-admin-manages-team-members.md](behavioral/org-admin-manages-team-members.md) | | | | | |
-| [user-switches-active-team.md](behavioral/user-switches-active-team.md) | | | | | |
+| [user-creates-a-team.md](behavioral/user-creates-a-team.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
+| [user-renames-a-team.md](behavioral/user-renames-a-team.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
+| [org-admin-manages-team-members.md](behavioral/org-admin-manages-team-members.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
+| [user-switches-active-team.md](behavioral/user-switches-active-team.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
 
 ### Phase 5: Behavioral Specs — Dashboard, Settings, Admin
 
