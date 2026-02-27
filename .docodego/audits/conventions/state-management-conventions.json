@@ -1,0 +1,39 @@
+{
+  "file": ".docodego\\specs\\conventions\\state-management-conventions.md",
+  "overall_score": 100,
+  "threshold": 60,
+  "threshold_met": true,
+  "blocked": false,
+  "block_reason": "",
+  "status": "High-quality convention specification",
+  "dimensions": {
+    "precision": {
+      "score": 25,
+      "max_score": 25,
+      "band": "high",
+      "issues": [],
+      "suggestions": []
+    },
+    "detectability": {
+      "score": 25,
+      "max_score": 25,
+      "band": "high",
+      "issues": [],
+      "suggestions": []
+    },
+    "enforcement_coverage": {
+      "score": 25,
+      "max_score": 25,
+      "band": "high",
+      "issues": [],
+      "suggestions": []
+    },
+    "scope_clarity": {
+      "score": 25,
+      "max_score": 25,
+      "band": "high",
+      "issues": [],
+      "suggestions": []
+    }
+  }
+}

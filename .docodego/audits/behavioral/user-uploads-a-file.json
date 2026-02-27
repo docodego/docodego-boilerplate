@@ -1,0 +1,61 @@
+{
+  "file": ".docodego\\specs\\behavioral\\user-uploads-a-file.md",
+  "overall_score": 100,
+  "threshold": 60,
+  "threshold_met": true,
+  "blocked": false,
+  "block_reason": "",
+  "status": "High-quality specification",
+  "dimensions": {
+    "completeness": {
+      "score": 25,
+      "max_score": 25,
+      "band": "low",
+      "issues": [],
+      "suggestions": []
+    },
+    "testability": {
+      "score": 25,
+      "max_score": 25,
+      "band": "low",
+      "issues": [],
+      "suggestions": []
+    },
+    "unambiguity": {
+      "score": 25,
+      "max_score": 25,
+      "band": "high",
+      "issues": [],
+      "suggestions": []
+    },
+    "threat_coverage": {
+      "score": 25,
+      "max_score": 25,
+      "band": "low",
+      "issues": [
+        "Failure mode #1: No recovery path signal found",
+        "Failure mode #2: No recovery path signal found",
+        "Failure mode #3: No recovery path signal found",
+        "Failure mode #6: Too short (14 words, minimum 15)",
+        "Failure mode #7: No recovery path signal found",
+        "Failure mode #8: No recovery path signal found",
+        "Failure mode #9: No recovery path signal found",
+        "Failure mode #11: Too short (13 words, minimum 15)",
+        "Failure mode #12: No recovery path signal found",
+        "Failure mode #13: No recovery path signal found",
+        "Failure mode #14: No recovery path signal found",
+        "Failure mode #16: No recovery path signal found",
+        "Failure mode #21: No recovery path signal found",
+        "Failure mode #22: No recovery path signal found",
+        "Failure mode #23: No recovery path signal found",
+        "Failure mode #24: No recovery path signal found",
+        "Failure mode #25: No recovery path signal found",
+        "Failure mode #26: No recovery path signal found",
+        "Failure mode #27: No recovery path signal found",
+        "Failure mode #28: No recovery path signal found",
+        "Failure mode #29: No recovery path signal found"
+      ],
+      "suggestions": []
+    }
+  }
+}
