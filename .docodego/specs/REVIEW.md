@@ -43,9 +43,9 @@ Sign-off codes: `✓` pass · `✗` fail (note the issue) · `—` not applicabl
 
 | Spec | T | L | C | X | O |
 |------|---|---|---|---|---|
-| [database-schema.md](foundation/database-schema.md) | | | | | |
-| [auth-server-config.md](foundation/auth-server-config.md) | | | | | |
-| [api-framework.md](foundation/api-framework.md) | | | | | |
+| [database-schema.md](foundation/database-schema.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
+| [auth-server-config.md](foundation/auth-server-config.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
+| [api-framework.md](foundation/api-framework.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
 
 #### Review 2c — Shared Packages
 
