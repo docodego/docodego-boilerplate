@@ -96,10 +96,10 @@ Sign-off codes: `✓` pass · `✗` fail (note the issue) · `—` not applicabl
 
 | Spec | T | L | C | X | O |
 |------|---|---|---|---|---|
-| [user-creates-first-organization.md](behavioral/user-creates-first-organization.md) | | | | | |
-| [user-creates-an-organization.md](behavioral/user-creates-an-organization.md) | | | | | |
-| [user-switches-organization.md](behavioral/user-switches-organization.md) | | | | | |
-| [user-updates-organization-settings.md](behavioral/user-updates-organization-settings.md) | | | | | |
+| [user-creates-first-organization.md](behavioral/user-creates-first-organization.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
+| [user-creates-an-organization.md](behavioral/user-creates-an-organization.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
+| [user-switches-organization.md](behavioral/user-switches-organization.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
+| [user-updates-organization-settings.md](behavioral/user-updates-organization-settings.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
 
 #### Review 4b — Org settings & departure
 

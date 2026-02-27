@@ -3,7 +3,7 @@ id: SPEC-2026-024
 version: 1.0.0
 created: 2026-02-27
 owner: Mayank (Intent Architect)
-status: draft
+status: approved
 roles: [Authenticated User]
 ---
 
@@ -127,7 +127,7 @@ their active organization's dashboard.
     user already has 1 or more memberships and the onboarding redirect does
     not fire, routing them directly to their active organization's dashboard
 - **Rule slug-format:** IF the slug value does not match the pattern
-    `^[a-z0-9][a-z0-9-]*[a-z0-9]$` with a minimum length of 3 characters
+    `^[a-z0-9][a-z0-9-]{1,}[a-z0-9]$` with a minimum length of 3 characters
     THEN the server rejects the create request with HTTP 400 and the client
     displays a localized validation error with the count of violated rules
 - **Rule slug-uniqueness:** IF a create request is received AND an existing

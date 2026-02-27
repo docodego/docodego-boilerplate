@@ -3,7 +3,7 @@ id: SPEC-2026-025
 version: 1.0.0
 created: 2026-02-27
 owner: Mayank (Intent Architect)
-status: draft
+status: approved
 roles: [Authenticated User]
 ---
 
@@ -102,7 +102,7 @@ any time through the same switcher.
 | creation_form | creation_form (slug_checking) | Client fires the debounced slug availability check after a keystroke | Slug value is non-empty |
 | creation_form (slug_checking) | creation_form (slug_available) | Server returns available status for the slug | Response indicates slug is not taken |
 | creation_form (slug_checking) | creation_form (slug_taken) | Server returns taken status for the slug | Response indicates slug is already in use |
-| creation_form | submitting | User clicks the submit button and client-side validation passes | Slug length is at least 3, slug matches `^[a-z0-9][a-z0-9-]*[a-z0-9]$`, slug availability check returned available |
+| creation_form | submitting | User clicks the submit button and client-side validation passes | Slug length is at least 3, slug matches `^[a-z0-9][a-z0-9-]{1,}[a-z0-9]$`, slug availability check returned available |
 | submitting | org_created | Server returns HTTP 200 with the new organization object | Database write commits successfully |
 | submitting | creation_form (server_error) | Server returns HTTP 409 or HTTP 500 | Slug conflict or database failure |
 | org_created | dashboard | Client navigates to `/app/{newSlug}/` | `activeOrganizationId` has been set to the new org's ID |
@@ -110,7 +110,7 @@ any time through the same switcher.
 ## Business Rules
 
 - **Rule slug-format:** IF the user submits the creation form THEN the slug must
-    match the pattern `^[a-z0-9][a-z0-9-]*[a-z0-9]$` AND the slug length must
+    match the pattern `^[a-z0-9][a-z0-9-]{1,}[a-z0-9]$` AND the slug length must
     be at least 3 characters AND the count of uppercase letters, spaces, and
     special characters other than hyphens in the slug must equal 0
 - **Rule slug-uniqueness:** IF the slug passes format validation THEN the server

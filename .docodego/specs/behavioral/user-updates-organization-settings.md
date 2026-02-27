@@ -3,7 +3,7 @@ id: SPEC-2026-027
 version: 1.0.0
 created: 2026-02-27
 owner: Mayank (Intent Architect)
-status: draft
+status: approved
 roles: [Org Owner, Org Admin]
 ---
 
@@ -78,7 +78,8 @@ redirected by the route guard.
 | loading_form | form_ready | Settings page loads with current org name and slug pre-filled | API returns 200 with organization data |
 | loading_form | load_error | API returns non-200 or network error during page load | HTTP response status does not equal 200 or request times out |
 | form_ready | submitting | User edits fields and clicks save | At least 1 field has changed from its original value |
-| submitting | slug_validation_error | API returns 400 due to slug conflict or format violation | New slug fails uniqueness or format check server-side |
+| submitting | slug_format_error | API returns 400 due to slug format violation | New slug fails format check server-side |
+| submitting | slug_conflict_error | API returns 409 due to slug already taken | New slug fails uniqueness check server-side |
 | submitting | success_slug_changed | API returns 200 and slug was changed | Mutation completes and new slug differs from previous slug |
 | submitting | success_name_only | API returns 200 and only name was changed | Mutation completes and slug is unchanged |
 | slug_validation_error | submitting | User corrects the slug and clicks save again | Slug field has been edited after the validation error |
@@ -94,7 +95,7 @@ redirected by the route guard.
     format error and the slug is not persisted
 - **Rule slug-uniqueness:** IF the slug field is changed AND the new slug
     value is already taken by a different organization in the `organization`
-    table THEN the API returns HTTP 400 with a localized conflict error
+    table THEN the API returns HTTP 409 with a localized conflict error
     indicating the slug is unavailable and the mutation does not persist
 - **Rule url-sync-on-slug-change:** IF the mutation succeeds AND the slug
     was changed THEN the client navigates to `/app/{newSlug}/settings`
@@ -148,7 +149,7 @@ redirected by the route guard.
 - [ ] Navigating to `/app/$orgSlug/settings` renders the slug input field pre-filled with the current `organization.slug` — the input value is non-empty and equals the stored slug after the page loads
 - [ ] Clicking save dispatches the oRPC `updateOrganization` mutation with both the name and slug fields present in the payload — the mutation invocation count equals 1 after the save button is clicked
 - [ ] Submitting a slug that fails the format check causes the API to return HTTP 400 and the client error element is present and visible — the response status equals 400 and the error element count in the DOM equals 1
-- [ ] Submitting a slug already taken by a different organization causes the API to return HTTP 400 and the client conflict error element is present — the response status equals 400 and count of persisted org records with that slug equals 1
+- [ ] Submitting a slug already taken by a different organization causes the API to return HTTP 409 and the client conflict error element is present — the response status equals 409 and count of persisted org records with that slug equals 1
 - [ ] After a successful mutation where the slug changed, the window location pathname equals `/app/{newSlug}/settings` — the pathname updates within 1 navigation cycle and the old slug path returns a 404 response
 - [ ] After a successful mutation where only the name changed, the window location pathname remains unchanged and equals `/app/{originalSlug}/settings` — count of navigation events triggered by the name-only mutation equals 0
 - [ ] After a name-only mutation succeeds, the OrgSwitcher element displays the updated name within 500ms — the updated name text is present in the OrgSwitcher DOM element and the old name text is absent
@@ -163,9 +164,9 @@ redirected by the route guard.
 | Scenario | Expected Behavior | Test Signal |
 |----------|------------------|-------------|
 | User submits the form with no changes to either name or slug | The client either disables the save button when values are unchanged or the mutation is called and the API treats it as a no-op returning HTTP 200 with the existing data — count of persisted changes equals 0 | Save button disabled attribute is present when form values match original values, or HTTP response status equals 200 with unchanged data |
-| User changes the slug to a value that differs only in letter casing from an existing org slug, such as `MyOrg` vs `myorg` | The API treats slugs as case-insensitive during uniqueness validation and returns HTTP 400 because the lowercase-normalized form of the new slug already exists in the organization table | HTTP response status equals 400 and the error element is present |
+| User changes the slug to a value that differs only in letter casing from an existing org slug, such as `MyOrg` vs `myorg` | The API treats slugs as case-insensitive during uniqueness validation and returns HTTP 409 because the lowercase-normalized form of the new slug already exists in the organization table | HTTP response status equals 409 and the error element is present |
 | User types a valid slug and saves, then immediately navigates back using the browser back button | The browser navigates back to the old `/app/{oldSlug}/settings` URL which no longer resolves to a valid route — the route guard detects the stale slug and redirects the user to the new `/app/{newSlug}/settings` or to the org dashboard | Window location pathname does not remain on the old slug path more than 1 navigation cycle |
-| Two admins save conflicting slug changes at the same time from different browser sessions | The second mutation to arrive at the server encounters a uniqueness conflict because the first mutation already persisted the new slug — the second mutation returns HTTP 400 with a conflict error | HTTP response status for the second concurrent request equals 400 and count of persisted slug values in the organization table equals 1 |
+| Two admins save conflicting slug changes at the same time from different browser sessions | The second mutation to arrive at the server encounters a uniqueness conflict because the first mutation already persisted the new slug — the second mutation returns HTTP 409 with a conflict error | HTTP response status for the second concurrent request equals 409 and count of persisted slug values in the organization table equals 1 |
 | User submits a slug with leading or trailing hyphens such as `-myorg` or `myorg-` | The API rejects the value with HTTP 400 because the slug format rule prohibits leading and trailing hyphens — the error element describes the format constraint | HTTP response status equals 400 and the error element is present and visible |
 | User submits a name that is an empty string after trimming whitespace | The API returns HTTP 400 because a blank organization name is not valid — the client displays a localized error and the form field retains focus | HTTP response status equals 400 and the name field is still editable |
 
