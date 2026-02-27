@@ -158,8 +158,8 @@ Each scored spec needs 25/25 on four dimensions:
 - [ ] [mobile-handles-deep-link.md](behavioral/mobile-handles-deep-link.md) ← flow #65
 
 #### Commit 6d — Mobile preferences & extension auth (4 specs)
-- [x] [user-changes-theme-on-mobile.md](behavioral/user-changes-theme-on-mobile.md) ← flow #66
-- [x] [user-changes-language-on-mobile.md](behavioral/user-changes-language-on-mobile.md) ← flow #67
+- [ ] [user-changes-theme-on-mobile.md](behavioral/user-changes-theme-on-mobile.md) ← flow #66
+- [ ] [user-changes-language-on-mobile.md](behavioral/user-changes-language-on-mobile.md) ← flow #67
 - [ ] [user-installs-browser-extension.md](behavioral/user-installs-browser-extension.md) ← flow #68
 - [ ] [extension-authenticates-via-token-relay.md](behavioral/extension-authenticates-via-token-relay.md) ← flow #69
 
