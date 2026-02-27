@@ -77,10 +77,10 @@ Each scored spec needs 25/25 on four dimensions:
 - [x] [user-updates-organization-settings.md](behavioral/user-updates-organization-settings.md) ← flow #16
 
 #### Commit 4b — Org settings & departure (4 specs)
-- [ ] [user-uploads-organization-logo.md](behavioral/user-uploads-organization-logo.md) ← flow #17
-- [ ] [user-transfers-organization-ownership.md](behavioral/user-transfers-organization-ownership.md) ← flow #18
-- [ ] [user-leaves-an-organization.md](behavioral/user-leaves-an-organization.md) ← flow #19
-- [ ] [user-deletes-an-organization.md](behavioral/user-deletes-an-organization.md) ← flow #20
+- [x] [user-uploads-organization-logo.md](behavioral/user-uploads-organization-logo.md) ← flow #17
+- [x] [user-transfers-organization-ownership.md](behavioral/user-transfers-organization-ownership.md) ← flow #18
+- [x] [user-leaves-an-organization.md](behavioral/user-leaves-an-organization.md) ← flow #19
+- [x] [user-deletes-an-organization.md](behavioral/user-deletes-an-organization.md) ← flow #20
 
 #### Commit 4c — Invitations (4 specs)
 - [ ] [org-admin-invites-a-member.md](behavioral/org-admin-invites-a-member.md) ← flow #22
