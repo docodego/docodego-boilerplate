@@ -160,10 +160,10 @@ Sign-off codes: `✓` pass · `✗` fail (note the issue) · `—` not applicabl
 
 | Spec | T | L | C | X | O |
 |------|---|---|---|---|---|
-| [user-registers-a-passkey.md](behavioral/user-registers-a-passkey.md) | | | | | |
-| [user-renames-a-passkey.md](behavioral/user-renames-a-passkey.md) | | | | | |
-| [user-removes-a-passkey.md](behavioral/user-removes-a-passkey.md) | | | | | |
-| [user-manages-sessions.md](behavioral/user-manages-sessions.md) | | | | | |
+| [user-registers-a-passkey.md](behavioral/user-registers-a-passkey.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
+| [user-renames-a-passkey.md](behavioral/user-renames-a-passkey.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
+| [user-removes-a-passkey.md](behavioral/user-removes-a-passkey.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
+| [user-manages-sessions.md](behavioral/user-manages-sessions.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
 
 #### Review 5d — Account & admin basics
 
