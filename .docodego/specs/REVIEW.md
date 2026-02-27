@@ -51,9 +51,9 @@ Sign-off codes: `✓` pass · `✗` fail (note the issue) · `—` not applicabl
 
 | Spec | T | L | C | X | O |
 |------|---|---|---|---|---|
-| [shared-contracts.md](foundation/shared-contracts.md) | | | | | |
-| [shared-ui.md](foundation/shared-ui.md) | | | | | |
-| [shared-i18n.md](foundation/shared-i18n.md) | | | | | |
+| [shared-contracts.md](foundation/shared-contracts.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
+| [shared-ui.md](foundation/shared-ui.md) | ✓ | ✓ | ✓ | ✓ | — |
+| [shared-i18n.md](foundation/shared-i18n.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
 
 #### Review 2d — Build & Deploy
 

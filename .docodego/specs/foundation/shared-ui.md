@@ -229,11 +229,11 @@ and utility function without any role-based restrictions.
 - [shared-contracts](shared-contracts.md) — oRPC contract
     definitions and Zod schemas that define the API types
     consumed by form components for client-side input validation
-- [auth-sign-in](../behavioral/auth-sign-in.md) — Authentication
+- [user-signs-in-with-email-otp](../behavioral/user-signs-in-with-email-otp.md) — Authentication
     sign-in flow specification that consumes Button, Input, Label,
     and Card components from the shared UI package for its form
     layouts
-- [build-deploy](../foundation/build-deploy.md) — Build and
+- [ci-cd-pipelines](ci-cd-pipelines.md) — Build and
     deployment pipeline specification that defines how the
     `@repo/ui` package is type-checked, tested, and bundled as
     part of the monorepo CI workflow
