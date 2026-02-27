@@ -116,10 +116,10 @@ Each scored spec needs 25/25 on four dimensions:
 - [x] [user-syncs-locale-preference.md](behavioral/user-syncs-locale-preference.md) ← flow #39
 
 #### Commit 5c — Passkeys & sessions (4 specs)
-- [ ] [user-registers-a-passkey.md](behavioral/user-registers-a-passkey.md) ← flow #40
-- [ ] [user-renames-a-passkey.md](behavioral/user-renames-a-passkey.md) ← flow #41
-- [ ] [user-removes-a-passkey.md](behavioral/user-removes-a-passkey.md) ← flow #42
-- [ ] [user-manages-sessions.md](behavioral/user-manages-sessions.md) ← flow #43
+- [x] [user-registers-a-passkey.md](behavioral/user-registers-a-passkey.md) ← flow #40
+- [x] [user-renames-a-passkey.md](behavioral/user-renames-a-passkey.md) ← flow #41
+- [x] [user-removes-a-passkey.md](behavioral/user-removes-a-passkey.md) ← flow #42
+- [x] [user-manages-sessions.md](behavioral/user-manages-sessions.md) ← flow #43
 
 #### Commit 5d — Account & admin basics (4 specs)
 - [ ] [user-deletes-their-account.md](behavioral/user-deletes-their-account.md) ← flow #44
