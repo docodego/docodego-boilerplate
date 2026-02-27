@@ -35,9 +35,9 @@ Sign-off codes: `✓` pass · `✗` fail (note the issue) · `—` not applicabl
 
 | Spec | T | L | C | X | O |
 |------|---|---|---|---|---|
-| [monorepo-structure.md](foundation/monorepo-structure.md) | | | | | |
-| [typescript-config.md](foundation/typescript-config.md) | | | | | |
-| [code-quality.md](foundation/code-quality.md) | | | | | |
+| [monorepo-structure.md](foundation/monorepo-structure.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
+| [typescript-config.md](foundation/typescript-config.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
+| [code-quality.md](foundation/code-quality.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
 
 #### Review 2b — Backend Foundation
 

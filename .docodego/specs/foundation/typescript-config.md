@@ -240,6 +240,6 @@ changes.
 - [api-framework](api-framework.md) — Hono API framework
     configuration that depends on `@cloudflare/workers-types`
     being present in the API workspace tsconfig types array
-- [monorepo-tooling](monorepo-tooling.md) — pnpm workspace and
+- [monorepo-structure](monorepo-structure.md) — pnpm workspace and
     Turborepo configuration that defines the catalog entry for
     TypeScript version pinning and the typecheck pipeline task
