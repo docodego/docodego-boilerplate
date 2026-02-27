@@ -171,25 +171,25 @@ Each scored spec needs 25/25 on four dimensions:
 ### Phase 7: Behavioral Specs — System & Cross-Cutting
 
 #### Commit 7a — Landing & email system (4 specs)
-- [ ] [user-visits-landing-page.md](behavioral/user-visits-landing-page.md) ← flow #1
-- [ ] [user-enters-the-app.md](behavioral/user-enters-the-app.md) ← flow #2
-- [ ] [system-sends-otp-email.md](behavioral/system-sends-otp-email.md) ← flow #73
-- [ ] [system-sends-invitation-email.md](behavioral/system-sends-invitation-email.md) ← flow #74
+- [x] [user-visits-landing-page.md](behavioral/user-visits-landing-page.md) ← flow #1
+- [x] [user-enters-the-app.md](behavioral/user-enters-the-app.md) ← flow #2
+- [x] [system-sends-otp-email.md](behavioral/system-sends-otp-email.md) ← flow #73
+- [x] [system-sends-invitation-email.md](behavioral/system-sends-invitation-email.md) ← flow #74
 
 #### Commit 7b — i18n, uploads & error handling (4 specs)
-- [ ] [system-detects-locale.md](behavioral/system-detects-locale.md) ← flow #75
-- [ ] [app-renders-rtl-layout.md](behavioral/app-renders-rtl-layout.md) ← flow #76
-- [ ] [user-uploads-a-file.md](behavioral/user-uploads-a-file.md) ← flow #77
-- [ ] [system-handles-errors.md](behavioral/system-handles-errors.md) ← flow #78
+- [x] [system-detects-locale.md](behavioral/system-detects-locale.md) ← flow #75
+- [x] [app-renders-rtl-layout.md](behavioral/app-renders-rtl-layout.md) ← flow #76
+- [x] [user-uploads-a-file.md](behavioral/user-uploads-a-file.md) ← flow #77
+- [x] [system-handles-errors.md](behavioral/system-handles-errors.md) ← flow #78
 
 #### Commit 7c — API reference & billing (3 specs)
-- [ ] [developer-views-api-reference.md](behavioral/developer-views-api-reference.md) ← flow #79
-- [ ] [user-subscribes-to-a-plan.md](behavioral/user-subscribes-to-a-plan.md) ← flow #80
-- [ ] [user-manages-billing-portal.md](behavioral/user-manages-billing-portal.md) ← flow #81
+- [x] [developer-views-api-reference.md](behavioral/developer-views-api-reference.md) ← flow #79
+- [x] [user-subscribes-to-a-plan.md](behavioral/user-subscribes-to-a-plan.md) ← flow #80
+- [x] [user-manages-billing-portal.md](behavioral/user-manages-billing-portal.md) ← flow #81
 
 ### Phase 8: Full Review Pass
 
-- [ ] Run ICS scorer on all 93 scored specs, fix regressions, verify ICS 100
+- [x] Run ICS scorer on all 93 scored specs, fix regressions, verify ICS 100
 
 ---
 
