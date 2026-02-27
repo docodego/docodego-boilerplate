@@ -143,10 +143,10 @@ Sign-off codes: `✓` pass · `✗` fail (note the issue) · `—` not applicabl
 
 | Spec | T | L | C | X | O |
 |------|---|---|---|---|---|
-| [user-navigates-the-dashboard.md](behavioral/user-navigates-the-dashboard.md) | | | | | |
-| [user-deletes-a-team.md](behavioral/user-deletes-a-team.md) | | | | | |
-| [user-updates-profile.md](behavioral/user-updates-profile.md) | | | | | |
-| [user-uploads-profile-avatar.md](behavioral/user-uploads-profile-avatar.md) | | | | | |
+| [user-navigates-the-dashboard.md](behavioral/user-navigates-the-dashboard.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
+| [user-deletes-a-team.md](behavioral/user-deletes-a-team.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
+| [user-updates-profile.md](behavioral/user-updates-profile.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
+| [user-uploads-profile-avatar.md](behavioral/user-uploads-profile-avatar.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
 
 #### Review 5b — Theme, language & locale
 
