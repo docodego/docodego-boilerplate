@@ -251,10 +251,10 @@ Sign-off codes: `✓` pass · `✗` fail (note the issue) · `—` not applicabl
 
 | Spec | T | L | C | X | O |
 |------|---|---|---|---|---|
-| [system-detects-locale.md](behavioral/system-detects-locale.md) | | | | | |
-| [app-renders-rtl-layout.md](behavioral/app-renders-rtl-layout.md) | | | | | |
-| [user-uploads-a-file.md](behavioral/user-uploads-a-file.md) | | | | | |
-| [system-handles-errors.md](behavioral/system-handles-errors.md) | | | | | |
+| [system-detects-locale.md](behavioral/system-detects-locale.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
+| [app-renders-rtl-layout.md](behavioral/app-renders-rtl-layout.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
+| [user-uploads-a-file.md](behavioral/user-uploads-a-file.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
+| [system-handles-errors.md](behavioral/system-handles-errors.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
 
 #### Review 7c — API reference & billing
 

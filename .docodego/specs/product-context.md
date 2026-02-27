@@ -127,7 +127,7 @@ All authentication is passwordless. The system supports four sign-in methods:
 | Object storage | Cloudflare R2 |
 | Auth | Better Auth ^1.4 (7 plugins: Email OTP, Passkey, Anonymous, SSO, Organization, Admin, DodoPayments) |
 | CSS | Tailwind CSS ^4 with logical properties for RTL |
-| Components | Shadcn `base-vega` style (`@base-ui/react`, not Radix) |
+| Components | Shadcn `base-vega` style (`@base-ui/react`, not Radix) — includes Sonner for toasts |
 | Icons | Lucide React |
 | Animations | Motion (Framer Motion) ^12 |
 | i18n | i18next ^25, react-i18next ^16, 2 locales (en, ar), 5 namespaces |
