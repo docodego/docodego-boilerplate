@@ -2,9 +2,9 @@
 id: SPEC-2026-009
 version: 1.0.0
 created: 2026-02-26
-owner: Mayank
-role: Intent Architect
+owner: Mayank (Intent Architect)
 status: draft
+roles: [Framework Adopter]
 ---
 
 [← Back to Roadmap](../ROADMAP.md)
