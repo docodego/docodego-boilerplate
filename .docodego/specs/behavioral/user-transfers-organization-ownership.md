@@ -3,7 +3,7 @@ id: SPEC-2026-029
 version: 1.0.0
 created: 2026-02-27
 owner: Mayank (Intent Architect)
-status: draft
+status: approved
 roles: [Org Owner]
 ---
 
@@ -253,7 +253,7 @@ ownership transfers — on their next page load or data fetch.
     concern covering the deletion confirmation dialog and cascading member removal
 - This specification does not address promoting a regular member to admin so they
     become eligible for ownership transfer — that behavior is defined in
-    `org-admin-manages-member-roles.md` covering role assignment and demotion flows
+    `org-admin-changes-member-role.md` covering role assignment and demotion flows
 - This specification does not address editing organization name or slug from the
     settings page — that behavior is defined in `user-updates-organization-settings.md`
     as a separate concern for the non-destructive settings form

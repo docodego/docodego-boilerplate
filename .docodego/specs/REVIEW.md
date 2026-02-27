@@ -105,10 +105,10 @@ Sign-off codes: `✓` pass · `✗` fail (note the issue) · `—` not applicabl
 
 | Spec | T | L | C | X | O |
 |------|---|---|---|---|---|
-| [user-uploads-organization-logo.md](behavioral/user-uploads-organization-logo.md) | | | | | |
-| [user-transfers-organization-ownership.md](behavioral/user-transfers-organization-ownership.md) | | | | | |
-| [user-leaves-an-organization.md](behavioral/user-leaves-an-organization.md) | | | | | |
-| [user-deletes-an-organization.md](behavioral/user-deletes-an-organization.md) | | | | | |
+| [user-uploads-organization-logo.md](behavioral/user-uploads-organization-logo.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
+| [user-transfers-organization-ownership.md](behavioral/user-transfers-organization-ownership.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
+| [user-leaves-an-organization.md](behavioral/user-leaves-an-organization.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
+| [user-deletes-an-organization.md](behavioral/user-deletes-an-organization.md) | ✓ | ✓ | ✓ | ✓ | ✓ |
 
 #### Review 4c — Invitations
 
