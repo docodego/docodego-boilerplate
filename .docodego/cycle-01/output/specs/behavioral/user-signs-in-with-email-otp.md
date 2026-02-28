@@ -199,7 +199,7 @@ visitor who reaches `/signin` has identical capabilities.
     - **What happens:** The browser's password manager or autofill feature detects the 6 input fields and attempts to fill them with saved credentials, displaying incorrect data in the code fields.
     - **Source:** Browser heuristic that misidentifies OTP digit inputs as a password or username field and populates them with stored credential data.
     - **Consequence:** The user sees non-numeric saved credential data in the OTP fields, causing confusion and a failed verification attempt if they submit without correcting the values.
-    - **Recovery:** The input fields set `autocomplete="one-time-code"` to hint the browser to use OTP autofill instead of password autofill, and the fields fall back to `type="text"` with `inputMode="numeric"` to prevent password manager popup interference on the code entry screen.
+    - **Recovery:** The input fields set `autocomplete="one-time-code"` to hint the browser to use OTP autofill instead of password autofill, and the component falls back to `type="text"` with `inputMode="numeric"` to prevent password manager popup interference on the code entry screen.
 
 ## Declared Omissions
 

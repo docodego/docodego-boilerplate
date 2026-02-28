@@ -226,7 +226,7 @@ email fails as if the account never existed.
     - **What happens:** The server successfully commits the deletion transaction and returns HTTP 200 with a `Set-Cookie` header clearing the session cookie, but the browser fails to process the cookie clearance header due to a client-side cookie policy or extension interference, leaving a stale session cookie that the browser continues to send with subsequent requests.
     - **Source:** Browser cookie policy restrictions, a third-party browser extension that intercepts or blocks `Set-Cookie` headers, or a client-side storage API failure that prevents the session cookie from being removed from the cookie jar.
     - **Consequence:** The browser sends the stale session token with subsequent requests, but the server has already deleted all session rows — every request returns HTTP 401 because the session token resolves to no valid session, effectively locking the user out of any authenticated action.
-    - **Recovery:** The server returns HTTP 401 for every request bearing the stale token, and the client-side route guard detects the 401 response and redirects to `/signin` — the redirect clears local state and the stale cookie expires based on its configured max-age, after which the browser stops sending it with requests.
+    - **Recovery:** The server returns HTTP 401 for every request bearing the stale token, and the client-side route guard falls back to redirecting the user to `/signin` — the redirect clears local state and the stale cookie expires based on its configured max-age, after which the browser stops sending it with requests.
 
 ## Declared Omissions
 
