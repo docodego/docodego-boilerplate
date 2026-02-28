@@ -86,6 +86,7 @@ e2e/                  Playwright E2E tests
 - Biome runs at root (`pnpm lint`), not through turbo — too fast
   for turbo caching to help
 - knip runs with `--cache` for faster consecutive runs
+- **Scoring tools**: Run via `.docodego/tools/run <tool> <spec-file>` (auto-sources `.env`). See `.docodego/tools/README.md` for more info.
 
 ## Tailwind CSS
 

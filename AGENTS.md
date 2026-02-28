@@ -66,12 +66,10 @@ e2e/                  Playwright E2E tests
 
 ## Git
 
-- Never commit or push without explicit user approval — show the
-  diff and ask first
+- Never commit or push without explicit user approval — show the diff and ask first
 - NEVER include Claude co-author in commits/PRs
 - Use `pwsh -Command` if bash command fails
-- Quality gate is cumulative — later milestones must not break
-  checks that previously passed
+- Quality gate is cumulative — later milestones must not break checks that previously passed
 
 ## TypeScript
 
@@ -88,6 +86,7 @@ e2e/                  Playwright E2E tests
 - Biome runs at root (`pnpm lint`), not through turbo — too fast
   for turbo caching to help
 - knip runs with `--cache` for faster consecutive runs
+- **Scoring tools**: Run via `.docodego/tools/run <tool> <spec-file>` (auto-sources `.env`). See `.docodego/tools/README.md` for more info.
 
 ## Tailwind CSS
 
@@ -99,8 +98,7 @@ e2e/                  Playwright E2E tests
   `rounded-s-`/`rounded-e-` not `rounded-l-`/`rounded-r-`
 - `translate-x` has no logical equivalent — use `rtl:` override
 
-
-## UI package (`packages/ui`)
+## UI Composition
 
 - Shadcn `base-vega` style uses `@base-ui/react`, not Radix —
   don't assume Radix primitives
@@ -120,9 +118,9 @@ e2e/                  Playwright E2E tests
 
 ## File Limits
 
-- **Source modules** — max ~200 lines (mapping/data-heavy: ~400)
-- **Test files** — max ~300 lines, split by feature beyond that
-- **Type definitions** — max ~200 lines
+- **Source modules** — max ~300 lines (mapping/data-heavy: ~400)
+- **Test files** — max ~400 lines, split by feature beyond that
+- **Type definitions** — max ~250 lines
 - When a file exceeds these limits, refactor before adding more code.
 
 ### Complexity over line count
