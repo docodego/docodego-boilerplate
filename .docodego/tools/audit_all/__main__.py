@@ -17,15 +17,15 @@ load_dotenv()
 
 # ── Scoring rules per spec group ─────────────────────────────────────
 # Maps directory name → which per-file and corpus scorers to run.
-# Per-file: ics, ccs, sds.  Corpus: csg, shs, scr.
+# Per-file: ics, ccs.  Corpus: csg, shs, scr.
 
 GROUP_RULES: dict[str, dict[str, list[str]]] = {
     "behavioral": {
-        "per_file": ["ics", "sds"],
+        "per_file": ["ics"],
         "corpus": ["csg", "shs", "scr"],
     },
     "foundation": {
-        "per_file": ["ics", "sds"],
+        "per_file": ["ics"],
         "corpus": ["shs", "scr"],
     },
     "conventions": {
@@ -72,14 +72,13 @@ def main() -> None:
     # Lazy imports — all scorers loaded once
     from ics_scorer.__main__ import main as ics_main
     from ccs_scorer.__main__ import main as ccs_main
-    from sds_scorer.__main__ import main as sds_main
     from csg_scorer.__main__ import main as csg_main
     from shs_scorer.__main__ import main as shs_main
     from scr_scorer.__main__ import main as scr_main
     from dashboard.__main__ import main as dash_main
 
     scorers = {
-        "ics": ics_main, "ccs": ccs_main, "sds": sds_main,
+        "ics": ics_main, "ccs": ccs_main,
         "csg": csg_main, "shs": shs_main, "scr": scr_main,
     }
 

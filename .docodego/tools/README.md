@@ -34,7 +34,6 @@ audits are written to `$DOCODEGO_CYCLE/audits/`.
 |------|----------|
 | **ICS** | Can a developer/AI build this feature from the spec alone, without guessing? |
 | **CCS** | Can an AI/developer enforce this convention, or is it too vague to automate? |
-| **SDS** | Has the spec author thought through security — threats, auth, inputs, defenses? |
 | **CSG** | Do specs that share business rules, constants, and permissions actually agree? |
 | **SHS** | Is the spec corpus structurally sound — linked, complete, and within limits? |
 | **SCR** | Are the dependencies referenced in specs healthy, safe, and well-documented? |
@@ -45,10 +44,9 @@ audits are written to `$DOCODEGO_CYCLE/audits/`.
 |---|------|---------|--------|-------|------------|--------------|
 | 1 | [Intent Clarity Score](docs/ics.md) | ICS | Implemented | Single file | 4 x 25 | Behavioral + Foundation |
 | 2 | [Convention Clarity Score](docs/ccs.md) | CCS | Implemented | Single file | 4 x 25 | Convention |
-| 3 | [Security Design Score](docs/sds.md) | SDS | Implemented | Single file | 4 x 25 | Behavioral + Foundation |
-| 4 | [Constraint Symmetry Guard](docs/csg.md) | CSG | Implemented | Directory | 4 x 25 | Behavioral |
-| 5 | [Spec Health Score](docs/shs.md) | SHS | Implemented | Directory | 4 x 25 | All |
-| 6 | [Supply Chain Radar](docs/scr.md) | SCR | Implemented | Directory | 40 + 25 + 20 + 15 | All |
+| 3 | [Constraint Symmetry Guard](docs/csg.md) | CSG | Implemented | Directory | 4 x 25 | Behavioral |
+| 4 | [Spec Health Score](docs/shs.md) | SHS | Implemented | Directory | 4 x 25 | All |
+| 5 | [Supply Chain Radar](docs/scr.md) | SCR | Implemented | Directory | 40 + 25 + 20 + 15 | All |
 
 ## Shared Conventions
 
@@ -75,7 +73,7 @@ All tools share these properties:
 
 | Mode | Tools | Input | What it scores |
 |------|-------|-------|---------------|
-| Single-file | ICS, CCS, SDS | One or more `.md` files | Quality of individual specs |
+| Single-file | ICS, CCS | One or more `.md` files | Quality of individual specs |
 | Directory | CSG, SHS, SCR | Spec directory | Consistency across the corpus |
 
 ## Full Audit Run
@@ -87,7 +85,7 @@ Regenerate all audit JSONs, build the dashboard, and open it:
 ```
 
 This single-process runner uses threaded parallelism — per-file
-scorers (ICS, CCS, SDS) run in parallel, then corpus scorers
+scorers (ICS, CCS) run in parallel, then corpus scorers
 (CSG, SHS, SCR) run in parallel, then the dashboard is built.
 Reads `DOCODEGO_CYCLE` from `tools.env` to locate specs and
 audits.

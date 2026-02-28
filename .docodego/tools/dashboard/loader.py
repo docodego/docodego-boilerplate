@@ -5,12 +5,11 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-TOOL_ORDER = ["ics", "ccs", "sds", "csg", "shs", "scr"]
+TOOL_ORDER = ["ics", "ccs", "csg", "shs", "scr"]
 
 TOOL_INFO: dict[str, dict[str, str]] = {
     "ics": {"name": "Intent Clarity", "scope": "file"},
     "ccs": {"name": "Convention Clarity", "scope": "file"},
-    "sds": {"name": "Security Design", "scope": "file"},
     "csg": {"name": "Constraint Symmetry", "scope": "corpus"},
     "shs": {"name": "Spec Health", "scope": "corpus"},
     "scr": {"name": "Supply Chain Radar", "scope": "corpus"},
