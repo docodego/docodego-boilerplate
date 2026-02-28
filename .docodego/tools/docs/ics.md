@@ -40,7 +40,7 @@ Any behavioral or foundation spec, scored one at a time.
 | `--threshold` | `60` | Minimum total score (out of 100) required to pass |
 | `--threat-floor` | `15` | Minimum Threat Coverage score — blocks approval if not met |
 | `--no-zero-veto` | off | Allow passing even if one dimension scores 0 |
-| `--audits` | *(none)* | Write audit JSON to this directory (or set `DOCODEGO_AUDITS`) |
+| `--audits` | *(none)* | Write audit JSON to this directory (or set `DOCODEGO_CYCLE`) |
 
 ## Exit Codes
 
@@ -151,7 +151,7 @@ ics_scorer/
 .md file → parser.parse_spec() → ParsedSpec
          → scorer.score_spec()  → ICSResult
          → reporter.format_*()  → text or JSON stdout
-         → audit.write_audit()  → .audit.json file (if DOCODEGO_AUDITS set)
+         → audit.write_audit()  → .audit.json file (if DOCODEGO_CYCLE set)
 ```
 
 ## Audit JSON Schema

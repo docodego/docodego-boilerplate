@@ -36,7 +36,7 @@ Any convention spec, scored one at a time.
 | `--format` | `text` | Output format: `text` (human-readable) or `json` (structured) |
 | `--threshold` | `60` | Minimum total score (out of 100) required to pass |
 | `--no-zero-veto` | off | Allow passing even if one dimension scores 0 |
-| `--audits` | *(none)* | Write audit JSON to this directory (or set `DOCODEGO_AUDITS`) |
+| `--audits` | *(none)* | Write audit JSON to this directory (or set `DOCODEGO_CYCLE`) |
 
 ## Exit Codes
 
@@ -137,7 +137,7 @@ ccs_scorer/
 .md file → parser.parse_spec() → ParsedConventionSpec
          → scorer.score_spec()  → CCSResult
          → reporter.format_*()  → text or JSON stdout
-         → audit.write_audit()  → .audit.json file (if DOCODEGO_AUDITS set)
+         → audit.write_audit()  → .audit.json file (if DOCODEGO_CYCLE set)
 ```
 
 ## Audit JSON Schema

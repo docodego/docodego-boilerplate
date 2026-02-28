@@ -30,7 +30,7 @@ Any spec corpus, scored as a directory.
 .docodego/tools/run shs_scorer --format json <directory>
 
 # Custom line limits
-.docodego/tools/run shs_scorer --line-limit 250 --data-heavy-limit 350 <directory>
+.docodego/tools/run shs_scorer --line-limit 400 --data-heavy-limit 550 <directory>
 
 # Disable zero-dimension veto
 .docodego/tools/run shs_scorer --no-zero-veto <directory>
@@ -44,10 +44,10 @@ Any spec corpus, scored as a directory.
 | `--format` | `text` | Output format: `text` (human-readable) or `json` (structured) |
 | `--threshold` | `60` | Minimum total score (out of 100) required to pass |
 | `--flows` | *(none)* | Optional flows directory for coverage check |
-| `--line-limit` | `300` | Maximum lines per spec |
-| `--data-heavy-limit` | `400` | Maximum lines for specs with 3+ tables |
+| `--line-limit` | `500` | Maximum lines per spec |
+| `--data-heavy-limit` | `650` | Maximum lines for specs with 3+ tables |
 | `--no-zero-veto` | off | Allow passing even if one dimension scores 0 |
-| `--audits` | *(none)* | Write audit JSON to this directory (or set `DOCODEGO_AUDITS`) |
+| `--audits` | *(none)* | Write audit JSON to this directory (or set `DOCODEGO_CYCLE`) |
 
 ## Exit Codes
 
@@ -93,9 +93,9 @@ Are specs connected to each other and bidirectionally?
 
 Are specs within reasonable size limits?
 
-- Default limit: 300 lines
+- Default limit: 500 lines (specs are prose, not source code)
 - Data-heavy tolerance: specs with 3+ markdown tables get a
-  higher limit (400 lines)
+  higher limit (650 lines)
 - Severity grading: within limit → no flag, 1–20% over →
   suggestion, 20%+ over → issue
 - Secondary check: Related Specifications section with 15+

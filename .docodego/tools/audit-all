@@ -8,54 +8,14 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
 cd "$ROOT"
 
-# Load tools.env
 set -a
 source "$SCRIPT_DIR/tools.env"
 set +a
 
-SPECS="$ROOT/.docodego/cycle-01/output/specs"
-AUDITS="$ROOT/.docodego/cycle-01/audits"
+python -m audit_all
 
-# Spec directories
-BH="$SPECS/behavioral"
-FN="$SPECS/foundation"
-CV="$SPECS/conventions"
-
-echo "=== Per-file scorers ==="
-
-echo "— ICS (behavioral + foundation)"
-python -m ics_scorer "$BH"/*.md "$FN"/*.md
-
-echo "— CCS (conventions)"
-python -m ccs_scorer "$CV"/*.md
-
-echo "— SDS (behavioral + foundation)"
-python -m sds_scorer "$BH"/*.md "$FN"/*.md
-
-echo ""
-echo "=== Corpus scorers ==="
-
-echo "— CSG (behavioral)"
-python -m csg_scorer "$BH"
-
-echo "— SHS (behavioral)"
-python -m shs_scorer "$BH"
-
-echo "— SHS (foundation)"
-python -m shs_scorer "$FN"
-
-echo "— SCR (behavioral)"
-python -m scr_scorer "$BH"
-
-echo "— SCR (foundation)"
-python -m scr_scorer "$FN"
-
-echo ""
-echo "=== Dashboard ==="
-python -m dashboard "$AUDITS"
-
-# Open in browser
-DASHBOARD="$AUDITS/dashboard.html"
+# Open in browser — derived from DOCODEGO_CYCLE
+DASHBOARD="$ROOT/$DOCODEGO_CYCLE/audits/dashboard.html"
 if command -v start &>/dev/null; then
     start "$DASHBOARD"
 elif command -v open &>/dev/null; then

@@ -6,7 +6,7 @@ import argparse
 import sys
 from pathlib import Path
 
-from scoring_common import fix_encoding, load_dotenv
+from scoring_common import add_common_args, fix_encoding, load_dotenv
 
 fix_encoding()
 load_dotenv()
@@ -31,32 +31,7 @@ def main(argv: list[str] | None = None) -> int:
         "directory",
         help="Directory containing spec files to check",
     )
-    parser.add_argument(
-        "--threshold",
-        type=int,
-        default=60,
-        help="Minimum CSG score to pass (default: 60)",
-    )
-    parser.add_argument(
-        "--format",
-        choices=["text", "json"],
-        default="text",
-        help="Output format (default: text)",
-    )
-    parser.add_argument(
-        "--no-zero-veto",
-        action="store_true",
-        help="Disable zero-dimension veto",
-    )
-    parser.add_argument(
-        "--audits",
-        type=str,
-        default=None,
-        help=(
-            "Write audit JSON to this directory "
-            "(or set DOCODEGO_AUDITS)"
-        ),
-    )
+    add_common_args(parser)
 
     args = parser.parse_args(argv)
 

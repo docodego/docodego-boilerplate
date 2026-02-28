@@ -44,7 +44,7 @@ network access.
 | `--threshold` | `60` | Minimum total score (out of 100) required to pass |
 | `--offline` | off | Skip network queries; score only from spec content (live is default) |
 | `--no-zero-veto` | off | Allow passing even if one dimension scores 0 |
-| `--audits` | *(none)* | Write audit JSON to this directory (or set `DOCODEGO_AUDITS`) |
+| `--audits` | *(none)* | Write audit JSON to this directory (or set `DOCODEGO_CYCLE`) |
 
 ## Exit Codes
 

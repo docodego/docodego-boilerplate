@@ -6,6 +6,7 @@ import os
 from pathlib import Path
 
 from scoring_common.audit import write_audit
+from scoring_common.cli import add_common_args
 from scoring_common.reporter import (
     bar,
     dim_to_dict,
@@ -17,6 +18,7 @@ from scoring_common.types import DimensionResult
 
 __all__ = [
     "DimensionResult",
+    "add_common_args",
     "bar",
     "dim_to_dict",
     "fix_encoding",

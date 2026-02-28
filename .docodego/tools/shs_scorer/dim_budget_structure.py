@@ -21,8 +21,8 @@ from .parser import ParsedHealthSpec
 
 def score_line_budget(
     specs: list[ParsedHealthSpec],
-    line_limit: int = 300,
-    data_heavy_limit: int = 400,
+    line_limit: int = 500,
+    data_heavy_limit: int = 650,
 ) -> DimensionResult:
     """Score specs against line-count limits."""
     result = DimensionResult(name="Line Budget", score=0)

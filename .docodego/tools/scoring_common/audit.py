@@ -16,13 +16,16 @@ AUDITS_ENV_VAR = "DOCODEGO_AUDITS"
 def resolve_audit_dir(cli_value: str | None) -> Path | None:
     """Return the audit directory from CLI flag or env var.
 
-    Priority: --audits flag > DOCODEGO_AUDITS env var > None.
+    Priority: --audits flag > DOCODEGO_AUDITS > DOCODEGO_CYCLE/audits > None.
     """
     if cli_value:
         return Path(cli_value)
     env = os.environ.get(AUDITS_ENV_VAR)
     if env:
         return Path(env)
+    cycle = os.environ.get("DOCODEGO_CYCLE")
+    if cycle:
+        return Path(cycle) / "audits"
     return None
 
 

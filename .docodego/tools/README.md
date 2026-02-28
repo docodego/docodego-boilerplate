@@ -20,11 +20,13 @@ Configuration lives in `.docodego/tools/tools.env`:
 
 ```
 PYTHONPATH=.docodego/tools
-DOCODEGO_AUDITS=.docodego/cycle-01/audits
+DOCODEGO_CYCLE=.docodego/cycle-01
 ```
 
 The runner script sources this file. Tools also auto-load
-`DOCODEGO_AUDITS` via a built-in dotenv loader at startup.
+`DOCODEGO_CYCLE` via a built-in dotenv loader at startup.
+Specs are read from `$DOCODEGO_CYCLE/output/specs/` and
+audits are written to `$DOCODEGO_CYCLE/audits/`.
 
 ## What Each Tool Answers
 
@@ -59,10 +61,10 @@ All tools share these properties:
 - **Band thresholds:** low 0–8, mid 9–18, high 19–25
 - **Output formats:** `--format text` (ASCII progress bars) or
   `--format json` (structured, CI-friendly)
-- **Audit output:** set `DOCODEGO_AUDITS=<dir>` (or pass
-  `--audits <dir>`) to write `.audit.json` files mirroring the
-  spec folder structure — multiple tools merge into one file
-  per spec
+- **Audit output:** set `DOCODEGO_CYCLE=<dir>` (audits go to
+  `<dir>/audits/`) or pass `--audits <dir>` to write
+  `.audit.json` files mirroring the spec folder structure —
+  multiple tools merge into one file per spec
 - **Shared code:** `scoring_common/` package provides
   `DimensionResult`, audit I/O, and reporter helpers — each
   tool's reporter is a thin wrapper
@@ -75,6 +77,20 @@ All tools share these properties:
 |------|-------|-------|---------------|
 | Single-file | ICS, CCS, SDS | One or more `.md` files | Quality of individual specs |
 | Directory | CSG, SHS, SCR | Spec directory | Consistency across the corpus |
+
+## Full Audit Run
+
+Regenerate all audit JSONs, build the dashboard, and open it:
+
+```bash
+.docodego/tools/audit-all
+```
+
+This single-process runner uses threaded parallelism — per-file
+scorers (ICS, CCS, SDS) run in parallel, then corpus scorers
+(CSG, SHS, SCR) run in parallel, then the dashboard is built.
+Reads `DOCODEGO_CYCLE` from `tools.env` to locate specs and
+audits.
 
 ## Audit Dashboard
 
