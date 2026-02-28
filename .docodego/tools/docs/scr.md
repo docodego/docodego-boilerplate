@@ -129,6 +129,9 @@ Is the dependency manifest complete and well-structured?
 - Partial entry (ecosystem + justification, no version) → 0.5
 - Missing fields are flagged as issues
 - Parse warnings (duplicates, malformed rows) count as issues
+- **Cross-validation:** scoped packages (`@scope/name`) found
+  in spec prose but absent from the manifest are flagged —
+  negation contexts and Failure Modes sections are excluded
 - **Scoring:** 100% complete → 15, 90%+ → 12, 70%+ → 9,
   50%+ → 6, else linear
 

@@ -67,7 +67,9 @@ All tools share these properties:
   `DimensionResult`, audit I/O, and reporter helpers — each
   tool's reporter is a thin wrapper
 - **Module layout:** `__init__.py`, `__main__.py`, `parser.py`,
-  `scorer.py`, `anti_gaming.py`, `reporter.py`
+  `scorer.py`, `reporter.py` — per-file tools also include
+  `anti_gaming.py`; SCR includes `registry.py` for npm/OSV API
+  queries
 
 ## Two Scoring Modes
 
