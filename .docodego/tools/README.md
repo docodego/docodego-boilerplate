@@ -41,12 +41,12 @@ The runner script sources this file. Tools also auto-load
 
 | # | Tool | Acronym | Status | Scope | Dimensions | Target Specs |
 |---|------|---------|--------|-------|------------|--------------|
-| 1 | [Intent Clarity Score](design/ics.md) | ICS | Implemented | Single file | 4 x 25 | Behavioral + Foundation |
-| 2 | [Convention Clarity Score](design/ccs.md) | CCS | Implemented | Single file | 4 x 25 | Convention |
-| 3 | [Security Design Score](design/sds.md) | SDS | Implemented | Single file | 4 x 25 | Behavioral + Foundation |
-| 4 | [Constraint Symmetry Guard](design/csg.md) | CSG | Implemented | Directory | 4 x 25 | Behavioral |
-| 5 | [Spec Health Score](design/shs.md) | SHS | Implemented | Directory | 4 x 25 | All |
-| 6 | [Supply Chain Radar](design/scr.md) | SCR | Implemented | Directory | 40 + 25 + 20 + 15 | All |
+| 1 | [Intent Clarity Score](docs/ics.md) | ICS | Implemented | Single file | 4 x 25 | Behavioral + Foundation |
+| 2 | [Convention Clarity Score](docs/ccs.md) | CCS | Implemented | Single file | 4 x 25 | Convention |
+| 3 | [Security Design Score](docs/sds.md) | SDS | Implemented | Single file | 4 x 25 | Behavioral + Foundation |
+| 4 | [Constraint Symmetry Guard](docs/csg.md) | CSG | Implemented | Directory | 4 x 25 | Behavioral |
+| 5 | [Spec Health Score](docs/shs.md) | SHS | Implemented | Directory | 4 x 25 | All |
+| 6 | [Supply Chain Radar](docs/scr.md) | SCR | Implemented | Directory | 40 + 25 + 20 + 15 | All |
 
 ## Shared Conventions
 
