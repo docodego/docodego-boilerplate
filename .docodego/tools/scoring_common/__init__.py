@@ -27,8 +27,8 @@ __all__ = [
     "write_audit",
 ]
 
-# .env lives at the tools/ root (parent of scoring_common/)
-_DOTENV_PATH = Path(__file__).resolve().parent.parent / ".env"
+# tools.env lives at the tools/ root (parent of scoring_common/)
+_DOTENV_PATH = Path(__file__).resolve().parent.parent / "tools.env"
 
 
 def load_dotenv() -> None:

@@ -7,9 +7,9 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 
-# Load .env from tools directory
+# Load tools.env from tools directory
 set -a
-source "$SCRIPT_DIR/.env"
+source "$SCRIPT_DIR/tools.env"
 set +a
 
 exec python -m "$@"
