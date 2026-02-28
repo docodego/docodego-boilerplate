@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import glob
 import os
+import shutil
 import sys
 import time
 from concurrent.futures import ThreadPoolExecutor
@@ -63,6 +64,10 @@ def _resolve_paths() -> tuple[Path, Path]:
 def main() -> None:
     start = time.perf_counter()
     specs_dir, audits_dir = _resolve_paths()
+
+    # Clean stale audits so renamed/removed groups don't linger
+    if audits_dir.exists():
+        shutil.rmtree(audits_dir)
 
     # Lazy imports — all scorers loaded once
     from ics_scorer.__main__ import main as ics_main
