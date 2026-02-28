@@ -13,15 +13,18 @@ from .types import (
     StateTransition,
 )
 
-# Leaf-state patterns that are valid endpoints in UI flows
-_LEAF_PATTERNS = {
-    "refreshed", "updated", "delivered", "logged",
-    "redirect", "navigated", "hydrated", "sent",
-    "displayed", "resolved", "ready", "cleared",
-    "changed", "continues", "success", "idle",
+# Leaf-state stems — matched against state name substrings so that
+# both past-tense ("displayed") and progressive ("displaying") forms
+# are recognized as valid endpoints in UI flows.
+_LEAF_STEMS = {
+    "refresh", "updat", "deliver", "log",
+    "redirect", "navigat", "hydrat", "sent",
+    "display", "resolv", "ready", "clear",
+    "chang", "continu", "success", "idle",
     "view", "page", "tab", "dashboard", "onboarding",
-    "hidden", "visible", "open", "authenticated",
-    "unauthenticated", "empty", "fallback", "reset",
+    "hidden", "visible", "open", "authenticat",
+    "unauthenticat", "empty", "fallback", "reset",
+    "stored", "storing", "loaded", "loading",
 }
 
 # Stop words for action normalization
@@ -66,7 +69,7 @@ def score_state_machine_consistency(
         normalized = state.lower().replace(" ", "_")
         if any(t in normalized for t in TERMINAL_STATES):
             continue
-        if any(p in normalized for p in _LEAF_PATTERNS):
+        if any(p in normalized for p in _LEAF_STEMS):
             continue
         base = re.sub(r"\s*\(.*?\)", "", normalized).strip()
         if base in from_states:
@@ -136,7 +139,10 @@ def _actions_overlap(a: str, b: str) -> bool:
     min_len = min(len(key_a), len(key_b))
     if min_len <= 2:
         return len(overlap) >= min_len
-    return len(overlap) >= min_len * 0.6
+    # Long action texts need higher overlap to avoid false positives
+    # from generic words shared across unrelated permission entries
+    threshold = 0.75 if min_len >= 5 else 0.6
+    return len(overlap) >= min_len * threshold
 
 
 def score_permission_symmetry(

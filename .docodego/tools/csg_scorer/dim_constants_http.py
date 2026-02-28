@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import re
+
 from scoring_common.types import DimensionResult
 
 from .anti_gaming import HTTP_STATUS_CONTEXT
@@ -12,34 +14,73 @@ from .types import (
 )
 
 # ── Semantic grouping keywords ────────────────────────────────────────
+# Each tuple: (group_name, keywords, min_matches, temporal_only)
+# temporal_only: if True, only match constants with a time unit
 
-_SEMANTIC_GROUPS: list[tuple[str, list[str]]] = [
-    ("session_expiry", ["session", "expir", "expires"]),
-    ("session_refresh", ["session", "refresh", "update"]),
-    ("otp_expiry", ["otp", "expir", "code"]),
-    ("otp_length", ["otp", "digit", "length", "code"]),
-    ("invitation_expiry", ["invit", "expir", "window"]),
-    ("rate_limit", ["rate", "limit", "throttl"]),
-    ("retry", ["retr", "attempt", "backoff"]),
-    ("timeout", ["timeout", "time out", "deadline"]),
-    ("upload_size", ["upload", "size", "file", "max"]),
-    ("token_expiry", ["token", "expir", "valid"]),
-    ("password_length", ["password", "length", "character"]),
-    ("cooldown", ["cool", "down", "wait", "delay"]),
-    ("page_size", ["page", "size", "per page", "limit"]),
-    ("ban_duration", ["ban", "duration", "suspend"]),
-    ("cache_ttl", ["cache", "ttl", "expir"]),
+_SEMANTIC_GROUPS: list[tuple[str, list[str], int, bool]] = [
+    # More specific groups first — first match wins
+    ("notification_threshold", ["notif", "expir"], 2, True),
+    ("session_expiry", ["session", "expir", "expires"], 2, True),
+    ("session_refresh", ["session", "refresh", "update"], 2, False),
+    ("otp_expiry", ["otp", "expir", "code"], 2, True),
+    ("otp_length", ["otp", "digit", "length", "code"], 2, False),
+    ("invitation_expiry", ["invit", "expir", "window"], 2, True),
+    ("rate_limit", ["rate", "limit", "throttl"], 2, False),
+    ("retry", ["retr", "attempt", "backoff"], 2, False),
+    ("timeout", ["timeout", "time out", "deadline"], 2, True),
+    ("upload_size", ["upload", "size", "file", "max"], 2, False),
+    ("token_expiry", ["token", "expir"], 2, True),
+    ("password_length", ["password", "length", "character"], 2, False),
+    ("cooldown", ["cool", "down", "wait", "delay"], 2, True),
+    ("page_size", ["page", "size", "per page", "limit"], 2, False),
+    ("ban_duration", ["ban", "duration", "suspend"], 2, True),
+    ("cache_ttl", ["cache", "ttl", "expir"], 2, True),
 ]
+
+# Groups that represent non-temporal quantities — time-unit constants
+# (seconds, hours, etc.) should never be classified into these groups.
+_NON_TEMPORAL_GROUPS: set[str] = {
+    "upload_size", "password_length", "page_size",
+    "otp_length",
+}
 
 
 # ── Dimension 1: Shared Constants (0-25) ─────────────────────────────
 
+# Pre-compiled word-boundary patterns for each keyword
+_KW_PATTERNS: dict[str, re.Pattern[str]] = {}
 
-def _classify_constant_group(ctx: str) -> str | None:
+
+def _kw_match(keyword: str, text: str) -> bool:
+    """Check if *keyword* appears as a whole word in *text*."""
+    pat = _KW_PATTERNS.get(keyword)
+    if pat is None:
+        pat = re.compile(r"\b" + re.escape(keyword), re.I)
+        _KW_PATTERNS[keyword] = pat
+    return pat.search(text) is not None
+
+
+def _classify_constant_group(
+    ctx: str, *, is_temporal: bool = False,
+) -> str | None:
     lower = ctx.lower()
-    for group_name, keywords in _SEMANTIC_GROUPS:
-        matches = sum(1 for kw in keywords if kw in lower)
-        if matches >= 2:
+    for group_name, keywords, min_hits, temporal_only in _SEMANTIC_GROUPS:
+        # Skip non-temporal groups for time-unit constants
+        if is_temporal and group_name in _NON_TEMPORAL_GROUPS:
+            continue
+        # Skip temporal-only groups for non-temporal constants
+        if temporal_only and not is_temporal:
+            continue
+        # Deduplicate overlapping keywords — if stem "expir" already
+        # matched, longer form "expires" is redundant (1 concept)
+        matched: list[str] = [
+            kw for kw in keywords if _kw_match(kw, lower)
+        ]
+        unique = []
+        for kw in sorted(matched, key=len):
+            if not any(other in kw for other in unique):
+                unique.append(kw)
+        if len(unique) >= min_hits:
             return group_name
     return None
 
@@ -63,7 +104,10 @@ def score_shared_constants(
 
     groups: dict[str, list[ExtractedConstant]] = {}
     for c in all_constants:
-        group = _classify_constant_group(c.context)
+        is_temporal = c.normalized_seconds is not None
+        group = _classify_constant_group(
+            c.context, is_temporal=is_temporal,
+        )
         if group is not None:
             groups.setdefault(group, []).append(c)
 
@@ -89,6 +133,20 @@ def score_shared_constants(
                 else c.value
             )
             per_spec.setdefault(c.spec_name, set()).add(val)
+
+        # If any single spec's values span a wide range (>5x), the
+        # group is mixing sub-concepts (e.g. session TTL 604800s vs
+        # refresh window 86400s) — skip consistency check.
+        mixed = False
+        for vs in per_spec.values():
+            if len(vs) >= 2:
+                lo, hi = min(vs), max(vs)
+                if lo > 0 and hi / lo > 5:
+                    mixed = True
+                    break
+        if mixed:
+            consistent += 1
+            continue
 
         all_values = [vs for vs in per_spec.values()]
         common = all_values[0]

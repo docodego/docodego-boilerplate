@@ -157,11 +157,15 @@ def parse_state_machine_table(
 
 
 def _get_context_window(
-    lines: list[str], line_idx: int, window: int = 50,
+    lines: list[str], line_idx: int, window: int = 25,
 ) -> str:
-    """Get a word-based context window around a given line."""
-    start = max(0, line_idx - 3)
-    end = min(len(lines), line_idx + 4)
+    """Get a word-based context window around a given line.
+
+    Uses ±1 line to keep context tight and avoid bleeding keywords
+    from unrelated paragraphs into the classification window.
+    """
+    start = max(0, line_idx - 1)
+    end = min(len(lines), line_idx + 2)
     text = " ".join(lines[start:end])
     words = text.split()
     if len(words) <= window:
