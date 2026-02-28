@@ -3,15 +3,47 @@
 from __future__ import annotations
 
 import json
+from datetime import datetime, timezone
 from typing import Any
 
-from .scorer import CCSResult
+from .scorer import CCSResult, DimensionResult
+
+TOOL_KEY = "ccs"
 
 
 def _bar(score: int, max_score: int = 25, width: int = 20) -> str:
     """Render a simple ASCII progress bar."""
     filled = int((score / max_score) * width)
     return "\u2588" * filled + "\u2591" * (width - filled)
+
+
+def _dim_to_dict(dim: DimensionResult) -> dict[str, Any]:
+    """Serialize a single dimension result."""
+    return {
+        "score": dim.score,
+        "max_score": dim.max_score,
+        "band": dim.band,
+        "issues": dim.issues,
+        "suggestions": dim.suggestions,
+    }
+
+
+def _result_to_dict(
+    result: CCSResult, *, threshold: int = 60,
+) -> dict[str, Any]:
+    """Serialize CCS result into the tool-level dict."""
+    return {
+        "score": result.total,
+        "threshold": threshold,
+        "passed": result.approved,
+        "blocked": result.blocked,
+        "block_reason": result.block_reason,
+        "status": result.status,
+        "dimensions": {
+            dim.name.lower().replace(" ", "_"): _dim_to_dict(dim)
+            for dim in result.dimensions
+        },
+    }
 
 
 def format_text(result: CCSResult, *, filename: str = "", threshold: int = 60) -> str:
@@ -63,26 +95,16 @@ def format_text(result: CCSResult, *, filename: str = "", threshold: int = 60) -
 
 
 def format_json(result: CCSResult, *, filename: str = "", threshold: int = 60) -> str:
-    """Format CCS result as JSON."""
+    """Format CCS result as audit JSON.
+
+    Schema:
+        { spec, timestamp, tools: { ccs: { score, threshold, ... } } }
+    """
     data: dict[str, Any] = {
-        "file": filename,
-        "overall_score": result.total,
-        "threshold": threshold,
-        "threshold_met": result.approved,
-        "blocked": result.blocked,
-        "block_reason": result.block_reason,
-        "status": result.status,
-        "dimensions": {},
+        "spec": filename,
+        "timestamp": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "tools": {
+            TOOL_KEY: _result_to_dict(result, threshold=threshold),
+        },
     }
-
-    for dim in result.dimensions:
-        key = dim.name.lower().replace(" ", "_")
-        data["dimensions"][key] = {
-            "score": dim.score,
-            "max_score": dim.max_score,
-            "band": dim.band,
-            "issues": dim.issues,
-            "suggestions": dim.suggestions,
-        }
-
     return json.dumps(data, indent=2)

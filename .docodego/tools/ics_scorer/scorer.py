@@ -51,9 +51,8 @@ MIN_FAILURE_MODES = 3
 
 # ── Failure mode splitting ──────────────────────────────────────────────
 
-_FAILURE_SPLIT = re.compile(
-    r"(?:^|\n)\s*(?:[-*•]|\d+[.\)])\s+",
-)
+# Top-level bullet: no leading whitespace before the marker
+_TOP_BULLET = re.compile(r"^(?:[-*•]|\d+[.\)])\s+", re.MULTILINE)
 
 
 @dataclass
@@ -63,17 +62,17 @@ class DimensionResult:
     name: str
     score: int  # 0-25
     max_score: int = 25
-    band: str = ""  # low / mid / high
     issues: list[str] = field(default_factory=list)
     suggestions: list[str] = field(default_factory=list)
 
-    def __post_init__(self):
+    @property
+    def band(self) -> str:
+        """Compute band from current score (always up-to-date)."""
         if self.score <= 8:
-            self.band = "low"
-        elif self.score <= 18:
-            self.band = "mid"
-        else:
-            self.band = "high"
+            return "low"
+        if self.score <= 18:
+            return "mid"
+        return "high"
 
 
 @dataclass
@@ -104,16 +103,28 @@ class ICSResult:
 
 
 def _split_failure_modes(content: str) -> list[str]:
-    """Split failure mode section into individual entries."""
-    # Try bullet/numbered list splitting first
-    parts = _FAILURE_SPLIT.split(content)
-    entries = [p.strip() for p in parts if p.strip()]
+    """Split failure mode section into individual entries.
 
-    # If no list found, try splitting by paragraph
-    if len(entries) <= 1:
-        entries = [p.strip() for p in content.split("\n\n") if p.strip()]
+    Groups each top-level bullet with its indented sub-bullets so that
+    a structure like:
+        - **Title**
+            - **What happens:** ...
+            - **Recovery:** ...
+    is treated as a single failure mode entry.
+    """
+    starts = [m.start() for m in _TOP_BULLET.finditer(content)]
 
-    return entries
+    if starts:
+        entries = []
+        for i, start in enumerate(starts):
+            end = starts[i + 1] if i + 1 < len(starts) else len(content)
+            chunk = content[start:end].strip()
+            if chunk:
+                entries.append(chunk)
+        return entries
+
+    # Fallback: split by blank-line-separated paragraphs
+    return [p.strip() for p in content.split("\n\n") if p.strip()]
 
 
 def _extract_criteria_lines(content: str) -> list[str]:
@@ -302,6 +313,7 @@ def score_threat_coverage(spec: ParsedSpec) -> DimensionResult:
         return result
 
     substantive_count = 0
+    total = len(entries)
     for i, entry in enumerate(entries):
         passes, reason = check_failure_mode_substance(entry)
         if passes:
@@ -309,20 +321,32 @@ def score_threat_coverage(spec: ParsedSpec) -> DimensionResult:
         else:
             result.issues.append(f"Failure mode #{i + 1}: {reason}")
 
-    if substantive_count >= 3:
-        result.score = 25
-    elif substantive_count == 2:
-        result.score = 16
-    elif substantive_count == 1:
-        result.score = 8
-    else:
-        result.score = 0
-
+    # Gate: need at least MIN_FAILURE_MODES substantive entries
     if substantive_count < MIN_FAILURE_MODES:
+        if substantive_count == 2:
+            result.score = 16
+        elif substantive_count == 1:
+            result.score = 8
+        else:
+            result.score = 0
         result.suggestions.append(
             f"Add {MIN_FAILURE_MODES - substantive_count} more failure mode(s) "
-            f"with recovery paths (keywords: falls back, retries, alerts, degrades, escalates)"
+            f"with recovery paths (keywords: falls back, retries, alerts, "
+            f"degrades, escalates)"
         )
+    else:
+        # Score by ratio of substantive to total
+        ratio = substantive_count / total
+        if ratio >= 0.9:
+            result.score = 25
+        elif ratio >= 0.7:
+            result.score = 20
+        elif ratio >= 0.5:
+            result.score = 15
+        elif ratio >= 0.3:
+            result.score = 10
+        else:
+            result.score = max(0, int(ratio * 25))
 
     return result
 

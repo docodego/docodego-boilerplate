@@ -3,9 +3,12 @@
 from __future__ import annotations
 
 import json
+from datetime import datetime, timezone
 from typing import Any
 
-from .scorer import ICSResult
+from .scorer import DimensionResult, ICSResult
+
+TOOL_KEY = "ics"
 
 
 def _bar(score: int, max_score: int = 25, width: int = 20) -> str:
@@ -14,9 +17,33 @@ def _bar(score: int, max_score: int = 25, width: int = 20) -> str:
     return "\u2588" * filled + "\u2591" * (width - filled)
 
 
-def _pass_fail(score: int, threshold: int = 0) -> str:
-    """Return a pass/fail symbol."""
-    return "PASS" if score > threshold else "FAIL"
+def _dim_to_dict(dim: DimensionResult) -> dict[str, Any]:
+    """Serialize a single dimension result."""
+    return {
+        "score": dim.score,
+        "max_score": dim.max_score,
+        "band": dim.band,
+        "issues": dim.issues,
+        "suggestions": dim.suggestions,
+    }
+
+
+def _result_to_dict(
+    result: ICSResult, *, threshold: int = 60,
+) -> dict[str, Any]:
+    """Serialize ICS result into the tool-level dict."""
+    return {
+        "score": result.total,
+        "threshold": threshold,
+        "passed": result.approved,
+        "blocked": result.blocked,
+        "block_reason": result.block_reason,
+        "status": result.status,
+        "dimensions": {
+            dim.name.lower().replace(" ", "_"): _dim_to_dict(dim)
+            for dim in result.dimensions
+        },
+    }
 
 
 def format_text(result: ICSResult, *, filename: str = "", threshold: int = 60) -> str:
@@ -30,13 +57,11 @@ def format_text(result: ICSResult, *, filename: str = "", threshold: int = 60) -
     lines.append("=" * len(header))
     lines.append("")
 
-    # Overall
     status_symbol = "PASS" if result.approved else ("BLOCKED" if result.blocked else "FAIL")
     lines.append(f"Overall: {result.total} / 100  {status_symbol} (threshold: {threshold})")
     lines.append(f"Status:  {result.status}")
     lines.append("")
 
-    # Dimensions
     lines.append("Dimensions:")
     for dim in result.dimensions:
         bar = _bar(dim.score)
@@ -44,23 +69,21 @@ def format_text(result: ICSResult, *, filename: str = "", threshold: int = 60) -
         lines.append(f"  {dim.name:<18} {bar} {dim.score:>2} / {dim.max_score}  [{dim.band}]  {symbol}")
     lines.append("")
 
-    # Issues
-    all_issues = []
-    for dim in result.dimensions:
-        for issue in dim.issues:
-            all_issues.append(f"  [{dim.name}] {issue}")
-
+    all_issues = [
+        f"  [{dim.name}] {issue}"
+        for dim in result.dimensions
+        for issue in dim.issues
+    ]
     if all_issues:
         lines.append("Issues:")
         lines.extend(all_issues)
         lines.append("")
 
-    # Suggestions
-    all_suggestions = []
-    for dim in result.dimensions:
-        for sug in dim.suggestions:
-            all_suggestions.append(f"  [{dim.name}] {sug}")
-
+    all_suggestions = [
+        f"  [{dim.name}] {sug}"
+        for dim in result.dimensions
+        for sug in dim.suggestions
+    ]
     if all_suggestions:
         lines.append("Suggestions:")
         lines.extend(all_suggestions)
@@ -70,26 +93,16 @@ def format_text(result: ICSResult, *, filename: str = "", threshold: int = 60) -
 
 
 def format_json(result: ICSResult, *, filename: str = "", threshold: int = 60) -> str:
-    """Format ICS result as JSON."""
+    """Format ICS result as audit JSON.
+
+    Schema:
+        { spec, timestamp, tools: { ics: { score, threshold, ... } } }
+    """
     data: dict[str, Any] = {
-        "file": filename,
-        "overall_score": result.total,
-        "threshold": threshold,
-        "threshold_met": result.approved,
-        "blocked": result.blocked,
-        "block_reason": result.block_reason,
-        "status": result.status,
-        "dimensions": {},
+        "spec": filename,
+        "timestamp": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "tools": {
+            TOOL_KEY: _result_to_dict(result, threshold=threshold),
+        },
     }
-
-    for dim in result.dimensions:
-        key = dim.name.lower().replace(" ", "_")
-        data["dimensions"][key] = {
-            "score": dim.score,
-            "max_score": dim.max_score,
-            "band": dim.band,
-            "issues": dim.issues,
-            "suggestions": dim.suggestions,
-        }
-
     return json.dumps(data, indent=2)

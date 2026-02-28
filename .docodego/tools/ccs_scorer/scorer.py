@@ -32,20 +32,17 @@ class DimensionResult:
     name: str
     score: int          # 0-25
     max_score: int = 25
-    band: str = ""      # low / mid / high
     issues: list[str] = field(default_factory=list)
     suggestions: list[str] = field(default_factory=list)
 
-    def __post_init__(self) -> None:
-        self._update_band()
-
-    def _update_band(self) -> None:
+    @property
+    def band(self) -> str:
+        """Compute band from current score (always up-to-date)."""
         if self.score <= 8:
-            self.band = "low"
-        elif self.score <= 18:
-            self.band = "mid"
-        else:
-            self.band = "high"
+            return "low"
+        if self.score <= 18:
+            return "mid"
+        return "high"
 
 
 @dataclass
@@ -69,9 +66,6 @@ class CCSResult:
             + self.enforcement_coverage.score
             + self.scope_clarity.score
         )
-        # Recompute bands now that final scores are set
-        for dim in self.dimensions:
-            dim._update_band()
 
     @property
     def dimensions(self) -> list[DimensionResult]:

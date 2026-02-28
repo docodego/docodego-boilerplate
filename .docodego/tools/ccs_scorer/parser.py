@@ -163,6 +163,12 @@ def parse_spec(markdown: str) -> ParsedConventionSpec:
                 current_heading = heading_text
                 current_level = level
                 continue
+            elif current_section is not None and level <= current_level:
+                # Unrecognized heading at same or higher level ends
+                # the current section (subsections are kept as content)
+                _flush()
+                current_section = None
+                continue
 
         if current_section is not None:
             content_lines.append(line)

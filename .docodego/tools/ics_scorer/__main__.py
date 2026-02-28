@@ -71,10 +71,11 @@ def main(argv: list[str] | None = None) -> int:
             fail_on_zero_dimension=not args.no_zero_veto,
         )
 
+        display_path = path.as_posix()
         if args.format == "json":
-            print(format_json(result, filename=str(path), threshold=args.threshold))
+            print(format_json(result, filename=display_path, threshold=args.threshold))
         else:
-            print(format_text(result, filename=str(path), threshold=args.threshold))
+            print(format_text(result, filename=display_path, threshold=args.threshold))
 
         if not result.approved:
             any_failed = True
