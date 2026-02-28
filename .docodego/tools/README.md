@@ -75,3 +75,28 @@ All tools share these properties:
 |------|-------|-------|---------------|
 | Single-file | ICS, CCS, SDS | One or more `.md` files | Quality of individual specs |
 | Directory | CSG, SHS, SCR | Spec directory | Consistency across the corpus |
+
+## Audit Dashboard
+
+Generate an interactive HTML report from audit JSON files:
+
+```bash
+# Generate dashboard (outputs to audits/dashboard.html)
+.docodego/tools/run dashboard <audits-dir>
+
+# Custom output path
+.docodego/tools/run dashboard <audits-dir> report.html
+```
+
+The dashboard includes four tabs:
+
+- **Overview** — summary cards (spec count, pass rate, issues)
+  and tool-by-tool averages
+- **Heatmap** — specs × tools grid with color-coded scores
+- **Corpus** — directory-level scorer results (CSG, SHS, SCR)
+- **Spec Details** — per-spec drill-down with filtering by
+  group, pass/fail status, and text search
+
+Self-contained HTML with custom CSS, dark-mode support via
+`prefers-color-scheme`, and GSAP animations from jsDelivr CDN.
+No build step required.

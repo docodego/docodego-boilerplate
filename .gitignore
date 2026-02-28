@@ -3,3 +3,5 @@ __pycache__/
 *$py.class
 *.pyo
 .env*
+dashboard.html
+.docodego/**/audits/
