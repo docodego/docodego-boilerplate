@@ -4,19 +4,18 @@
 
 ## Purpose
 
-Pre-code supply chain risk assessment. Extracts every package
-and framework mentioned in specs, then evaluates maintenance
-health, known vulnerabilities, and dependency depth — all before
-a single package is installed.
+Pre-code supply chain risk assessment. Reads a `dependencies.md`
+manifest listing every third-party package, then evaluates
+maintenance health, known vulnerabilities, and dependency depth —
+all before a single package is installed.
 
-Works on any markdown spec corpus. Extracts package names from
-markdown tables and backtick-quoted references. Queries public
-registries (npm, OSV) for live data — no hardcoded package
-lists.
+Works on any spec corpus that includes a `dependencies.md` manifest
+in markdown table format.
 
 ## Target Specs
 
-Any spec corpus, scored as a directory. Live mode requires
+Any spec corpus, scored as a directory. The manifest is resolved
+automatically from the group directory's parent. Live mode requires
 network access.
 
 ## CLI
@@ -25,8 +24,11 @@ network access.
 # Live mode — default (queries npm + OSV APIs)
 .docodego/tools/run scr_scorer <directory>
 
-# Offline mode (skips network, scores only spec content)
+# Offline mode (skips network, scores only manifest content)
 .docodego/tools/run scr_scorer --offline <directory>
+
+# Explicit manifest path
+.docodego/tools/run scr_scorer --manifest path/to/dependencies.md <directory>
 
 # JSON output
 .docodego/tools/run scr_scorer --format json <directory>
@@ -39,10 +41,11 @@ network access.
 
 | Flag | Default | Description |
 |------|---------|-------------|
-| `directory` | *(required)* | Directory containing spec files to scan for package references |
+| `directory` | *(required)* | Spec group directory (used for audit path and manifest resolution) |
+| `--manifest` | *(auto)* | Path to `dependencies.md` manifest (auto-resolved from parent dir if omitted) |
 | `--format` | `text` | Output format: `text` (human-readable) or `json` (structured) |
 | `--threshold` | `60` | Minimum total score (out of 100) required to pass |
-| `--offline` | off | Skip network queries; score only from spec content (live is default) |
+| `--offline` | off | Skip network queries; score only from manifest content (live is default) |
 | `--no-zero-veto` | off | Allow passing even if one dimension scores 0 |
 | `--audits` | *(none)* | Write audit JSON to this directory (or set `DOCODEGO_CYCLE`) |
 
@@ -51,19 +54,26 @@ network access.
 | Code | Meaning |
 |------|---------|
 | `0` | Corpus meets the threshold |
-| `1` | Below threshold, zero-veto triggered, or directory not found |
+| `1` | Below threshold, zero-veto triggered, or manifest not found |
 
-## Input: SDDM
+## Input: Dependency Manifest
 
-The Spec-Derived Dependency Manifest is auto-extracted by
-scanning all specs for package references:
+The manifest is a `dependencies.md` file with a markdown table:
 
-- Markdown table cells containing package names (detected by
-  npm-like patterns: `@scope/name`, lowercase-with-hyphens)
-- Backtick-quoted package names in prose
-- Version hints where present (`v4`, `^2.0`, `>=1.5`)
+```markdown
+| Package | Version | Ecosystem | Justification |
+|---------|---------|-----------|---------------|
+| hono | ^4 | npm | API framework on Cloudflare Workers |
+| zod | ^4 | npm | Schema validation for API contracts |
+```
 
-Extracts: package name, version hint (if present), source spec.
+**Required columns:** Package, Version, Ecosystem.
+**Optional column:** Justification (improves coverage score).
+
+Manifest resolution order:
+1. Explicit `--manifest` path
+2. `<directory>/../dependencies.md` (parent of group dir)
+3. `<directory>/dependencies.md` (specs root)
 
 ## Dimensions (weighted, total = 100)
 
@@ -72,9 +82,9 @@ Extracts: package name, version hint (if present), source spec.
 Do referenced packages have known CVEs? Weighted highest because
 a single critical CVE can compromise the entire application.
 
-- Queries OSV API (`api.osv.dev`) per package + version range
-- Version-window analysis: checks advisories for the specific
-  major version mentioned in specs, not just latest
+- Queries OSV API (`api.osv.dev`) per package + version + ecosystem
+- Version-aware: passes the manifest version to OSV for precise
+  matching instead of querying all-time vulnerabilities
 - **Severity-weighted deduction:** critical −10, high −5,
   medium −2, low −1 from a starting 40
 - A single critical CVE drops the score by 25% — this is
@@ -87,12 +97,11 @@ a single critical CVE can compromise the entire application.
 
 Are the referenced packages actively maintained?
 
-- Queries npm registry for each SDDM entry's `time.modified`
-  field
+- Queries npm registry for each package's `time.modified` field
+- Skips non-npm ecosystem packages
 - < 6 months since last publish → full marks
 - 6–12 months → partial
 - > 12 months or `deprecated` field present → 0 for that package
-- `^0.x` version hints flagged as pre-stable
 - **Offline mode:** awards neutral score (12/25) since vitality
   cannot be determined without network
 - **Scoring:** 100% vital → 25, 90%+ → 20, 70%+ → 15, 50%+ → 10,
@@ -102,31 +111,25 @@ Are the referenced packages actively maintained?
 
 How deep are the transitive dependency trees?
 
-- Queries npm registry for each package's `dependencies` field,
-  recursively counts transitive deps (depth limit 5)
-- **Blast radius ranking:** `transitive_count × (1 + critical_CVEs)`
-  — top entry = biggest future exposure
-- Packages with > 100 transitive deps get flagged; > 200 gets
-  a suggestion to evaluate alternatives
-- Known-heavy frameworks (detected by high dep count) are
-  annotated rather than penalized
+- Queries npm registry for each package's `dependencies` count
+- Skips non-npm ecosystem packages
+- Packages with > 100 deps get flagged; known-heavy frameworks
+  (expo, storybook, turbo) are exempt
 - **Offline mode:** awards neutral score (10/20)
 - **Scoring:** starts at 20, −2 per package > 100 deps
   (known-heavy exempt), −1 per package > 50 deps, floor 0
 
 ### 4. SDDM Coverage (0–15)
 
-Are package references well-documented in specs?
+Is the dependency manifest complete and well-structured?
 
-- Checks that every package in the SDDM appears with a version
-  hint (not just a bare name)
-- Checks that packages are referenced in a structured location
-  (table cell, Integration Map) rather than only in prose
-- Flags packages mentioned in only one spec with no version —
-  potentially accidental or undecided dependencies
-- Flags duplicate package names with conflicting version hints
-  across specs
-- **Scoring:** 100% well-documented → 15, 90%+ → 12, 70%+ → 9,
+- Checks each entry for: pinned version (not "latest"),
+  ecosystem specified, justification present
+- Full entry (version + ecosystem + justification) → 1 point
+- Partial entry (ecosystem + justification, no version) → 0.5
+- Missing fields are flagged as issues
+- Parse warnings (duplicates, malformed rows) count as issues
+- **Scoring:** 100% complete → 15, 90%+ → 12, 70%+ → 9,
   50%+ → 6, else linear
 
 ## Gate Logic

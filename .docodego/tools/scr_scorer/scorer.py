@@ -4,10 +4,11 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
+from pathlib import Path
 
 from scoring_common.types import DimensionResult
 
-from .parser import SDDM
+from .parser import SDDM, scan_unlisted_packages
 from .registry import (
     classify_severity,
     get_dep_count,
@@ -88,11 +89,7 @@ class SCRResult:
 def score_vulnerability(
     sddm: SDDM, *, offline: bool = True,
 ) -> DimensionResult:
-    """Score Known Vulnerability Exposure (0-40).
-
-    Offline mode: awards full score since no CVEs can be confirmed.
-    Live mode: would query OSV API (future implementation).
-    """
+    """Score Known Vulnerability Exposure (0-40)."""
     result = DimensionResult(
         name="Vulnerability Exposure",
         score=0,
@@ -106,10 +103,11 @@ def score_vulnerability(
         )
         return result
 
-    # Live mode: query OSV for each unique package
     total_deduction = 0
-    for name in sddm.unique_packages:
-        vulns = query_osv(name)
+    for name, ref in sddm.unique_packages.items():
+        vulns = query_osv(
+            name, version=ref.version, ecosystem=ref.ecosystem,
+        )
         for vuln in vulns:
             sev = classify_severity(vuln)
             deduction = SEVERITY_DEDUCTION.get(sev, 1)
@@ -130,12 +128,7 @@ def score_vulnerability(
 def score_vitality(
     sddm: SDDM, *, offline: bool = True,
 ) -> DimensionResult:
-    """Score Package Vitality (0-25).
-
-    Offline mode: awards neutral score since maintenance status
-    cannot be determined without network.
-    Live mode: would query npm registry (future implementation).
-    """
+    """Score Package Vitality (0-25)."""
     result = DimensionResult(
         name="Package Vitality",
         score=0,
@@ -150,15 +143,16 @@ def score_vitality(
         )
         return result
 
-    # Live mode: query npm for each unique package
     now = datetime.now(timezone.utc)
     vital_count = 0.0
     queried = 0
 
-    for name in sddm.unique_packages:
+    for name, ref in sddm.unique_packages.items():
+        if ref.ecosystem != "npm":
+            continue
         npm_data = query_npm(name)
         if npm_data is None:
-            continue  # private/scoped pkg, skip
+            continue
         queried += 1
 
         if is_deprecated(npm_data):
@@ -205,12 +199,7 @@ def score_vitality(
 def score_depth(
     sddm: SDDM, *, offline: bool = True,
 ) -> DimensionResult:
-    """Score Supply Chain Depth (0-20).
-
-    Offline mode: awards neutral score since transitive dependency
-    counts cannot be determined without network.
-    Live mode: would query npm registry (future implementation).
-    """
+    """Score Supply Chain Depth (0-20)."""
     result = DimensionResult(
         name="Supply Chain Depth",
         score=0,
@@ -225,10 +214,11 @@ def score_depth(
         )
         return result
 
-    # Live mode: query npm for direct dep counts
     total_deduction = 0
 
-    for name in sddm.unique_packages:
+    for name, ref in sddm.unique_packages.items():
+        if ref.ecosystem != "npm":
+            continue
         npm_data = query_npm(name)
         if npm_data is None:
             continue
@@ -259,12 +249,14 @@ def score_depth(
     return result
 
 
-def score_coverage(sddm: SDDM) -> DimensionResult:
-    """Score SDDM Coverage (0-15).
+def score_coverage(
+    sddm: SDDM, *, spec_dir: Path | None = None,
+) -> DimensionResult:
+    """Score Manifest Quality (0-15).
 
-    Works in both offline and live mode — scores spec documentation
-    quality based on version hints, structured locations, and
-    consistency.
+    Scores the completeness of the dependency manifest:
+    version specified, ecosystem specified, justification present.
+    Also cross-validates that packages in specs are in the manifest.
     """
     result = DimensionResult(
         name="SDDM Coverage",
@@ -278,45 +270,55 @@ def score_coverage(sddm: SDDM) -> DimensionResult:
     if total_packages == 0:
         result.score = 0
         result.issues.append(
-            "No package references found in spec corpus",
+            "No packages found in dependency manifest",
         )
         result.suggestions.append(
-            "Add package references with version hints in "
-            "markdown tables or backtick-quoted text",
+            "Create a dependencies.md manifest with Package, "
+            "Version, Ecosystem, and Justification columns",
         )
         return result
 
-    well_documented = 0
+    # Report parse warnings as issues
+    for warning in sddm.warnings:
+        result.issues.append(warning)
 
-    for name, refs in unique.items():
-        has_version = any(r.version_hint for r in refs)
-        has_structured = any(r.in_table or r.in_backticks for r in refs)
+    complete = 0
+    for name, ref in unique.items():
+        has_version = bool(ref.version and ref.version != "latest")
+        has_ecosystem = bool(ref.ecosystem)
+        has_justification = bool(ref.justification)
 
-        # Flag: single-spec mention with no version
-        if len(set(r.source_spec for r in refs)) == 1 and not has_version:
+        if has_version and has_ecosystem and has_justification:
+            complete += 1
+        elif has_ecosystem and has_justification:
+            complete += 0.5
+            result.suggestions.append(
+                f"'{name}' has no pinned version (using 'latest')",
+            )
+        else:
+            missing = []
+            if not has_version:
+                missing.append("version")
+            if not has_ecosystem:
+                missing.append("ecosystem")
+            if not has_justification:
+                missing.append("justification")
             result.issues.append(
-                f"'{name}' appears in only 1 spec with no version hint"
-                f" ({refs[0].source_spec}:{refs[0].line_number})",
+                f"'{name}' missing: {', '.join(missing)}",
             )
 
-        # Flag: conflicting version hints across specs
-        version_hints = {
-            r.version_hint for r in refs if r.version_hint
-        }
-        if len(version_hints) > 1:
+    # Cross-validate: packages in specs must be in manifest
+    if spec_dir is not None:
+        manifest_names = set(unique.keys())
+        unlisted = scan_unlisted_packages(spec_dir, manifest_names)
+        for pkg, spec_file, line in unlisted:
             result.issues.append(
-                f"'{name}' has conflicting version hints: "
-                f"{', '.join(sorted(version_hints))}",
+                f"'{pkg}' in {spec_file}:{line} not in manifest",
             )
+            # Penalize: each unlisted package reduces completeness
+            complete = max(0, complete - 0.5)
 
-        # A package is well-documented if it has both version + structure
-        if has_version and has_structured:
-            well_documented += 1
-        elif has_version or has_structured:
-            # Partial credit: count as half
-            well_documented += 0.5
-
-    ratio = well_documented / total_packages
+    ratio = complete / total_packages
 
     if ratio >= 1.0:
         result.score = MAX_COVERAGE  # 15
@@ -328,13 +330,6 @@ def score_coverage(sddm: SDDM) -> DimensionResult:
         result.score = 6
     else:
         result.score = max(0, int(ratio * MAX_COVERAGE))
-
-    if result.score < MAX_COVERAGE:
-        undocumented = total_packages - int(well_documented)
-        result.suggestions.append(
-            f"{undocumented} of {total_packages} packages lack full "
-            f"documentation (version hint + structured location)",
-        )
 
     return result
 
@@ -348,16 +343,13 @@ def score_corpus(
     offline: bool = True,
     threshold: int = 60,
     fail_on_zero_dimension: bool = True,
+    spec_dir: Path | None = None,
 ) -> SCRResult:
-    """Score a spec corpus against the SCR rubric.
-
-    Returns a full SCRResult with per-dimension scores, status, and
-    gate decision.
-    """
+    """Score a spec corpus against the SCR rubric."""
     vuln = score_vulnerability(sddm, offline=offline)
     vital = score_vitality(sddm, offline=offline)
     dep = score_depth(sddm, offline=offline)
-    cov = score_coverage(sddm)
+    cov = score_coverage(sddm, spec_dir=spec_dir)
 
     result = SCRResult(
         vulnerability=vuln,

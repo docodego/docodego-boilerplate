@@ -1,254 +1,226 @@
-"""SDDM parser — extracts package references from a spec corpus."""
+"""Manifest parser — reads dependencies.md into the SDDM."""
 
 from __future__ import annotations
 
 import re
+import sys
 from dataclasses import dataclass, field
 from pathlib import Path
-
-from .anti_gaming import (
-    KNOWN_PACKAGES,
-    SCOPED_PKG_RE,
-    UNSCOPED_PKG_RE,
-    VERSION_HINT_RE,
-    is_false_positive,
-)
-
-# ── Data structures ────────────────────────────────────────────────────
 
 
 @dataclass
 class PackageRef:
-    """A single reference to a package found in a spec file."""
+    """A single package entry from the dependency manifest."""
 
-    name: str  # e.g., "better-auth", "@repo/ui", "hono"
-    version_hint: str  # e.g., "v4", "^2.0", ">=1.5", "" if none
-    source_spec: str  # filename where found
-    in_table: bool  # found in a markdown table cell?
-    in_backticks: bool  # found in backtick quotes?
-    line_number: int
+    name: str
+    version: str
+    ecosystem: str
+    justification: str
 
 
 @dataclass
 class SDDM:
     """Spec-Derived Dependency Manifest."""
 
-    packages: list[PackageRef] = field(default_factory=list)
-    unique_packages: dict[str, list[PackageRef]] = field(
+    unique_packages: dict[str, PackageRef] = field(
         default_factory=dict,
     )
+    warnings: list[str] = field(default_factory=list)
 
     def add(self, ref: PackageRef) -> None:
-        """Add a package reference and update the unique index."""
-        self.packages.append(ref)
-        self.unique_packages.setdefault(ref.name, []).append(ref)
+        """Add a package reference. Warns on duplicates."""
+        if ref.name in self.unique_packages:
+            self.warnings.append(
+                f"Duplicate package '{ref.name}' in manifest"
+            )
+            return
+        self.unique_packages[ref.name] = ref
 
 
-# ── Negation context ──────────────────────────────────────────────────
-# Lines that mention a package as NOT being used (e.g., "count of X
-# equals 0", "imports from X instead of Y").  These are architectural
-# decisions, not actual dependencies.
+# ── Table parsing ────────────────────────────────────────────────────
 
-_NEGATION_RE = re.compile(
-    r"\bequals\s+0\b|\binstead\s+of\b",
-    re.IGNORECASE,
-)
+_SEPARATOR_RE = re.compile(r"^\|[\s:|-]+\|$")
 
-# ── Table detection ────────────────────────────────────────────────────
 
-_TABLE_ROW_RE = re.compile(r"^\|.+\|$")
-_SEPARATOR_ROW_RE = re.compile(r"^\|[\s:|-]+\|$")
+def _parse_table_row(line: str) -> list[str] | None:
+    """Parse a markdown table row into cell values.
 
-# ── Backtick extraction ───────────────────────────────────────────────
+    Returns None if the line is not a table row or is a separator.
+    """
+    stripped = line.strip()
+    if not stripped.startswith("|") or not stripped.endswith("|"):
+        return None
+    if _SEPARATOR_RE.match(stripped):
+        return None
+    cells = [c.strip() for c in stripped.split("|")]
+    # split("|") produces empty strings at start/end
+    return cells[1:-1]
 
-_BACKTICK_RE = re.compile(r"`([^`]+)`")
 
-# Patterns that indicate backtick content is code, not a package name
-_CODE_IDENTIFIER_RE = re.compile(
-    r"_"  # underscores = code identifier
-    r"|/"  # slashes = file path (but allow @scope/name)
-    r"|\.(?:ts|js|tsx|jsx|json|yaml|yml|toml|css|html|md|py)$"
-    r"|\(\)"  # function call
-    r"|="  # assignment
-    r"|^\d"  # starts with digit
-    r"|[A-Z]",  # camelCase or PascalCase = code identifier
-)
+def parse_manifest(path: Path) -> SDDM:
+    """Parse a dependencies.md manifest file into an SDDM."""
+    sddm = SDDM()
 
-# ── Frontmatter detection ─────────────────────────────────────────────
+    if not path.exists():
+        sddm.warnings.append(
+            f"Manifest not found: {path.as_posix()}"
+        )
+        return sddm
+
+    text = path.read_text(encoding="utf-8")
+    lines = text.split("\n")
+
+    header_found = False
+    col_map: dict[str, int] = {}
+
+    for line_num, line in enumerate(lines, start=1):
+        cells = _parse_table_row(line)
+        if cells is None:
+            continue
+
+        # First table row = header
+        if not header_found:
+            header_found = True
+            for i, cell in enumerate(cells):
+                col_map[cell.lower()] = i
+            # Validate required columns
+            required = {"package", "version", "ecosystem"}
+            missing = required - set(col_map)
+            if missing:
+                sddm.warnings.append(
+                    f"Missing columns: {', '.join(sorted(missing))}"
+                )
+                return sddm
+            continue
+
+        # Data row
+        pkg_idx = col_map.get("package", 0)
+        ver_idx = col_map.get("version", 1)
+        eco_idx = col_map.get("ecosystem", 2)
+        jst_idx = col_map.get("justification", -1)
+
+        if len(cells) <= max(pkg_idx, ver_idx, eco_idx):
+            sddm.warnings.append(
+                f"Line {line_num}: too few columns"
+            )
+            continue
+
+        name = cells[pkg_idx].strip("`")
+        version = cells[ver_idx]
+        ecosystem = cells[eco_idx]
+        justification = (
+            cells[jst_idx] if jst_idx >= 0 and jst_idx < len(cells)
+            else ""
+        )
+
+        if not name:
+            sddm.warnings.append(
+                f"Line {line_num}: empty package name"
+            )
+            continue
+
+        ref = PackageRef(
+            name=name,
+            version=version,
+            ecosystem=ecosystem,
+            justification=justification,
+        )
+        sddm.add(ref)
+
+    if not header_found:
+        sddm.warnings.append("No table found in manifest")
+
+    # Print warnings to stderr
+    for warning in sddm.warnings:
+        print(f"  warning: {warning}", file=sys.stderr)
+
+    return sddm
+
+
+# ── Spec cross-validation ────────────────────────────────────────────
+
+# Scoped packages are unambiguous: @scope/name
+_SCOPED_RE = re.compile(r"@[a-z][a-z0-9._-]*/[a-z][a-z0-9._-]*[a-z0-9]")
 
 _FRONTMATTER_FENCE = "---"
 
 
-def _is_table_row(line: str) -> bool:
-    """Return True if line is a markdown table row (not separator)."""
-    stripped = line.strip()
-    return bool(
-        _TABLE_ROW_RE.match(stripped)
-        and not _SEPARATOR_ROW_RE.match(stripped)
+def _is_negation_line(line: str) -> bool:
+    """Return True if a line mentions a package in negation context."""
+    lower = line.lower()
+    return (
+        "equals 0" in lower
+        or "pnpm dlx" in lower
+        or "npx " in lower
+        or "instead of" in lower
     )
 
 
-def _find_version_near(text: str, pkg_end: int) -> str:
-    """Look for a version hint near the package name position."""
-    # Search in a window after the package name
-    window = text[pkg_end : pkg_end + 30]
-    match = VERSION_HINT_RE.search(window)
-    if match:
-        return match.group(0)
-    return ""
+def scan_unlisted_packages(
+    spec_dir: Path, manifest_names: set[str],
+) -> list[tuple[str, str, int]]:
+    """Scan specs for package references not in the manifest.
 
+    Returns list of (package_name, spec_filename, line_number)
+    for packages found in spec prose that are absent from the
+    manifest. Only detects scoped packages (@scope/name). Skips
+    negation contexts and Failure Modes sections.
+    """
+    unlisted: list[tuple[str, str, int]] = []
 
-def _extract_packages_from_text(
-    text: str,
-    *,
-    source_spec: str,
-    line_number: int,
-    in_table: bool,
-    in_backticks: bool,
-) -> list[PackageRef]:
-    """Extract package references from a text fragment."""
-    refs: list[PackageRef] = []
-    seen_in_line: set[str] = set()
-
-    # Scoped packages (@scope/name)
-    for match in SCOPED_PKG_RE.finditer(text):
-        name = match.group(0)
-        if name in seen_in_line:
-            continue
-        # Skip internal workspace packages (@repo/*)
-        if name.startswith("@repo/"):
-            continue
-        seen_in_line.add(name)
-        version = _find_version_near(text, match.end())
-        refs.append(PackageRef(
-            name=name,
-            version_hint=version,
-            source_spec=source_spec,
-            in_table=in_table,
-            in_backticks=in_backticks,
-            line_number=line_number,
-        ))
-
-    # Unscoped packages: only accept known package names.
-    # Hyphenated words are too common in English prose to accept
-    # based solely on backtick/table context.
-    for match in UNSCOPED_PKG_RE.finditer(text):
-        name = match.group(0)
-        if name in seen_in_line:
-            continue
-        if name not in KNOWN_PACKAGES:
-            continue
-        seen_in_line.add(name)
-        version = _find_version_near(text, match.end())
-        refs.append(PackageRef(
-            name=name,
-            version_hint=version,
-            source_spec=source_spec,
-            in_table=in_table,
-            in_backticks=in_backticks,
-            line_number=line_number,
-        ))
-
-    return refs
-
-
-def _parse_file(path: Path) -> list[PackageRef]:
-    """Parse a single spec file and extract all package references."""
-    text = path.read_text(encoding="utf-8")
-    lines = text.split("\n")
-    filename = path.name
-    refs: list[PackageRef] = []
-
-    in_frontmatter = False
-    frontmatter_count = 0
-    in_failure_modes = False
-
-    for line_num, line in enumerate(lines, start=1):
-        stripped = line.strip()
-
-        # Skip frontmatter
-        if stripped == _FRONTMATTER_FENCE:
-            frontmatter_count += 1
-            in_frontmatter = frontmatter_count == 1
-            if frontmatter_count == 2:
-                in_frontmatter = False
-            continue
-        if in_frontmatter:
-            continue
-
-        # Track sections — skip Failure Modes (describes error
-        # scenarios, not actual dependencies)
-        if stripped.startswith("## "):
-            in_failure_modes = stripped == "## Failure Modes"
-        if in_failure_modes:
-            continue
-
-        # Skip blank lines and heading markers
-        if not stripped or stripped.startswith("#"):
-            # Still check headings for backtick content
-            pass
-
-        is_table = _is_table_row(stripped)
-
-        # Skip lines in negation context:
-        # - "equals 0" on current or next line (multi-line
-        #   "count of X equals 0" patterns)
-        # - "instead of" on current line only, and only outside
-        #   tables (inside tables it describes fallback behavior)
-        idx = line_num - 1  # 0-based index into lines
-        fwd = lines[idx : idx + 2]
-        if any(re.search(r"\bequals\s+0\b", w, re.I) for w in fwd):
-            continue
-        if not is_table and re.search(
-            r"\binstead\s+of\b", stripped, re.I,
+    md_files = sorted(spec_dir.rglob("*.md"))
+    for md_file in md_files:
+        stem_upper = md_file.stem.upper()
+        if stem_upper in (
+            "README", "ROADMAP", "REVIEW", "CHANGELOG",
+            "DEPENDENCIES",
         ):
             continue
 
-        # Extract from backtick-quoted text
-        for bt_match in _BACKTICK_RE.finditer(stripped):
-            bt_content = bt_match.group(1)
-            # Skip backtick content that looks like code identifiers
-            # (but allow scoped packages like @repo/ui)
-            if (
-                _CODE_IDENTIFIER_RE.search(bt_content)
-                and not bt_content.startswith("@")
-            ):
+        text = md_file.read_text(encoding="utf-8")
+        lines = text.split("\n")
+        seen_in_file: set[str] = set()
+
+        in_frontmatter = False
+        fm_count = 0
+        in_failure_modes = False
+
+        for line_num, line in enumerate(lines, start=1):
+            stripped = line.strip()
+
+            # Skip frontmatter
+            if stripped == _FRONTMATTER_FENCE:
+                fm_count += 1
+                in_frontmatter = fm_count == 1
+                if fm_count == 2:
+                    in_frontmatter = False
                 continue
-            refs.extend(_extract_packages_from_text(
-                bt_content,
-                source_spec=filename,
-                line_number=line_num,
-                in_table=is_table,
-                in_backticks=True,
-            ))
+            if in_frontmatter:
+                continue
 
-        # Extract from the full line (non-backtick context)
-        # Remove backtick content first to avoid double-counting
-        plain_text = _BACKTICK_RE.sub("", stripped)
-        if plain_text.strip():
-            refs.extend(_extract_packages_from_text(
-                plain_text,
-                source_spec=filename,
-                line_number=line_num,
-                in_table=is_table,
-                in_backticks=False,
-            ))
+            # Track sections — skip Failure Modes
+            if stripped.startswith("## "):
+                in_failure_modes = stripped == "## Failure Modes"
+            if in_failure_modes:
+                continue
 
-    return refs
+            # Skip negation context (current + next line)
+            idx = line_num - 1
+            fwd = lines[idx : idx + 2]
+            if any(_is_negation_line(w) for w in fwd):
+                continue
 
+            # Scoped packages
+            for m in _SCOPED_RE.finditer(stripped):
+                name = m.group(0)
+                if name.startswith("@repo/"):
+                    continue
+                if name in seen_in_file:
+                    continue
+                seen_in_file.add(name)
+                if name not in manifest_names:
+                    unlisted.append(
+                        (name, md_file.name, line_num),
+                    )
 
-def parse_directory(directory: Path) -> SDDM:
-    """Scan all .md files in a directory tree and build the SDDM."""
-    sddm = SDDM()
-    md_files = sorted(directory.rglob("*.md"))
-
-    for md_file in md_files:
-        # Skip non-spec files (READMEs, ROADMAPs, REVIEWs)
-        stem_upper = md_file.stem.upper()
-        if stem_upper in ("README", "ROADMAP", "REVIEW", "CHANGELOG"):
-            continue
-
-        for ref in _parse_file(md_file):
-            sddm.add(ref)
-
-    return sddm
+    return unlisted

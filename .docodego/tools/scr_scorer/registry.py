@@ -106,21 +106,29 @@ def _fetch_json(
 # ── OSV API ───────────────────────────────────────────────────────────
 
 
-def query_osv(name: str) -> list[dict]:
+def query_osv(
+    name: str, *, version: str = "", ecosystem: str = "npm",
+) -> list[dict]:
     """Query OSV for vulnerabilities affecting a package.
 
     Returns a list of vulnerability objects, each with at least
     a 'severity' field. Returns [] on network error.
     Uses disk cache with 6h TTL.
     """
-    cache_path = _cache_key("osv", name)
+    cache_key_str = f"{ecosystem}:{name}:{version}"
+    cache_path = _cache_key("osv", cache_key_str)
     cached = _read_cache(cache_path, OSV_TTL_HOURS)
     if cached is not None:
         return cached
 
     payload: dict = {
-        "package": {"name": name, "ecosystem": "npm"},
+        "package": {"name": name, "ecosystem": ecosystem},
     }
+    # Include version for precise matching if available
+    clean_ver = version.lstrip("^~>=<v ").strip()
+    if clean_ver and clean_ver != "latest":
+        payload["version"] = clean_ver
+
     result = _fetch_json(OSV_URL, body=payload)
     if result is None:
         return []
@@ -160,12 +168,15 @@ def classify_severity(vuln: dict) -> str:
 # ── npm Registry ──────────────────────────────────────────────────────
 
 
-def query_npm(name: str) -> dict | None:
+def query_npm(name: str, *, ecosystem: str = "npm") -> dict | None:
     """Query npm registry for package metadata.
 
-    Returns the registry response or None on error.
-    Uses in-memory cache (per-run) + disk cache (24h TTL).
+    Returns the registry response or None for non-npm ecosystems
+    or on error. Uses in-memory + disk cache (24h TTL).
     """
+    if ecosystem != "npm":
+        return None
+
     if name in _npm_cache:
         return _npm_cache[name]
 
