@@ -21,19 +21,19 @@ Any spec corpus, scored as a directory.
 
 ```bash
 # Score a spec directory (text output)
-PYTHONPATH=.docodego/tools python -m shs_scorer <directory>
+.docodego/tools/run shs_scorer <directory>
 
 # With optional flows directory for coverage check
-PYTHONPATH=.docodego/tools python -m shs_scorer <directory> --flows <flows-dir>
+.docodego/tools/run shs_scorer <directory> --flows <flows-dir>
 
 # JSON output
-PYTHONPATH=.docodego/tools python -m shs_scorer --format json <directory>
+.docodego/tools/run shs_scorer --format json <directory>
 
 # Custom line limits
-PYTHONPATH=.docodego/tools python -m shs_scorer --line-limit 250 --data-heavy-limit 350 <directory>
+.docodego/tools/run shs_scorer --line-limit 250 --data-heavy-limit 350 <directory>
 
 # Disable zero-dimension veto
-PYTHONPATH=.docodego/tools python -m shs_scorer --no-zero-veto <directory>
+.docodego/tools/run shs_scorer --no-zero-veto <directory>
 ```
 
 ## CLI Options
@@ -47,6 +47,7 @@ PYTHONPATH=.docodego/tools python -m shs_scorer --no-zero-veto <directory>
 | `--line-limit` | `300` | Maximum lines per spec |
 | `--data-heavy-limit` | `400` | Maximum lines for specs with 3+ tables |
 | `--no-zero-veto` | off | Allow passing even if one dimension scores 0 |
+| `--audits` | *(none)* | Write audit JSON to this directory (or set `DOCODEGO_AUDITS`) |
 
 ## Exit Codes
 

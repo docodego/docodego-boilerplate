@@ -16,19 +16,19 @@ Any behavioral or foundation spec, scored one at a time.
 
 ```bash
 # Score a single spec (text output)
-PYTHONPATH=.docodego/tools python -m ics_scorer <file>
+.docodego/tools/run ics_scorer <file>
 
 # Score multiple specs with JSON output
-PYTHONPATH=.docodego/tools python -m ics_scorer --format json <files...>
+.docodego/tools/run ics_scorer --format json <files...>
 
 # Custom threshold (default is 60)
-PYTHONPATH=.docodego/tools python -m ics_scorer --threshold 80 <file>
+.docodego/tools/run ics_scorer --threshold 80 <file>
 
 # Custom threat floor (default is 15)
-PYTHONPATH=.docodego/tools python -m ics_scorer --threat-floor 20 <file>
+.docodego/tools/run ics_scorer --threat-floor 20 <file>
 
 # Disable zero-dimension veto
-PYTHONPATH=.docodego/tools python -m ics_scorer --no-zero-veto <file>
+.docodego/tools/run ics_scorer --no-zero-veto <file>
 ```
 
 ## CLI Options
@@ -40,6 +40,7 @@ PYTHONPATH=.docodego/tools python -m ics_scorer --no-zero-veto <file>
 | `--threshold` | `60` | Minimum total score (out of 100) required to pass |
 | `--threat-floor` | `15` | Minimum Threat Coverage score — blocks approval if not met |
 | `--no-zero-veto` | off | Allow passing even if one dimension scores 0 |
+| `--audits` | *(none)* | Write audit JSON to this directory (or set `DOCODEGO_AUDITS`) |
 
 ## Exit Codes
 
@@ -99,7 +100,9 @@ Does the spec define enough failure modes with recovery paths?
 - **Substantive failure mode** = 15+ words AND contains a recovery
   keyword (falls back, retries, alerts, degrades, rejects, returns
   error, logs, notifies, etc.)
-- **Scoring:** 3+ substantive → 25, 2 → 16, 1 → 8, 0 → 0
+- **Scoring:** requires ≥3 substantive, then scored by ratio
+  (substantive / total): 90%+ → 25, 70%+ → 20, 50%+ → 15,
+  30%+ → 10, else linear
 - **Threat floor gate:** Threat Coverage must score ≥ 15 or the
   entire spec is BLOCKED regardless of total score
 - **What it catches:** specs with no error handling plan, failure
@@ -147,36 +150,36 @@ ics_scorer/
 ```
 .md file → parser.parse_spec() → ParsedSpec
          → scorer.score_spec()  → ICSResult
-         → reporter.format_*()  → text or JSON output
+         → reporter.format_*()  → text or JSON stdout
+         → audit.write_audit()  → .audit.json file (if DOCODEGO_AUDITS set)
 ```
 
-## JSON Output Schema
+## Audit JSON Schema
+
+Each tool writes its results under `tools.<acronym>`. Multiple
+tools merge into the same `.audit.json` file per spec.
 
 ```json
 {
-    "file": "path/to/spec.md",
-    "overall_score": 100,
-    "threshold": 60,
-    "threshold_met": true,
-    "blocked": false,
-    "block_reason": "",
-    "status": "High-quality specification",
-    "dimensions": {
-        "completeness": {
-            "score": 25, "max_score": 25, "band": "high",
-            "issues": [], "suggestions": []
-        },
-        "testability": {
-            "score": 25, "max_score": 25, "band": "high",
-            "issues": [], "suggestions": []
-        },
-        "unambiguity": {
-            "score": 25, "max_score": 25, "band": "high",
-            "issues": [], "suggestions": []
-        },
-        "threat_coverage": {
-            "score": 25, "max_score": 25, "band": "high",
-            "issues": [], "suggestions": []
+    "spec": "path/to/spec.md",
+    "timestamp": "2026-02-28T12:00:00Z",
+    "tools": {
+        "ics": {
+            "score": 100,
+            "threshold": 60,
+            "passed": true,
+            "blocked": false,
+            "block_reason": "",
+            "status": "High-quality specification",
+            "dimensions": {
+                "completeness": {
+                    "score": 25, "max_score": 25, "band": "high",
+                    "issues": [], "suggestions": []
+                },
+                "testability": { "..." },
+                "unambiguity": { "..." },
+                "threat_coverage": { "..." }
+            }
         }
     }
 }

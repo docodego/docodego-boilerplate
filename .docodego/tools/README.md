@@ -5,6 +5,27 @@ works on any markdown spec corpus without project-specific
 knowledge. Each has a dedicated design document describing its
 purpose, dimensions, scoring logic, and gate behavior.
 
+## Quick Start
+
+```bash
+# Run any tool via the runner script (sources .env automatically)
+.docodego/tools/run ics_scorer <spec-file>
+.docodego/tools/run ccs_scorer --format json <spec-files...>
+
+# Or set env vars manually
+PYTHONPATH=.docodego/tools python -m ics_scorer <spec-file>
+```
+
+Configuration lives in `.docodego/tools/.env`:
+
+```
+PYTHONPATH=.docodego/tools
+DOCODEGO_AUDITS=.docodego/cycle-01/audits
+```
+
+The runner script sources this file. Tools also auto-load
+`DOCODEGO_AUDITS` via a built-in dotenv loader at startup.
+
 ## What Each Tool Answers
 
 | Tool | Question |
@@ -38,6 +59,13 @@ All tools share these properties:
 - **Band thresholds:** low 0–8, mid 9–18, high 19–25
 - **Output formats:** `--format text` (ASCII progress bars) or
   `--format json` (structured, CI-friendly)
+- **Audit output:** set `DOCODEGO_AUDITS=<dir>` (or pass
+  `--audits <dir>`) to write `.audit.json` files mirroring the
+  spec folder structure — multiple tools merge into one file
+  per spec
+- **Shared code:** `scoring_common/` package provides
+  `DimensionResult`, audit I/O, and reporter helpers — each
+  tool's reporter is a thin wrapper
 - **Module layout:** `__init__.py`, `__main__.py`, `parser.py`,
   `scorer.py`, `anti_gaming.py`, `reporter.py`
 

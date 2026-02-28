@@ -23,17 +23,17 @@ network access.
 
 ```bash
 # Live mode (queries npm + OSV APIs)
-PYTHONPATH=.docodego/tools python -m scr_scorer <directory>
+.docodego/tools/run scr_scorer <directory>
 
 # Offline mode (skips network queries, scores only what can be
 # determined from spec content alone)
-PYTHONPATH=.docodego/tools python -m scr_scorer --offline <directory>
+.docodego/tools/run scr_scorer --offline <directory>
 
 # JSON output
-PYTHONPATH=.docodego/tools python -m scr_scorer --format json <directory>
+.docodego/tools/run scr_scorer --format json <directory>
 
 # Custom threshold (default is 60)
-PYTHONPATH=.docodego/tools python -m scr_scorer --threshold 80 <directory>
+.docodego/tools/run scr_scorer --threshold 80 <directory>
 ```
 
 ## CLI Options
@@ -45,6 +45,7 @@ PYTHONPATH=.docodego/tools python -m scr_scorer --threshold 80 <directory>
 | `--threshold` | `60` | Minimum total score (out of 100) required to pass |
 | `--offline` | off | Skip network queries; score only from spec content |
 | `--no-zero-veto` | off | Allow passing even if one dimension scores 0 |
+| `--audits` | *(none)* | Write audit JSON to this directory (or set `DOCODEGO_AUDITS`) |
 
 ## Exit Codes
 

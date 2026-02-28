@@ -16,16 +16,16 @@ Any convention spec, scored one at a time.
 
 ```bash
 # Score a single spec (text output)
-PYTHONPATH=.docodego/tools python -m ccs_scorer <file>
+.docodego/tools/run ccs_scorer <file>
 
 # Score multiple specs with JSON output
-PYTHONPATH=.docodego/tools python -m ccs_scorer --format json <files...>
+.docodego/tools/run ccs_scorer --format json <files...>
 
 # Custom threshold (default is 60)
-PYTHONPATH=.docodego/tools python -m ccs_scorer --threshold 80 <file>
+.docodego/tools/run ccs_scorer --threshold 80 <file>
 
 # Disable zero-dimension veto
-PYTHONPATH=.docodego/tools python -m ccs_scorer --no-zero-veto <file>
+.docodego/tools/run ccs_scorer --no-zero-veto <file>
 ```
 
 ## CLI Options
@@ -36,6 +36,7 @@ PYTHONPATH=.docodego/tools python -m ccs_scorer --no-zero-veto <file>
 | `--format` | `text` | Output format: `text` (human-readable) or `json` (structured) |
 | `--threshold` | `60` | Minimum total score (out of 100) required to pass |
 | `--no-zero-veto` | off | Allow passing even if one dimension scores 0 |
+| `--audits` | *(none)* | Write audit JSON to this directory (or set `DOCODEGO_AUDITS`) |
 
 ## Exit Codes
 
@@ -135,36 +136,36 @@ ccs_scorer/
 ```
 .md file → parser.parse_spec() → ParsedConventionSpec
          → scorer.score_spec()  → CCSResult
-         → reporter.format_*()  → text or JSON output
+         → reporter.format_*()  → text or JSON stdout
+         → audit.write_audit()  → .audit.json file (if DOCODEGO_AUDITS set)
 ```
 
-## JSON Output Schema
+## Audit JSON Schema
+
+Each tool writes its results under `tools.<acronym>`. Multiple
+tools merge into the same `.audit.json` file per spec.
 
 ```json
 {
-    "file": "path/to/spec.md",
-    "overall_score": 100,
-    "threshold": 60,
-    "threshold_met": true,
-    "blocked": false,
-    "block_reason": "",
-    "status": "High-quality convention specification",
-    "dimensions": {
-        "precision": {
-            "score": 25, "max_score": 25, "band": "high",
-            "issues": [], "suggestions": []
-        },
-        "detectability": {
-            "score": 25, "max_score": 25, "band": "high",
-            "issues": [], "suggestions": []
-        },
-        "enforcement_coverage": {
-            "score": 25, "max_score": 25, "band": "high",
-            "issues": [], "suggestions": []
-        },
-        "scope_clarity": {
-            "score": 25, "max_score": 25, "band": "high",
-            "issues": [], "suggestions": []
+    "spec": "path/to/spec.md",
+    "timestamp": "2026-02-28T12:00:00Z",
+    "tools": {
+        "ccs": {
+            "score": 100,
+            "threshold": 60,
+            "passed": true,
+            "blocked": false,
+            "block_reason": "",
+            "status": "High-quality convention specification",
+            "dimensions": {
+                "precision": {
+                    "score": 25, "max_score": 25, "band": "high",
+                    "issues": [], "suggestions": []
+                },
+                "detectability": { "..." },
+                "enforcement_coverage": { "..." },
+                "scope_clarity": { "..." }
+            }
         }
     }
 }

@@ -23,16 +23,16 @@ directory.
 
 ```bash
 # Score a spec directory (text output)
-PYTHONPATH=.docodego/tools python -m csg_scorer <directory>
+.docodego/tools/run csg_scorer <directory>
 
 # JSON output
-PYTHONPATH=.docodego/tools python -m csg_scorer --format json <directory>
+.docodego/tools/run csg_scorer --format json <directory>
 
 # Custom threshold (default is 60)
-PYTHONPATH=.docodego/tools python -m csg_scorer --threshold 80 <directory>
+.docodego/tools/run csg_scorer --threshold 80 <directory>
 
 # Disable zero-dimension veto
-PYTHONPATH=.docodego/tools python -m csg_scorer --no-zero-veto <directory>
+.docodego/tools/run csg_scorer --no-zero-veto <directory>
 ```
 
 ## CLI Options
@@ -43,6 +43,7 @@ PYTHONPATH=.docodego/tools python -m csg_scorer --no-zero-veto <directory>
 | `--format` | `text` | Output format: `text` (human-readable) or `json` (structured) |
 | `--threshold` | `60` | Minimum total score (out of 100) required to pass |
 | `--no-zero-veto` | off | Allow passing even if one dimension scores 0 |
+| `--audits` | *(none)* | Write audit JSON to this directory (or set `DOCODEGO_AUDITS`) |
 
 ## Exit Codes
 

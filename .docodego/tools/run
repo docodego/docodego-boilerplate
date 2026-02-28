@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# Usage: .docodego/tools/run <tool> [args...]
+# Example: .docodego/tools/run ics_scorer specs/foundation/api-framework.md
+#          .docodego/tools/run ccs_scorer --format json specs/conventions/*.md
+
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+
+# Load .env from tools directory
+set -a
+source "$SCRIPT_DIR/.env"
+set +a
+
+exec python -m "$@"

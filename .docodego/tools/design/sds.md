@@ -25,16 +25,16 @@ Any behavioral or foundation spec, scored one at a time.
 
 ```bash
 # Score a single spec (text output)
-PYTHONPATH=.docodego/tools python -m sds_scorer <file>
+.docodego/tools/run sds_scorer <file>
 
 # Score multiple specs with JSON output
-PYTHONPATH=.docodego/tools python -m sds_scorer --format json <files...>
+.docodego/tools/run sds_scorer --format json <files...>
 
 # Custom threshold (default is 60)
-PYTHONPATH=.docodego/tools python -m sds_scorer --threshold 80 <file>
+.docodego/tools/run sds_scorer --threshold 80 <file>
 
 # Disable zero-dimension veto
-PYTHONPATH=.docodego/tools python -m sds_scorer --no-zero-veto <file>
+.docodego/tools/run sds_scorer --no-zero-veto <file>
 ```
 
 ## CLI Options
@@ -45,6 +45,7 @@ PYTHONPATH=.docodego/tools python -m sds_scorer --no-zero-veto <file>
 | `--format` | `text` | Output format: `text` (human-readable) or `json` (structured) |
 | `--threshold` | `60` | Minimum total score (out of 100) required to pass |
 | `--no-zero-veto` | off | Allow passing even if one dimension scores 0 |
+| `--audits` | *(none)* | Write audit JSON to this directory (or set `DOCODEGO_AUDITS`) |
 
 ## Exit Codes
 

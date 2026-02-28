@@ -5,6 +5,8 @@ from __future__ import annotations
 import re
 from dataclasses import dataclass, field
 
+from scoring_common.types import DimensionResult
+
 from .anti_gaming import (
     check_failure_mode_substance,
     count_boilerplate_criteria,
@@ -53,26 +55,6 @@ MIN_FAILURE_MODES = 3
 
 # Top-level bullet: no leading whitespace before the marker
 _TOP_BULLET = re.compile(r"^(?:[-*•]|\d+[.\)])\s+", re.MULTILINE)
-
-
-@dataclass
-class DimensionResult:
-    """Score result for a single ICS dimension."""
-
-    name: str
-    score: int  # 0-25
-    max_score: int = 25
-    issues: list[str] = field(default_factory=list)
-    suggestions: list[str] = field(default_factory=list)
-
-    @property
-    def band(self) -> str:
-        """Compute band from current score (always up-to-date)."""
-        if self.score <= 8:
-            return "low"
-        if self.score <= 18:
-            return "mid"
-        return "high"
 
 
 @dataclass
