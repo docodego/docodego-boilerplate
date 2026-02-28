@@ -311,3 +311,7 @@ user explicitly picks Light or Dark that differs from the OS setting.
     Configures the Better Auth server and session validation that the
     appearance settings route guard relies on to verify the user is
     authenticated before rendering the theme selector controls
+- [user-changes-theme-on-mobile](user-changes-theme-on-mobile.md) —
+    Defines the mobile-specific theme switching flow using UniWind
+    native theming and `react-native-mmkv` persistence, complementing
+    the web-based `.dark` class mutation defined in this specification

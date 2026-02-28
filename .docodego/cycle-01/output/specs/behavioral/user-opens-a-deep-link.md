@@ -374,3 +374,7 @@ regular browser), deep link registration is skipped entirely.
     management lifecycle that determines whether a deep link navigation
     succeeds with authenticated content or redirects to the sign-in
     page via the route guard
+- [mobile-handles-deep-link](mobile-handles-deep-link.md) — defines
+    the mobile-specific deep link handling via Expo Router and the
+    `docodego://` URL scheme on iOS and Android, complementing the
+    desktop Tauri deep link behavior defined in this specification

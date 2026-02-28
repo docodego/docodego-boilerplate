@@ -210,3 +210,4 @@ feedback for both success and failure outcomes.
 - [org-admin-removes-a-member](org-admin-removes-a-member.md) — Member removal flow that intersects with team membership when a removed organization member also belongs to teams in that organization
 - [auth-server-config](../foundation/auth-server-config.md) — Better Auth server configuration including the `organization` plugin that provides the `createTeam` endpoint used in this specification
 - [database-schema](../foundation/database-schema.md) — Drizzle ORM table definitions for the `team` table and related organization tables written to during the team creation flow
+- [user-deletes-a-team](user-deletes-a-team.md) — Defines the admin workflow for permanently deleting a team from the organization, which is the inverse lifecycle operation of the team creation flow defined in this specification

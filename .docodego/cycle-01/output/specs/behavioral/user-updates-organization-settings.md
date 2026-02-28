@@ -267,3 +267,4 @@ redirected by the route guard.
 - [shared-i18n](../foundation/shared-i18n.md) — Internationalization infrastructure
     providing translation keys for all settings page labels, error messages, and
     button text rendered on the organization settings form
+- [user-uploads-organization-logo](user-uploads-organization-logo.md) — Defines the organization logo upload flow from the settings page, which is a distinct file-upload operation complementing the name and slug editing defined in this specification

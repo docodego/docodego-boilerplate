@@ -206,3 +206,4 @@ data instantly for recently visited orgs while background refetches run.
 - [database-schema](../foundation/database-schema.md) — Schema definitions for the `organization` and `member` tables that `beforeLoad` queries to verify membership and load org data
 - [shared-i18n](../foundation/shared-i18n.md) — Internationalization infrastructure providing the translation keys for OrgSwitcher labels, dropdown items, and error messages
 - [api-framework](../foundation/api-framework.md) — Hono middleware stack and global error handler that returns HTTP 403 responses when the membership guard in `beforeLoad` rejects an unauthorized org navigation
+- [user-switches-active-team](user-switches-active-team.md) — Defines the team-level context switching within an organization that operates as a session-level operation complementing the URL-driven organization switching defined in this specification

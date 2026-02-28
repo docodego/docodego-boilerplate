@@ -298,3 +298,4 @@ use a different address.
 - [auth-server-config](../foundation/auth-server-config.md) — Better Auth server configuration including the organization plugin that validates member roles, creates invitation records, and manages the `inviteMember` endpoint behavior
 - [database-schema](../foundation/database-schema.md) — Schema definitions for the `invitation` and `member` tables read and written during the invitation creation, duplicate check, and expiry enforcement steps
 - [shared-contracts](../foundation/shared-contracts.md) — oRPC contract definitions for the `inviteMember` mutation including the Zod schema that validates `email`, `inviteRole`, and `organizationId` before the mutation reaches the database layer
+- [org-admin-cancels-an-invitation](org-admin-cancels-an-invitation.md) — Defines the admin workflow for cancelling a pending invitation from the Pending tab, which invalidates the invitation token and allows the admin to re-invite the same email address

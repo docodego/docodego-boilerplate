@@ -142,7 +142,8 @@ def score_reference_coverage(
             f"references: {names}{suffix}"
         )
 
-    # Bidirectional reference check
+    # Bidirectional reference check (informational only — not scored,
+    # because reference graphs are naturally directional)
     edge_set = set(outbound_edges)
     bidi_count = sum(
         1 for src, tgt in outbound_edges if (tgt, src) in edge_set
@@ -160,7 +161,7 @@ def score_reference_coverage(
     # Flow mapping (optional)
     flow_ratio = _compute_flow_ratio(spec_stems, flows_dir, result)
 
-    composite = (orphan_ratio + bidi_ratio + flow_ratio) / 3.0
+    composite = (orphan_ratio + flow_ratio) / 2.0
     result.score = min(25, int(round(composite * 25)))
     return result
 

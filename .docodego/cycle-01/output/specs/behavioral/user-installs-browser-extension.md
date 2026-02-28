@@ -340,3 +340,4 @@ in and a brief explanation of what the extension does.
     switching mechanism that determines whether the extension popup
     renders in light mode, dark mode, or follows the operating system
     preference for the visual appearance of all UI components
+- [user-interacts-with-extension-popup](user-interacts-with-extension-popup.md) — defines the authenticated extension popup interface and feature set that the user accesses after completing the sign-in flow initiated from the sign-in prompt rendered during installation

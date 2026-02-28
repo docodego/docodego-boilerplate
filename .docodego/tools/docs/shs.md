@@ -78,16 +78,16 @@ Are specs connected to each other and bidirectionally?
 - **Orphan detection:** counts inbound references per spec (from
   Related Specifications links). Specs with zero inbound
   references are orphans — nothing connects to them
-- **Bidirectional references:** for each edge A → B in Related
-  Specifications, checks whether B → A exists
+- **Bidirectional references (informational):** for each edge
+  A → B, checks whether B → A exists. Reported as a suggestion
+  but not scored — reference graphs are naturally directional
 - **Flow mapping (optional):** if `--flows` directory is provided,
   matches flow files to spec files by filename. Unmatched flows =
   planned but unwritten specs; unmatched specs = ad-hoc specs
   without a flow. If no flows directory provided, this sub-check
   is skipped and full points awarded
-- **Scoring:** composite of orphan ratio, bidirectional ratio,
-  and flow match ratio — weighted equally. 100% on all → 25,
-  proportional otherwise
+- **Scoring:** composite of orphan ratio and flow match ratio,
+  weighted equally. 100% on both → 25, proportional otherwise
 
 ### 3. Line Budget (0–25)
 

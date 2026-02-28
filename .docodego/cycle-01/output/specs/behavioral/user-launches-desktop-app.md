@@ -344,3 +344,8 @@ infrastructure.
     authenticated desktop application user sees after the session
     cookie is validated and the web application loads inside the Tauri
     webview
+- [desktop-auto-updates](desktop-auto-updates.md) — Defines the
+    Tauri Updater plugin behavior that checks for new application
+    versions after the desktop application launches and prompts the
+    user to install available updates during the running session
+- [user-views-desktop-app-version](user-views-desktop-app-version.md) — Defines the about section in the desktop application settings where the user views the current Tauri binary version string and manually triggers update checks after launching the desktop application

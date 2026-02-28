@@ -136,3 +136,4 @@ No stateful entities are introduced by this flow. The user management page is a 
 - [app-admin-impersonates-a-user](app-admin-impersonates-a-user.md) — Defines the admin workflow for impersonating a user to view the application from their perspective, accessed from the user list table
 - [app-admin-changes-user-role](app-admin-changes-user-role.md) — Defines the admin workflow for changing a user's role between user and admin, accessed from the user list table row actions
 - [auth-server-config](../foundation/auth-server-config.md) — Better Auth plugin configuration and admin middleware that the `listUsers` endpoint integrates with for role-based access control
+- [app-admin-creates-a-user](app-admin-creates-a-user.md) — Defines the admin workflow for creating a new user account via the admin dashboard, which adds a new entry to the user list displayed on the user management page

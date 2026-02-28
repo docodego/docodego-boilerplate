@@ -253,3 +253,11 @@ with no lifecycle transitions tracked within this spec's scope.
 - [auth-server-config](auth-server-config.md) — Defines the
     Better Auth configuration that depends on correct deployment
     of environment secrets through the CI/CD pipeline
+- [expo-build](expo-build.md) — Defines the Expo 54 mobile
+    application build configuration including EAS Build profiles
+    that the CI/CD deployment workflow invokes to produce mobile
+    binaries for iOS and Android release submissions
+- [tauri-build](tauri-build.md) — Defines the Tauri 2 desktop
+    application build configuration including Rust backend setup
+    and platform-specific targets that the CI/CD desktop build
+    workflow compiles across the 3-OS matrix

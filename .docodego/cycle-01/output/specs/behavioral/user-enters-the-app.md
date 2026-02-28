@@ -153,3 +153,7 @@ This spec defines how a user navigates to `/app` or any URL under `/app/*` and t
     creation, refresh, and expiration behavior that determines whether
     the `beforeLoad` hook's session check returns a valid session
     during the app entry resolution flow
+- [user-visits-landing-page](user-visits-landing-page.md) — defines
+    the static landing page at the root URL that visitors see before
+    navigating to `/app`, providing the entry point and call-to-action
+    that leads users into the app resolution flow
