@@ -16,7 +16,7 @@ purpose, dimensions, scoring logic, and gate behavior.
 PYTHONPATH=.docodego/tools python -m ics_scorer <spec-file>
 ```
 
-Configuration lives in `.docodego/tools/.env`:
+Configuration lives in `.docodego/tools/tools.env`:
 
 ```
 PYTHONPATH=.docodego/tools
@@ -43,10 +43,10 @@ The runner script sources this file. Tools also auto-load
 |---|------|---------|--------|-------|------------|--------------|
 | 1 | [Intent Clarity Score](design/ics.md) | ICS | Implemented | Single file | 4 x 25 | Behavioral + Foundation |
 | 2 | [Convention Clarity Score](design/ccs.md) | CCS | Implemented | Single file | 4 x 25 | Convention |
-| 3 | [Security Design Score](design/sds.md) | SDS | Proposed | Single file | 4 x 25 | Behavioral + Foundation |
-| 4 | [Constraint Symmetry Guard](design/csg.md) | CSG | Proposed | Directory | 4 x 25 | Behavioral |
-| 5 | [Spec Health Score](design/shs.md) | SHS | Proposed | Directory | 4 x 25 | All |
-| 6 | [Supply Chain Radar](design/scr.md) | SCR | Proposed | Directory | 40 + 25 + 20 + 15 | All |
+| 3 | [Security Design Score](design/sds.md) | SDS | Implemented | Single file | 4 x 25 | Behavioral + Foundation |
+| 4 | [Constraint Symmetry Guard](design/csg.md) | CSG | Implemented | Directory | 4 x 25 | Behavioral |
+| 5 | [Spec Health Score](design/shs.md) | SHS | Implemented | Directory | 4 x 25 | All |
+| 6 | [Supply Chain Radar](design/scr.md) | SCR | Implemented | Directory | 40 + 25 + 20 + 15 | All |
 
 ## Shared Conventions
 

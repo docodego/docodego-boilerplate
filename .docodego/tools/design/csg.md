@@ -1,6 +1,6 @@
 # CSG — Constraint Symmetry Guard
 
-> [All Tools](../README.md) · Status: **Proposed**
+> [All Tools](../README.md) · Status: **Implemented** (`csg_scorer/`)
 
 ## Purpose
 

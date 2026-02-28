@@ -1,6 +1,6 @@
 # SCR — Supply Chain Radar
 
-> [All Tools](../README.md) · Status: **Proposed**
+> [All Tools](../README.md) · Status: **Implemented** (`scr_scorer/`)
 
 ## Purpose
 

@@ -1,6 +1,6 @@
 # SHS — Spec Health Score
 
-> [All Tools](../README.md) · Status: **Proposed**
+> [All Tools](../README.md) · Status: **Implemented** (`shs_scorer/`)
 
 ## Purpose
 

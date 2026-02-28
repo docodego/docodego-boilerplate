@@ -1,6 +1,6 @@
 # SDS — Security Design Score
 
-> [All Tools](../README.md) · Status: **Proposed**
+> [All Tools](../README.md) · Status: **Implemented** (`sds_scorer/`)
 
 ## Purpose
 
