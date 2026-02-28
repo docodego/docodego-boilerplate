@@ -30,7 +30,7 @@ with oRPC's OpenAPI generation.
 
 | System | Interaction Type | When Called | What Happens If Unavailable |
 |--------|-----------------|-------------|------------------------------|
-| `@orpc/contract` | read | Build time and runtime when defining contract routes with `oc.input()` and `oc.output()` | Build fails at compile time because oRPC contract builder functions are unresolved and CI alerts to block deployment |
+| `@orpc/contract v1` | read | Build time and runtime when defining contract routes with `oc.input()` and `oc.output()` | Build fails at compile time because oRPC contract builder functions are unresolved and CI alerts to block deployment |
 | `zod` (v4) | read | Build time and runtime when declaring input/output validation schemas for every endpoint | Build fails at compile time because Zod schema types are unresolved and CI alerts to block deployment |
 | `apps/api` (oRPC router) | read | App startup when the oRPC router imports contract definitions to register typed route handlers | API server cannot start because route handler types are unresolved, returning 500 on all oRPC endpoints until contracts are restored |
 | `apps/web` (oRPC client) | read | Build time and runtime when the frontend generates typed oRPC client calls from contract schemas | Frontend build fails because the oRPC client cannot resolve endpoint types and CI alerts to block deployment |

@@ -33,7 +33,7 @@ uniformly regardless of which workspace a developer is editing.
 | Turborepo `typecheck` pipeline | read | `pnpm typecheck` invokes `tsc` per workspace in dependency order | Turbo falls back to sequential execution and the developer sees a missing task warning but each workspace `tsc` still runs independently |
 | Biome (formatter/linter) | read | `pnpm lint` reads source files that TypeScript also compiles | Biome operates independently of `tsc` — if TypeScript is misconfigured, Biome still runs but type errors remain unreported until `pnpm typecheck` executes |
 | Bundlers (Vite, esbuild, Metro, WXT) | read | Each bundler reads the workspace `tsconfig.json` for path aliases and JSX settings | The bundler falls back to its own default resolution, causing import failures that surface as build-time errors with module-not-found diagnostics |
-| `@cloudflare/workers-types` | read | `tsc` resolves Cloudflare Worker global types for the API workspace | The API workspace typecheck fails with missing type errors for `D1Database`, `R2Bucket`, and other Cloudflare binding types, and CI alerts on the failure |
+| `@cloudflare/workers-types v4` | read | `tsc` resolves Cloudflare Worker global types for the API workspace | The API workspace typecheck fails with missing type errors for `D1Database`, `R2Bucket`, and other Cloudflare binding types, and CI alerts on the failure |
 
 ## Behavioral Flow
 

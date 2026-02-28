@@ -20,7 +20,7 @@ This spec defines the `@repo/i18n` package that provides internationalization in
 | System | Interaction Type | When Called | What Happens If Unavailable |
 |--------|-----------------|-------------|------------------------------|
 | i18next | read | App startup and every translation call via `t()` | Build fails at compile time because the core module cannot resolve the i18next dependency and CI alerts to block deployment |
-| react-i18next | read | React component render when using `@repo/i18n/react` hooks | Build fails at compile time for React workspaces that import the React subpath and CI alerts to block deployment |
+| react-i18next v15 | read | React component render when using `@repo/i18n/react` hooks | Build fails at compile time for React workspaces that import the React subpath and CI alerts to block deployment |
 | i18next-resources-to-backend | read | Web platform lazy-loads a translation namespace on first access | Translation loading falls back to the bundled default English namespace strings so the UI degrades to English-only text instead of crashing |
 | `@repo/library` | read | Formatter functions reference shared constants or utility types | Build fails at compile time if the library package export is missing and CI alerts to block deployment |
 | Hono API (`apps/api`) | read | Every API request when locale middleware calls `t()` from the core module | Locale middleware falls back to default English locale strings so API responses remain readable but untranslated for non-English users |

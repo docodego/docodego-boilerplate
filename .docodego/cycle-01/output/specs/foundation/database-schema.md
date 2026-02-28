@@ -35,7 +35,7 @@ organization structures.
 | D1 (Cloudflare SQL) | read/write | Every database query via Drizzle ORM | Route handlers return 500 and the global error handler falls back to a generic JSON error message for the client |
 | Drizzle ORM | read/write | Every database operation in route handlers and services | Build fails at compile time because table types cannot be resolved, and CI alerts to block deployment |
 | Better Auth | read | App startup (schema contract) | Auth plugin queries fail at runtime because expected columns are absent, and the error handler returns 500 for all auth routes |
-| `@faker-js/faker` | read | Seed script execution during development | Seed script falls back to hardcoded placeholder values or exits with a diagnostic error message identifying the missing dependency |
+| `@faker-js/faker v9` | read | Seed script execution during development | Seed script falls back to hardcoded placeholder values or exits with a diagnostic error message identifying the missing dependency |
 | Drizzle Kit CLI | write | Migration generation and application via `db:generate` and `db:migrate` | Migration commands exit with non-zero code and log a diagnostic error message identifying the connection or schema issue |
 
 ## Behavioral Flow

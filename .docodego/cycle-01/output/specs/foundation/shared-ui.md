@@ -29,10 +29,10 @@ project's dark mode implementation.
 
 | System | Interaction Type | When Called | What Happens If Unavailable |
 |--------|-----------------|-------------|------------------------------|
-| `@base-ui/react` | read | Every component render that uses a Base UI primitive | Build fails at compile time because component imports cannot resolve the Base UI module and CI alerts to block deployment |
+| `@base-ui/react v1` | read | Every component render that uses a Base UI primitive | Build fails at compile time because component imports cannot resolve the Base UI module and CI alerts to block deployment |
 | `class-variance-authority` | read | Component variant resolution at render time | Build fails at compile time because variant definitions cannot resolve the CVA module and CI alerts to block deployment |
 | `tailwind-merge` | read | Every `cn()` utility call that merges Tailwind classes | Build fails at compile time because the `cn()` function cannot resolve the tailwind-merge module and CI alerts to block deployment |
-| `@fontsource-variable/geist` | read | Initial page load when the self-hosted Geist font is rendered | Font loading falls back to the browser's default sans-serif font stack so text remains readable but uses a different typeface |
+| `@fontsource-variable/geist v5` | read | Initial page load when the self-hosted Geist font is rendered | Font loading falls back to the browser's default sans-serif font stack so text remains readable but uses a different typeface |
 | Tailwind CSS v4 | read | Build time and dev server HMR when processing component styles | Build fails because CSS utility classes cannot be compiled and the dev server alerts with a compilation error |
 
 ## Behavioral Flow

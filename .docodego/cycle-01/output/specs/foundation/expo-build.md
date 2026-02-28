@@ -19,7 +19,7 @@ profiles, Metro bundler configuration, native module
 integration, and platform-specific setup for iOS and Android.
 The mobile app shares `@repo/contracts`, `@repo/library`, and
 `@repo/i18n` with the rest of the monorepo through workspace
-dependencies. Authentication uses `@better-auth/expo` with
+dependencies. Authentication uses `@better-auth/expo v1` with
 `expo-secure-store` for encrypted token persistence on device.
 This spec ensures that the Expo project is configured with
 correct build profiles for development, preview, and

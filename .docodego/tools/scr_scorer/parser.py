@@ -44,6 +44,16 @@ class SDDM:
         self.unique_packages.setdefault(ref.name, []).append(ref)
 
 
+# ── Negation context ──────────────────────────────────────────────────
+# Lines that mention a package as NOT being used (e.g., "count of X
+# equals 0", "imports from X instead of Y").  These are architectural
+# decisions, not actual dependencies.
+
+_NEGATION_RE = re.compile(
+    r"\bequals\s+0\b|\binstead\s+of\b",
+    re.IGNORECASE,
+)
+
 # ── Table detection ────────────────────────────────────────────────────
 
 _TABLE_ROW_RE = re.compile(r"^\|.+\|$")
@@ -105,6 +115,9 @@ def _extract_packages_from_text(
         name = match.group(0)
         if name in seen_in_line:
             continue
+        # Skip internal workspace packages (@repo/*)
+        if name.startswith("@repo/"):
+            continue
         seen_in_line.add(name)
         version = _find_version_near(text, match.end())
         refs.append(PackageRef(
@@ -148,6 +161,7 @@ def _parse_file(path: Path) -> list[PackageRef]:
 
     in_frontmatter = False
     frontmatter_count = 0
+    in_failure_modes = False
 
     for line_num, line in enumerate(lines, start=1):
         stripped = line.strip()
@@ -162,12 +176,33 @@ def _parse_file(path: Path) -> list[PackageRef]:
         if in_frontmatter:
             continue
 
+        # Track sections — skip Failure Modes (describes error
+        # scenarios, not actual dependencies)
+        if stripped.startswith("## "):
+            in_failure_modes = stripped == "## Failure Modes"
+        if in_failure_modes:
+            continue
+
         # Skip blank lines and heading markers
         if not stripped or stripped.startswith("#"):
             # Still check headings for backtick content
             pass
 
         is_table = _is_table_row(stripped)
+
+        # Skip lines in negation context:
+        # - "equals 0" on current or next line (multi-line
+        #   "count of X equals 0" patterns)
+        # - "instead of" on current line only, and only outside
+        #   tables (inside tables it describes fallback behavior)
+        idx = line_num - 1  # 0-based index into lines
+        fwd = lines[idx : idx + 2]
+        if any(re.search(r"\bequals\s+0\b", w, re.I) for w in fwd):
+            continue
+        if not is_table and re.search(
+            r"\binstead\s+of\b", stripped, re.I,
+        ):
+            continue
 
         # Extract from backtick-quoted text
         for bt_match in _BACKTICK_RE.finditer(stripped):

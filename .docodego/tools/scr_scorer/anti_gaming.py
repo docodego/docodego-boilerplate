@@ -80,7 +80,6 @@ KNOWN_PACKAGES: set[str] = {
     "pnpm",
     "knip",
     "shadcn",
-    "base-ui",
     "uniwind",
     "lefthook",
 }

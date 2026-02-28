@@ -20,8 +20,8 @@ This spec defines the Tauri 2 desktop application configuration for the DoCodeGo
 | System | Interaction Type | When Called | What Happens If Unavailable |
 |--------|-----------------|-------------|------------------------------|
 | `apps/web` build output | read | Tauri loads `frontendDist` at app startup and `devUrl` during development | The webview displays a connection error page because no frontend content is available to render |
-| `@tauri-apps/cli` | build tool | `tauri dev` and `tauri build` commands invoked by the developer or CI | Build fails at compile time with a missing dependency error and CI alerts to block the release |
-| `@tauri-apps/api` | read | Web app calls IPC commands via `window.__TAURI__` at runtime | Feature detection returns false and the web app falls back to browser-only behavior without calling Tauri APIs |
+| `@tauri-apps/cli v2` | build tool | `tauri dev` and `tauri build` commands invoked by the developer or CI | Build fails at compile time with a missing dependency error and CI alerts to block the release |
+| `@tauri-apps/api v2` | read | Web app calls IPC commands via `window.__TAURI__` at runtime | Feature detection returns false and the web app falls back to browser-only behavior without calling Tauri APIs |
 | Tauri updater endpoint | read | App startup check for new versions via the configured endpoint URL | The updater plugin times out after 10 seconds and falls back to the current version without blocking app launch |
 | OS deep-link registry | write | App installation registers the `docodego://` URL scheme with the operating system | Deep links do not route to the app and the user falls back to a manual URL input dialog for invitation and SSO callback links |
 
