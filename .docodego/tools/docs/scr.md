@@ -22,11 +22,10 @@ network access.
 ## CLI
 
 ```bash
-# Live mode (queries npm + OSV APIs)
+# Live mode — default (queries npm + OSV APIs)
 .docodego/tools/run scr_scorer <directory>
 
-# Offline mode (skips network queries, scores only what can be
-# determined from spec content alone)
+# Offline mode (skips network, scores only spec content)
 .docodego/tools/run scr_scorer --offline <directory>
 
 # JSON output
@@ -43,7 +42,7 @@ network access.
 | `directory` | *(required)* | Directory containing spec files to scan for package references |
 | `--format` | `text` | Output format: `text` (human-readable) or `json` (structured) |
 | `--threshold` | `60` | Minimum total score (out of 100) required to pass |
-| `--offline` | off | Skip network queries; score only from spec content |
+| `--offline` | off | Skip network queries; score only from spec content (live is default) |
 | `--no-zero-veto` | off | Allow passing even if one dimension scores 0 |
 | `--audits` | *(none)* | Write audit JSON to this directory (or set `DOCODEGO_AUDITS`) |
 

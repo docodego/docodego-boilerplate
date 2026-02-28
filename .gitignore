@@ -5,3 +5,4 @@ __pycache__/
 .env*
 dashboard.html
 .docodego/**/audits/
+.docodego/tools/.cache/

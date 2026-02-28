@@ -3,10 +3,19 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
+from datetime import datetime, timezone
 
 from scoring_common.types import DimensionResult
 
 from .parser import SDDM
+from .registry import (
+    classify_severity,
+    get_dep_count,
+    get_last_modified,
+    is_deprecated,
+    query_npm,
+    query_osv,
+)
 
 # ── Constants ──────────────────────────────────────────────────────────
 
@@ -20,6 +29,22 @@ MAX_VULN = 40
 MAX_VITALITY = 25
 MAX_DEPTH = 20
 MAX_COVERAGE = 15
+
+# Severity → point deduction for vulnerability scoring
+SEVERITY_DEDUCTION = {
+    "CRITICAL": 10,
+    "HIGH": 5,
+    "MEDIUM": 2,
+    "LOW": 1,
+    "UNKNOWN": 1,
+}
+
+# Known-heavy frameworks exempt from depth penalties
+KNOWN_HEAVY = {
+    "webpack", "vite", "next", "nuxt", "expo", "tauri",
+    "react-native", "electron", "angular", "svelte",
+    "storybook", "turbo", "turborepo",
+}
 
 
 # ── Result dataclass ───────────────────────────────────────────────────
@@ -81,8 +106,24 @@ def score_vulnerability(
         )
         return result
 
-    # Live mode placeholder (future: query api.osv.dev)
-    result.score = OFFLINE_VULN_SCORE
+    # Live mode: query OSV for each unique package
+    total_deduction = 0
+    for name in sddm.unique_packages:
+        vulns = query_osv(name)
+        for vuln in vulns:
+            sev = classify_severity(vuln)
+            deduction = SEVERITY_DEDUCTION.get(sev, 1)
+            total_deduction += deduction
+            vuln_id = vuln.get("id", "unknown")
+            result.issues.append(
+                f"{name}: {vuln_id} ({sev}, -{deduction}pts)",
+            )
+
+    result.score = max(0, MAX_VULN - total_deduction)
+    if not result.issues:
+        result.suggestions.append(
+            "No known CVEs found for referenced packages",
+        )
     return result
 
 
@@ -109,8 +150,55 @@ def score_vitality(
         )
         return result
 
-    # Live mode placeholder (future: query npm registry)
-    result.score = OFFLINE_VITALITY_SCORE
+    # Live mode: query npm for each unique package
+    now = datetime.now(timezone.utc)
+    vital_count = 0.0
+    queried = 0
+
+    for name in sddm.unique_packages:
+        npm_data = query_npm(name)
+        if npm_data is None:
+            continue  # private/scoped pkg, skip
+        queried += 1
+
+        if is_deprecated(npm_data):
+            result.issues.append(f"'{name}' is deprecated on npm")
+            continue
+
+        modified = get_last_modified(npm_data)
+        if modified is None:
+            continue
+
+        months = (now - modified).days / 30.44
+        if months < 6:
+            vital_count += 1
+        elif months < 12:
+            vital_count += 0.5
+            result.suggestions.append(
+                f"'{name}' last published {int(months)} months ago",
+            )
+        else:
+            result.issues.append(
+                f"'{name}' last published {int(months)} months ago"
+                f" (stale)",
+            )
+
+    if queried == 0:
+        result.score = OFFLINE_VITALITY_SCORE
+        return result
+
+    ratio = vital_count / queried
+    if ratio >= 1.0:
+        result.score = MAX_VITALITY
+    elif ratio >= 0.9:
+        result.score = 20
+    elif ratio >= 0.7:
+        result.score = 15
+    elif ratio >= 0.5:
+        result.score = 10
+    else:
+        result.score = max(0, int(ratio * MAX_VITALITY))
+
     return result
 
 
@@ -137,8 +225,37 @@ def score_depth(
         )
         return result
 
-    # Live mode placeholder (future: query npm registry recursively)
-    result.score = OFFLINE_DEPTH_SCORE
+    # Live mode: query npm for direct dep counts
+    total_deduction = 0
+
+    for name in sddm.unique_packages:
+        npm_data = query_npm(name)
+        if npm_data is None:
+            continue
+
+        dep_count = get_dep_count(npm_data)
+        base_name = name.split("/")[-1] if "/" in name else name
+        is_heavy = base_name in KNOWN_HEAVY
+
+        if dep_count > 100:
+            if is_heavy:
+                result.suggestions.append(
+                    f"'{name}' has {dep_count} direct deps"
+                    f" (known-heavy, exempt)",
+                )
+            else:
+                total_deduction += 2
+                result.issues.append(
+                    f"'{name}' has {dep_count} direct deps (-2pts)",
+                )
+        elif dep_count > 50:
+            if not is_heavy:
+                total_deduction += 1
+                result.suggestions.append(
+                    f"'{name}' has {dep_count} direct deps (-1pt)",
+                )
+
+    result.score = max(0, MAX_DEPTH - total_deduction)
     return result
 
 

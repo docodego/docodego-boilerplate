@@ -33,8 +33,8 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument(
         "--offline",
         action="store_true",
-        default=True,
-        help="Skip network queries (default: on)",
+        default=False,
+        help="Skip network queries (live is default)",
     )
     parser.add_argument(
         "--threshold",
