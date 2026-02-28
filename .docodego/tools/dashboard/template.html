@@ -412,13 +412,15 @@ function renderCorpus() {
   html += '<div class="corpus-grid">';
 
   for (const sp of corpus) {
+    const grp = sp._group || 'unknown';
     for (const [tk, tv] of Object.entries(sp.tools || {})) {
       const info = TOOLS[tk] || {name: tk.toUpperCase()};
       const cls = scoreClass(tv.score);
       html += `<div class="card corpus-card">
         <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.5rem">
           <span class="badge badge-${tv.passed?'pass':'fail'}">${tv.passed?'PASS':'FAIL'}</span>
-          <b>${esc(info.name)}</b> <span style="color:var(--text-muted)">${tk.toUpperCase()}</span>
+          <b>${esc(info.name)}</b>
+          <span class="badge" style="background:var(--border);color:var(--text)">${esc(grp)}</span>
           <span style="margin-left:auto;font-size:1.2rem;font-weight:700;text-align:center;min-width:5ch;padding:.2rem .5rem;border-radius:var(--radius)" class="${cls}">${tv.score}/100</span>
         </div>`;
 
